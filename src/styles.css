@@ -782,6 +782,10 @@ textarea {
   border: 1px solid rgba(31, 42, 39, 0.1);
 }
 
+.result-button {
+  padding: 0.7rem 0.85rem;
+}
+
 .browse-card.compact {
   padding: 0.8rem 0.9rem;
 }
@@ -800,6 +804,20 @@ textarea {
 
 .result-button span {
   display: block;
+}
+
+.search-result-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.search-result-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #62706b;
 }
 
 .detail-panel {

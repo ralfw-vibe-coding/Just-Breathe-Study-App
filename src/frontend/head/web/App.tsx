@@ -14,6 +14,7 @@ import {
   Heart,
   MessageSquare,
   MessageSquarePlus,
+  NotebookPen,
   Search,
   Tag,
   Trash2,
@@ -559,6 +560,7 @@ export function App() {
   const noteSaveTimer = useRef<number | null>(null);
   const detailSectionRef = useRef<HTMLElement | null>(null);
   const userMenuRef = useRef<HTMLDivElement | null>(null);
+  const historyMenuRef = useRef<HTMLDivElement | null>(null);
   const chatBottomRef = useRef<HTMLDivElement | null>(null);
 
   const { saveStatus, persist } = useRetryingBackgroundSave(overlay);
@@ -649,27 +651,25 @@ export function App() {
 
   useEffect(() => {
     function handlePointerDown(event: MouseEvent) {
-      if (!isUserMenuOpen) {
-        return;
-      }
-
       const target = event.target;
       if (!(target instanceof Node)) {
         return;
       }
 
-      if (userMenuRef.current?.contains(target)) {
-        return;
+      if (isUserMenuOpen && !userMenuRef.current?.contains(target)) {
+        setIsUserMenuOpen(false);
       }
 
-      setIsUserMenuOpen(false);
+      if (isHistoryMenuOpen && !historyMenuRef.current?.contains(target)) {
+        setIsHistoryMenuOpen(false);
+      }
     }
 
     window.addEventListener("mousedown", handlePointerDown);
     return () => {
       window.removeEventListener("mousedown", handlePointerDown);
     };
-  }, [isUserMenuOpen]);
+  }, [isHistoryMenuOpen, isUserMenuOpen]);
 
   useEffect(() => {
     if (search.trim() || activeTagFilters.length) {
@@ -720,24 +720,37 @@ export function App() {
     const needle = search.trim().toLowerCase();
     return Object.values(base.cards)
       .map((card) => {
-        const haystack =
+        const cardHaystack =
           `${card.title} ${card.overview} ${card.details}`.toLowerCase();
-        const matchesText = !needle || haystack.includes(needle);
+        const noteText = overlay?.notes[card.id] ?? "";
+        const noteHaystack = noteText.toLowerCase();
+        const matchesCardText = !needle || cardHaystack.includes(needle);
+        const matchesNoteText = Boolean(needle) && noteHaystack.includes(needle);
+        const matchesText = !needle || matchesCardText || matchesNoteText;
         const overlayTags = overlay?.tags[card.id] ?? [];
         const matchesTags =
           activeTagFilters.length === 0 ||
           overlayTags.some((tag) => activeTagFilters.includes(tag));
         if (!matchesText || !matchesTags) {
-          return { card, score: -Infinity };
+          return { card, score: -Infinity, matchesCardText: false, matchesNoteText: false };
         }
         const titleBonus = needle && card.title.toLowerCase().includes(needle) ? 10 : 0;
-        const score = needle ? titleBonus + haystack.indexOf(needle) * -1 : 0;
-        return { card, score };
+        const cardScore = needle ? cardHaystack.indexOf(needle) * -1 : 0;
+        const noteScore = matchesNoteText ? noteHaystack.indexOf(needle) * -1 - 5 : -Infinity;
+        const score = needle
+          ? titleBonus + Math.max(matchesCardText ? cardScore : -Infinity, noteScore)
+          : 0;
+        return { card, score, matchesCardText, matchesNoteText, noteText };
       })
       .filter((entry) => entry.score > -Infinity)
       .sort((left, right) => right.score - left.score)
-      .map((entry) => entry.card);
-  }, [activeTagFilters, base, overlay?.tags, search]);
+      .map((entry) => ({
+        card: entry.card,
+        matchesCardText: entry.matchesCardText,
+        matchesNoteText: entry.matchesNoteText,
+        noteText: entry.noteText ?? ""
+      }));
+  }, [activeTagFilters, base, overlay?.notes, overlay?.tags, search]);
 
   function applyView(nextView: ViewState) {
     const params = new URLSearchParams();
@@ -1173,7 +1186,7 @@ export function App() {
                 <ArrowLeft size={16} />
                 <span>{titleForView(backTarget)}</span>
               </button>
-              <div className="history-menu-wrap">
+              <div className="history-menu-wrap" ref={historyMenuRef}>
                 <button
                   className="ghost-button history-button"
                   onClick={() => setIsHistoryMenuOpen((value) => !value)}
@@ -1349,17 +1362,23 @@ export function App() {
             ) : null}
             {hasSearchContext && isSearchResultsOpen ? (
               <ul className="result-list">
-                {searchResults.map((card) => (
-                  <li key={card.id}>
+                {searchResults.map((result) => (
+                  <li key={result.card.id}>
                     <button
                       className="result-button"
                       onClick={() => {
                         setIsSearchResultsOpen(false);
-                        openCard(card.id, { trail: [card.id] });
+                        openCard(result.card.id, { trail: [result.card.id] });
                       }}
                     >
-                      <strong>{card.title}</strong>
-                      <span>{card.overview}</span>
+                      <div className="search-result-head">
+                        <strong>{result.card.title}</strong>
+                        <span className="search-result-icons">
+                          {result.matchesCardText ? <BookOpen size={13} /> : null}
+                          {result.matchesNoteText ? <NotebookPen size={13} /> : null}
+                        </span>
+                      </div>
+                      <span>{result.matchesNoteText && !result.matchesCardText ? result.noteText : result.card.overview}</span>
                     </button>
                   </li>
                 ))}
