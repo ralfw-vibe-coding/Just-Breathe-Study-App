@@ -1,15 +1,20 @@
 ---
-id: being-mantra-meditation
+id: "being-mantra-meditation"
 title: "Being Mantra Meditation"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "A non-doing meditation that uses mantra to support presence in being."
 ---
 
-Clear concepts make practice easier to understand, compare, and teach.
+This practice uses mantra inside the established-in-being depth of meditation. The mantra is not used as an aggressive concentration device, but as a gentle support for inward settling.
 
-Why it matters:
-- language becomes more precise
-- distinctions become easier to hold
-- related practices make more sense in context
+How it works:
+- the mantra invites attention inward
+- repetition softens outer distraction
+- effort gradually reduces
+- awareness is allowed to rest more deeply in being
 
-Key points:
-- Concepts are most useful when they stay connected to lived practice.
+What makes it distinct:
+- the point is not to perform the mantra perfectly
+- the mantra is a support, not the destination
+- stillness and inward absorption matter more than mechanical repetition
+
+This makes it well suited to meditative states that are quiet, contemplative, and less driven by the thinking mind.

@@ -1,18 +1,19 @@
 ---
-id: diaphragmatic-thoracic-clavicular-breathing
+id: "diaphragmatic-thoracic-clavicular-breathing"
 title: "Diaphragmatic / Thoracic / Clavicular Breathing"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "A comparison of three common breathing patterns."
 ---
 
-How to practice:
-Bring attention to where the breath is moving in the body and shape it deliberately.
-- Notice whether movement is happening more in the belly, ribs, chest, or upper chest.
-- Guide the breath toward the area the technique emphasizes.
-- Keep unnecessary effort low so sensation stays clear.
-- Repeat slowly enough to feel the pattern rather than only think about it.
+These patterns describe where the breath is being led in the torso and which structures are doing most of the work.
 
-Purpose:
-Used to improve awareness of breathing mechanics, expand control over where the breath moves, and make later regulation techniques more precise. The emphasis is skill, sensation, and functional breathing quality.
+- **Diaphragmatic breathing**: movement is led from the lower belly and lower ribs. The diaphragm contracts on the inhale, the lower abdomen and lower rib cage expand, and the breath is usually fuller, smoother, and less effortful.
+- **Thoracic or costal breathing**: movement is led mainly through the ribcage and chest. The intercostal muscles contribute more obviously and the chest expands more than the belly.
+- **Clavicular breathing**: movement rises into the upper chest. The shoulders and collarbones lift, the upper rib cage elevates, and the top third of the lungs does most of the visible movement. This pattern is often shallow and stress-linked.
 
-Why it works:
-Breathing mechanics affect diaphragm use, rib movement, posture, and the amount of muscular effort needed for each breath. Clearer mechanical awareness improves interoception, helps reduce compensatory tension, and creates a better foundation for both calming and energising practices.
+A simple way to tell them apart is by what moves most:
+
+- **Belly and lower ribs** → diaphragmatic
+- **Ribcage and chest** → thoracic or costal
+- **Upper chest, shoulders, collarbones** → clavicular
+
+These distinctions matter because they show whether the breath is low, middle, or high in the torso and where compensation may be happening. Diaphragmatic breathing is generally the most efficient. Thoracic breathing sits in the middle. Clavicular breathing is usually the shallowest and most effortful.

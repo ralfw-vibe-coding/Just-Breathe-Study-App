@@ -650,6 +650,13 @@ function setPrimaryParent(childId, parentId) {
   cards[childId].parents = [parentId, ...cards[childId].parents.filter((id) => id !== parentId)];
 }
 
+function addParent(childId, parentId) {
+  if (!cards[childId] || !cards[parentId]) {
+    return;
+  }
+  uniquePush(cards[childId].parents, parentId);
+}
+
 function removeParent(childId, parentId) {
   if (!cards[childId]) {
     return;
@@ -691,6 +698,7 @@ setChildren("from-stress-to-rest", [
 
 setChildren("opening-invitation", [
   "close-your-eyes-be-still-just-breathe",
+  "conscious-breath",
   "notice-what-you-notice-feel-what-you-feel",
 ]);
 
@@ -733,6 +741,30 @@ setChildren("session-frameworks", [
   "meditation-session-framework",
 ]);
 
+setChildren("cts-circle-triangle-square", [
+  "even-breath",
+  "triangle-breathing",
+  "box-breathing",
+]);
+
+setChildren("360-ipa", [
+  "360-breathing",
+  "inspired-pause",
+  "alternate-nostril-breathing",
+]);
+
+setChildren("pxc", [
+  "physiological-sigh",
+  "extended-exhale",
+  "coherent-breath",
+]);
+
+setChildren("xlt", [
+  "extended-exhale",
+  "low-frequency-humming-breath",
+  "triangle-4-7-8",
+]);
+
 setChildren("principles-of-guidance", ["guiding-principles", "reference-views"]);
 setChildren("guiding-principles", ["guidance-concepts"]);
 setChildren("reference-views", ["concept-cards"]);
@@ -747,6 +779,7 @@ for (const id of ["just-breathe-method", "quiet-practices", "time-well-spent", "
 
 for (const id of [
   "close-your-eyes-be-still-just-breathe",
+  "conscious-breath",
   "notice-what-you-notice-feel-what-you-feel",
 ]) {
   setPrimaryParent(id, "opening-invitation");
@@ -775,6 +808,17 @@ setPrimaryParent("resting-position-supported-practice", "deep-rest-practices");
 setPrimaryParent("stillness", "deep-rest-practices");
 setPrimaryParent("integration", "deep-rest-practices");
 
+for (const [parentId, childIds] of Object.entries({
+  "cts-circle-triangle-square": ["even-breath", "triangle-breathing", "box-breathing"],
+  "360-ipa": ["360-breathing", "inspired-pause", "alternate-nostril-breathing"],
+  pxc: ["physiological-sigh", "extended-exhale", "coherent-breath"],
+  xlt: ["extended-exhale", "low-frequency-humming-breath", "triangle-4-7-8"],
+})) {
+  for (const childId of childIds) {
+    addParent(childId, parentId);
+  }
+}
+
 for (const id of [
   "breathwork-protocols",
   "session-architecture",
@@ -800,6 +844,20 @@ for (const id of [
   "principles-of-guidance",
 ]) {
   cards[id].parents = [];
+}
+
+for (const [parentId, childIds] of Object.entries({
+  "opening-invitation": [
+    "close-your-eyes-be-still-just-breathe",
+    "conscious-breath",
+    "notice-what-you-notice-feel-what-you-feel",
+  ],
+  "cts-circle-triangle-square": ["even-breath", "triangle-breathing", "box-breathing"],
+  "360-ipa": ["360-breathing", "inspired-pause", "alternate-nostril-breathing"],
+  pxc: ["physiological-sigh", "extended-exhale", "coherent-breath"],
+  xlt: ["extended-exhale", "low-frequency-humming-breath", "triangle-4-7-8"],
+})) {
+  cards[parentId].children = childIds.filter((childId) => cards[childId]);
 }
 
 for (const card of Object.values(cards)) {

@@ -1,15 +1,30 @@
 ---
-id: nervous-system
+id: "nervous-system"
 title: "Nervous System"
-overview: "An overview of the system that shapes activation, regulation, and recovery."
+overview: "The body’s built-in system for stress, regulation, and recovery."
 ---
 
-Clear concepts make practice easier to understand, compare, and teach.
+The nervous system receives information, interprets it, and coordinates response. In this curriculum, the emphasis is on the autonomic nervous system because it shapes breathing, stress response, regulation, and recovery.
 
-Why it matters:
-- language becomes more precise
-- distinctions become easier to hold
-- related practices make more sense in context
+## Two major responses
 
-Key points:
-- Concepts are most useful when they stay connected to lived practice.
+- **Sympathetic division**: the fight-or-flight response. It prepares the body for action when something feels demanding, unfamiliar, or threatening.
+- **Parasympathetic division**: the rest-and-digest response. It supports settling, recovery, digestion, and a return to balance.
+
+These two divisions are both necessary. The work is not to eliminate activation, but to move more skilfully between activation and recovery.
+
+## Stress and dysregulation
+
+Stress is the body’s response to pressure. It may be triggered by new situations, unexpected events, a sense of threat, or feeling a lack of control. When stress accumulates, the nervous system can become highly reactive and less able to self-regulate. In that state, even ordinary stressors can feel more disruptive.
+
+Managing stress begins with recognition, reduction of unnecessary stimulus, and deliberate practices that help the system return toward steadiness.
+
+## Why breathing matters
+
+Breathing practices can influence autonomic balance. Slow controlled breathing, extended exhale patterns, breath counting, humming, and other balanced techniques can reduce stress, improve focus, and encourage parasympathetic activation.
+
+Some practices calm and restore. Others balance or awaken. The effect depends on the pattern being used and the state it is being applied to.
+
+## Practical takeaway
+
+This is why the same breath can feel calming, balancing, or energising depending on how it is shaped and when it is used.

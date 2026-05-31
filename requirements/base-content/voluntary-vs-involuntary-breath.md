@@ -1,18 +1,24 @@
 ---
-id: voluntary-vs-involuntary-breath
+id: "voluntary-vs-involuntary-breath"
 title: "Voluntary vs. Involuntary Breath"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "Breathing runs on its own, but you can also guide it intentionally."
 ---
 
-How to practice:
-Begin in a clear posture and follow the core instruction of the technique with steady pacing.
-- Keep the form simple enough to stay aware of what is happening.
-- Adjust effort so the practice remains sustainable.
-- Continue for several rounds or minutes.
-- Pause afterward and notice the effect before moving on.
+Breathing is unusual because it belongs to both automatic life support and conscious practice.
 
-Purpose:
-Used to create a specific shift in breathing, attention, or nervous-system state. The emphasis depends on the technique, but usually involves regulation, awareness, or directed mental focus.
+Involuntary breathing:
+- runs without effort
+- is regulated automatically to keep oxygen and carbon dioxide stable
+- supports life continuously, even during sleep
 
-Why it works:
-Breathing patterns and attentional patterns both influence autonomic state, muscular tone, and perception. Repetition makes the effect more reliable by linking deliberate practice with physiological and neurophysiological change.
+Voluntary breathing:
+- can be slowed, deepened, counted, paused, or directed
+- allows the rhythm and depth of breathing to be shaped intentionally
+- is what makes breathwork possible
+
+Why the distinction matters:
+- The involuntary side keeps you alive.
+- The voluntary side lets you influence state, attention, and recovery.
+- Breathwork works because conscious intervention can temporarily shape a process that is otherwise automatic.
+
+This makes the breath a bridge between physiology and practice.

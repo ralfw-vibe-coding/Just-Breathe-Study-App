@@ -1,7 +1,7 @@
 ---
-id: nsrt-method
+id: "nsrt-method"
 title: "NSRT Method"
-overview: "The NSRT method as the named umbrella for nervous system regulation techniques."
+overview: "A framework for choosing breathwork practices that match the nervous system’s current state."
 related:
   - balanced-nsrt-protocols
   - down-regulation-protocols
@@ -10,4 +10,24 @@ related:
   - nervous-system-regulation
 ---
 
-The method gathers techniques into a practical framework for balancing, down-regulating, up-regulating, and restoring. The protocol families below show how the framework is organized in use.
+NSRT stands for Nervous System Regulation Techniques. It is the practical method used to guide breathwork according to the state the nervous system is in.
+
+The method works in three moves:
+1. recognise the current state
+2. choose the right protocol family
+3. sustain the shift long enough for the body to respond
+
+The main protocol families are:
+- Balanced: for steadiness, equilibrium, and homeostatic support
+- Down Regulation: for stress, anxiety, overwhelm, and hyperstimulation
+- Up Regulation: for low energy, dullness, or under-activation
+- Restorative: for deeper rest, recovery, and parasympathetic support
+
+Why it matters:
+- It turns breathwork into responsive guidance instead of random technique use.
+- It helps match the breath to the state rather than asking one practice to do everything.
+- It gives teachers a simple framework for sequencing regulation work with purpose.
+
+Important to remember:
+- Recognition comes before intervention.
+- The aim is not just to change the breath, but to change the state safely and effectively.

@@ -1,0 +1,157 @@
+[
+  {
+    "id": "3-gratitudes",
+    "searchTerms": ["The 3 Gratitudes", "A breath for you", "A breath for support", "A breath for this moment"],
+    "notes": "Explain the three-breath ritual clearly and concretely."
+  },
+  {
+    "id": "notice-what-you-notice-feel-what-you-feel",
+    "searchTerms": ["Notice what you notice", "feel what you feel", "Cultivate awareness"],
+    "notes": "Treat it as a guiding cue for awareness, honesty, and non-judgement."
+  },
+  {
+    "id": "functional-breath-awareness",
+    "searchTerms": ["Functional Breath Awareness", "Functional", "Respiratory physiology", "Breath awareness", "HOW WE BREATHE"],
+    "notes": "Explain the observational and physiological foundation of breathwork."
+  },
+  {
+    "id": "systematic-breathwork",
+    "searchTerms": ["Systematic Breathwork", "Systematic", "Self-sustainable techniques", "Manipulation of techniques, ratio and rounds", "ABC123 VARIABLE BREATHING TECHNIQUES"],
+    "notes": "Distinguish it from exploratory breathwork. Emphasise repeatable structure."
+  },
+  {
+    "id": "experiential-breathwork",
+    "searchTerms": ["Experiential Breathwork", "Experiential", "Full body-mind connection", "Conscious awareness and expanded states", "Somatic introspection", "Non-ordinary states of consciousness", "Conscious connected breathing", "Holotropic breathing"],
+    "notes": "Differentiate it from systematic regulation. Emphasise full-body felt experience and altered state potential."
+  },
+  {
+    "id": "lions-breath",
+    "searchTerms": ["Lion’s Breath", "Lion's Breath", "lions breath", "Energy variation"],
+    "notes": "If the card is treated as a technique, keep How to practice / Purpose / Why it works."
+  },
+  {
+    "id": "nsrt-method",
+    "searchTerms": ["Nervous System Regulation Techniques (NSRT)", "NSRT METHOD FOR PRACTICE GUIDANCE", "Step 2: Tame it", "Step 3: Sustain it"],
+    "notes": "Explain what the method is for, how protocol families are used, and how it supports guidance."
+  },
+  {
+    "id": "nervous-system-recognition",
+    "searchTerms": ["NERVOUS SYSTEM RECOGNITION", "Stress management", "Guidance for responsive sequences", "Direct Response", "Gradual Response"],
+    "notes": "Differentiate recognition from regulation and release."
+  },
+  {
+    "id": "nervous-system-regulation",
+    "searchTerms": ["NERVOUS SYSTEM REGULATION", "Proactive essential practices", "Breath variability", "Manipulation of techniques, ratio and rounds", "EXHALE & ESSENTIAL DAILY PRACTICES"],
+    "notes": "Explain how deliberate techniques shape state and breathing patterns."
+  },
+  {
+    "id": "nervous-system-release",
+    "searchTerms": ["NERVOUS SYSTEM RELEASE", "Recovery and safety protocol", "Emotional release", "Non-ordinary states of consciousness", "Hyper stimulation reduction"],
+    "notes": "Differentiate release from regulation. Include safety tone where supported."
+  },
+  {
+    "id": "respiratory-system",
+    "searchTerms": ["respiratory system", "external respiration", "alveoli", "respiratory cycles", "respiratory rate"],
+    "notes": "Explain the system anatomically and physiologically, not as a practice."
+  },
+  {
+    "id": "nervous-system",
+    "searchTerms": ["Sympathetic / parasympathetic divisions", "autonomic nervous system", "parasympathetic", "sympathetic"],
+    "notes": "Explain the nervous-system lens used in the course with emphasis on stress and rest."
+  },
+  {
+    "id": "voluntary-vs-involuntary-breath",
+    "searchTerms": ["Voluntary vs. involuntary", "breathing depth and rate is automatically", "unconsciously controlled"],
+    "notes": "Explain the bridge between automatic breathing and conscious intervention."
+  },
+  {
+    "id": "quality-quantity-capacity-axis",
+    "searchTerms": ["Quality vs. quantity axis", "Observe the quantity and quality axis", "Quality / Quantity / Capacity Axis"],
+    "notes": "Explain the distinctions clearly and concretely."
+  },
+  {
+    "id": "diaphragmatic-thoracic-clavicular-breathing",
+    "searchTerms": ["Diaphragmatic, costal, clavicular", "clavicular", "costal", "diaphragmatic"],
+    "notes": "Compare the three regions/patterns clearly."
+  },
+  {
+    "id": "down-regulation-up-regulation",
+    "searchTerms": ["Down regulation vs. up regulation", "Down regulating, awakening, energising, uplifting"],
+    "notes": "Explain the directional distinction and when each is used."
+  },
+  {
+    "id": "cts-circle-triangle-square",
+    "searchTerms": ["CTS (Circle/Triangle/Square)", "Optimize autonomic balance", "Even Breath", "Triangle Breathing", "Box Breathing"],
+    "notes": "Explain the protocol purpose and the role of each child technique."
+  },
+  {
+    "id": "360-ipa",
+    "searchTerms": ["360° IPA", "Return to homeostatis", "360 Breathing", "Inspired Pause", "Alternate Nostril Breathing"],
+    "notes": "Explain the balanced protocol purpose and the role of each child technique."
+  },
+  {
+    "id": "pxc",
+    "searchTerms": ["PXC", "Dissolve stress", "Physiological Sigh", "Extended Exhale", "Coherent Breathing"],
+    "notes": "Explain the stress-response protocol purpose and the role of each child technique."
+  },
+  {
+    "id": "xlt",
+    "searchTerms": ["XLT", "Sustained rest", "Extended Exhale", "Low Frequency Humming Breath", "Triangle Breathing 4-7-8 Variation"],
+    "notes": "Explain the calming/restorative protocol purpose and the role of each child technique."
+  },
+  {
+    "id": "the-thinking-mind",
+    "searchTerms": ["The Thinking Mind; Intro to Meditation", "Quietening the mind", "Mindfulness", "What is the difference between meditation and mindfulness"],
+    "notes": "Explain the problem of mental activity and how meditation meets it."
+  },
+  {
+    "id": "witness-state",
+    "searchTerms": ["witnesses the activity", "watching one's thoughts", "witness state", "Techniques of the witness"],
+    "notes": "Explain witnessing as a mode of awareness without entanglement."
+  },
+  {
+    "id": "non-doing",
+    "searchTerms": ["Non-doing contemplative", "Un-Doing the Mind", "being, not doing", "non-striving transcendence", "6 phases of non-doing"],
+    "notes": "Explain non-doing carefully as restful inwardness rather than passivity."
+  },
+  {
+    "id": "awareness",
+    "searchTerms": ["Awareness", "Mindfulness", "awareness that arises from paying attention", "Cultivate awareness"],
+    "notes": "Differentiate awareness from attention and intention."
+  },
+  {
+    "id": "attention",
+    "searchTerms": ["Attention", "paying attention", "relentless attention", "Attention of the mind"],
+    "notes": "Explain directed focus within practice."
+  },
+  {
+    "id": "intention",
+    "searchTerms": ["Intention", "Focused Intention", "Today’s practice is", "Establish your intention"],
+    "notes": "Explain intention as practice direction, not just a vague wish."
+  },
+  {
+    "id": "established-in-being",
+    "searchTerms": ["Established in being", "Non-doing contemplative", "Techniques for being, not doing", "This style of practice is a singular technique"],
+    "notes": "Explain the category and what kind of meditation belongs here."
+  },
+  {
+    "id": "present-moment-awareness",
+    "searchTerms": ["Present moment awareness", "Internal concentrative", "Techniques of the witness", "This style of practice is any technique that dedicates your awareness"],
+    "notes": "Explain the category and the kind of attentional demand it has."
+  },
+  {
+    "id": "focused-intention",
+    "searchTerms": ["Focused Intention", "Attention of the Mind", "External concentrative", "This style of practice is any technique that brings your attention to a conceptual intention or narrative"],
+    "notes": "Explain the category and the role of narrative, imagery, and meaning."
+  },
+  {
+    "id": "being-mantra-meditation",
+    "searchTerms": ["Being ‘Mantra’ Meditation", "being mantra", "Established in being", "mantra"],
+    "notes": "Ensure it is clearly distinct from generic mantra repetition and linked to being."
+  },
+  {
+    "id": "stillness-non-doing-practice",
+    "searchTerms": ["Stillness", "non-doing", "being, not doing", "This is a moment of deep rest"],
+    "notes": "Explain it as a genuine practice and not as blank inactivity."
+  }
+]

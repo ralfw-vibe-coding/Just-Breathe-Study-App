@@ -1,18 +1,22 @@
 ---
-id: lions-breath
+id: "lions-breath"
 title: "Lion’s Breath"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "A forceful exhale practice that clears stale air and stimulates the senses."
 ---
 
-How to practice:
-Begin in an upright posture with enough space for the ribcage and abdomen to move.
-- Make the inhale more active, sharper, or more expansive.
-- Let the exhale either release naturally or support the rhythm without collapsing posture.
-- Use a clear cadence for a short set of rounds.
-- Pause afterward and notice whether the body feels more awake, warm, and available.
+**How to practice**
+1. Lean the upper body forward slightly.
+2. Inhale through the nose with the mouth closed.
+3. Open the mouth wide and extend the tongue down toward the chin.
+4. Exhale forcefully with a `ha` sound, letting the breath travel strongly across the tongue.
+5. Repeat 5-10 times.
 
-Purpose:
-Used to increase alertness, raise energy, and mobilize attention when more activation is useful. The main emphasis is uplift, readiness, and momentum rather than calming.
+**Purpose**
+- Clears stale air from the body.
+- Stimulates the senses and creates a more awake, vivid feeling.
+- Can also create an immediate discharge that reduces held stress.
 
-Why it works:
-More active inhalation and stronger respiratory movement increase arousal and can raise heart rate, thoracic expansion, and sensory alertness. The pattern recruits respiratory muscles more strongly, changes blood gases more quickly, and tends to shift the nervous system toward sympathetic activation and readiness.
+**Why it works**
+- The open-mouthed forceful exhale increases respiratory effort and changes facial, throat, and chest involvement at the same time.
+- The strong `ha` release creates a sharper sensory event than a quiet breath.
+- This helps interrupt dullness, stagnation, or internal build-up and can leave the body feeling clearer and more responsive.

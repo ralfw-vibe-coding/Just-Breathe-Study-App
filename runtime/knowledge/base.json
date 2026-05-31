@@ -208,8 +208,8 @@
     "functional-breath-awareness": {
       "id": "functional-breath-awareness",
       "title": "Functional Breath Awareness",
-      "overview": "A foundational lens for noticing how breathing is happening before trying to change it.",
-      "details": "Functional breath awareness starts with observation. It supports sensing patterns, capacity, and present-state information so later interventions are more precise and more appropriate.",
+      "overview": "Notice the breath as it is before changing anything.",
+      "details": "Functional breath awareness is the physiological starting point of breathwork. Before changing the breath, learn to read it.\n\nWhat to observe:\n- where the breath is located in the body\n- whether it is diaphragmatic, thoracic, clavicular, or mixed\n- whether the inhale and exhale are smooth, strained, noisy, shallow, held, or rushed\n- whether the rhythm is steady or reactive\n- whether the breath is nasal or oral\n- whether the body looks regulated, braced, fatigued, or overstimulated\n\nWhat this tells you:\n- how the respiratory system is currently functioning\n- whether the breath is efficient or compensatory\n- how the nervous system may be expressing stress through breathing\n- what kind of intervention is likely to help\n\nWhy it matters:\n- Breathwork becomes more precise when it begins with observation.\n- Recognition of the pattern comes before manipulation of the pattern.\n- This is the bridge between respiratory physiology and practical guidance.\n\nImportant to remember:\n- Functional awareness is not yet a state-change technique.\n- Its job is to clarify how the person is breathing now.\n- Better observation leads to better regulation choices.",
       "tags": [
         "is_concept",
         "discipline_breathwork",
@@ -230,8 +230,8 @@
     "systematic-breathwork": {
       "id": "systematic-breathwork",
       "title": "Systematic Breathwork",
-      "overview": "Breathwork used intentionally to create a clear and repeatable state shift.",
-      "details": "Systematic breathwork differs from loose experimentation by using chosen mechanics, pacing, and dosage to support a known effect. It is central to the curriculum's practical teaching approach.",
+      "overview": "Structured breath practice designed for a reliable effect.",
+      "details": "Systematic breathwork uses structure to create a known effect.\n\nThe breath is organised on purpose:\n- a specific technique is chosen\n- the ratio or rhythm is defined\n- the number of rounds or duration is intentional\n- the result being sought is clear\n\nThis is the practical side of breathwork used for:\n- nervous system regulation\n- proactive essential daily practices\n- stress management\n- guided sequences that need to be repeatable and teachable\n\nWhat makes it systematic:\n- the method can be returned to again\n- the variables can be adjusted with care\n- the effect is not left to chance\n- the teacher or practitioner can explain why this pattern is being used\n\nThis style of practice works well when the need is known and the breath is being used as a deliberate tool rather than as open exploration.",
       "tags": [
         "is_concept",
         "discipline_breathwork",
@@ -252,8 +252,8 @@
     "experiential-breathwork": {
       "id": "experiential-breathwork",
       "title": "Experiential Breathwork",
-      "overview": "Breath-led experience that emphasizes felt exploration more than narrow regulation goals.",
-      "details": "Experiential breathwork leans toward felt exploration rather than narrowly defined regulation outcomes. The emphasis is on direct experience, inner observation, and allowing the breath to reveal patterns, responses, and shifts.",
+      "overview": "Breathing practice focused on direct felt experience and deeper state shifts.",
+      "details": "Experiential breathwork is organised around what is felt, revealed, and moved through the body-mind, not only around a narrow regulation target.\n\nIts emphasis is on:\n- full body-mind connection\n- conscious awareness during the experience\n- somatic introspection\n- expanded states or non-ordinary states of consciousness\n- emotional release and deeper inner process\n\nThis style of breathwork is less about \"apply this exact ratio for this exact outcome\" and more about staying inside the lived experience of the breath as it changes sensation, perception, emotion, and state.\n\nCompared with systematic breathwork:\n- systematic work is chosen for a clear, repeatable effect\n- experiential work is chosen for depth of process and direct experience\n\nIt often belongs in practices where breath becomes immersive, continuous, exploratory, or transformational. The practitioner is not only shaping the breath, but learning through what the breath reveals.",
       "tags": [
         "is_concept",
         "discipline_breathwork",
@@ -269,8 +269,8 @@
     "nervous-system-recognition": {
       "id": "nervous-system-recognition",
       "title": "Nervous System Recognition",
-      "overview": "Recognizing state before intervening, so breath choices fit the person and moment.",
-      "details": "Recognition comes first. The curriculum repeatedly points toward learning to notice signs of activation, settling, overwhelm, and capacity before selecting a technique.",
+      "overview": "Notice the current state before choosing a breath response.",
+      "details": "Recognition is the skill of reading the state before trying to change the state.\n\nWhat is being recognised:\n- the present breathing pattern\n- signs of stress or settling\n- hyperstimulation, depletion, or overwhelm\n- capacity, tolerance, and readiness\n- whether the need is direct response, gradual response, or simply support and observation\n\nThis matters because no single breathing technique suits every condition. The breath has to be matched to the state that is actually present.\n\nDistinction:\n- Recognition notices what is here.\n- Regulation applies a method to influence it.\n- Release describes what may move once the system begins to let go.\n\nRecognition is the assessment layer that makes later breathwork intelligent.",
       "tags": [
         "is_concept",
         "discipline_breathwork",
@@ -291,8 +291,8 @@
     "nervous-system-regulation": {
       "id": "nervous-system-regulation",
       "title": "Nervous System Regulation",
-      "overview": "Using breath and attention to help the system move toward steadier, more workable states.",
-      "details": "Regulation here means guiding change with enough structure to support safety and usability. It can involve calming, balancing, restoring, or energising depending on context.",
+      "overview": "Using breath and attention to shift the nervous system safely and intentionally.",
+      "details": "Regulation is the deliberate use of breath to change autonomic state in a usable, sustainable direction.\n\nWhat it includes:\n- proactive essential practices for daily support\n- variation of rhythm, ratio, pace, and rounds\n- choice of techniques that balance, calm, awaken, or restore\n- recovery and safety measures after stronger work\n\nWhat regulation is for:\n- reducing stress\n- easing hyperstimulation\n- improving breath variability\n- creating steadier body-mind function\n- helping the person move toward a more workable state\n\nGood regulation is purposeful:\n- the current state is recognised first\n- the technique matches the need\n- the effect is monitored while it is happening\n- the system is given a way to settle afterward\n\nThis is where breathwork becomes a practical tool for state change rather than only an interesting experience.",
       "tags": [
         "is_concept",
         "discipline_breathwork",
@@ -314,8 +314,8 @@
     "nervous-system-release": {
       "id": "nervous-system-release",
       "title": "Nervous System Release",
-      "overview": "The release side of practice, where stored activation begins to move or unwind.",
-      "details": "Release is related to regulation but not identical to it. The system may move beyond simple calming into a deeper unwinding of held activation, tension, or accumulated charge.",
+      "overview": "The process where held activation starts to let go, beyond simple calming.",
+      "details": "Release is what begins to happen when tension, activation, or emotional charge is no longer only contained, but starts to move.\n\nIt may show up as:\n- emotional release\n- a fuller body response\n- unwinding after prolonged hyperstimulation\n- a shift into expanded or non-ordinary states\n- the sense that the system is discharging something it has been holding\n\nThis is different from regulation:\n- regulation aims for steadiness and control\n- release describes the movement that can happen once the system opens enough\n\nWhy safety matters:\n- release should not be forced for its own sake\n- the body still needs recovery and orientation\n- intense processes need support, pacing, and a clear way back to steadiness\n\nWhen handled well, release can make deeper integration and rest possible.",
       "tags": [
         "is_concept",
         "discipline_breathwork",
@@ -383,8 +383,8 @@
     "respiratory-system": {
       "id": "respiratory-system",
       "title": "Respiratory System",
-      "overview": "An overview of how breathing is supported in the body.",
-      "details": "Clear concepts make practice easier to understand, compare, and teach.\n\nWhy it matters:\n- language becomes more precise\n- distinctions become easier to hold\n- related practices make more sense in context\n\nKey points:\n- Concepts are most useful when they stay connected to lived practice.",
+      "overview": "The body system that moves air and exchanges gases.",
+      "details": "The respiratory system is the network of organs and muscles that allows breathing and gas exchange. Its job is to bring oxygen into the body and remove carbon dioxide from the blood.\n\n### Air pathway\n- Air enters through the nose or mouth.\n- It travels through the throat and into the windpipe.\n- From there it moves into two main bronchial tubes, one leading to each lung.\n- These tubes divide into smaller bronchioles.\n- At the end of the airway network are the alveoli, tiny air sacs where gas exchange occurs.\n\n### What the lungs do\n- Oxygen from inhaled air passes into the bloodstream.\n- Carbon dioxide, a waste gas, moves from the blood into the lungs and is exhaled.\n- This exchange supports cellular respiration, the process that lets the body produce energy from food.\n\n### Structure of the lungs\n- The lungs are among the largest organs in the body.\n- They contain a highly branched airway system.\n- The left lung is slightly smaller because it shares space with the heart.\n- The left lung has two lobes; the right lung has three.\n- Lung tissue is sponge-like, which lets it expand and contract with breathing.\n\n### How breathing is controlled\n- Breathing usually happens without conscious effort.\n- Its rate and depth are regulated automatically by homeostatic mechanisms that keep oxygen and carbon dioxide levels stable.\n- Breathing rate is a vital sign and is commonly measured in breaths per minute.\n\n### Other functions\n- Breathing also supports speech, laughter, and emotional expression.\n- It is involved in reflexes such as coughing, yawning, and sneezing.\n\nImportant to remember:\n- External respiration happens in the lungs.\n- Cellular respiration happens in the tissues.\n- The whole system exists to support energy production and waste removal.",
       "tags": [
         "is_concept",
         "discipline_breathwork",
@@ -401,8 +401,8 @@
     "nervous-system": {
       "id": "nervous-system",
       "title": "Nervous System",
-      "overview": "An overview of the system that shapes activation, regulation, and recovery.",
-      "details": "Clear concepts make practice easier to understand, compare, and teach.\n\nWhy it matters:\n- language becomes more precise\n- distinctions become easier to hold\n- related practices make more sense in context\n\nKey points:\n- Concepts are most useful when they stay connected to lived practice.",
+      "overview": "The body’s built-in system for stress, regulation, and recovery.",
+      "details": "The nervous system receives information, interprets it, and coordinates response. In this curriculum, the emphasis is on the autonomic nervous system because it shapes breathing, stress response, regulation, and recovery.\n\n## Two major responses\n\n- **Sympathetic division**: the fight-or-flight response. It prepares the body for action when something feels demanding, unfamiliar, or threatening.\n- **Parasympathetic division**: the rest-and-digest response. It supports settling, recovery, digestion, and a return to balance.\n\nThese two divisions are both necessary. The work is not to eliminate activation, but to move more skilfully between activation and recovery.\n\n## Stress and dysregulation\n\nStress is the body’s response to pressure. It may be triggered by new situations, unexpected events, a sense of threat, or feeling a lack of control. When stress accumulates, the nervous system can become highly reactive and less able to self-regulate. In that state, even ordinary stressors can feel more disruptive.\n\nManaging stress begins with recognition, reduction of unnecessary stimulus, and deliberate practices that help the system return toward steadiness.\n\n## Why breathing matters\n\nBreathing practices can influence autonomic balance. Slow controlled breathing, extended exhale patterns, breath counting, humming, and other balanced techniques can reduce stress, improve focus, and encourage parasympathetic activation.\n\nSome practices calm and restore. Others balance or awaken. The effect depends on the pattern being used and the state it is being applied to.\n\n## Practical takeaway\n\nThis is why the same breath can feel calming, balancing, or energising depending on how it is shaped and when it is used.",
       "tags": [
         "is_concept",
         "discipline_breathwork",
@@ -475,8 +475,8 @@
     "voluntary-vs-involuntary-breath": {
       "id": "voluntary-vs-involuntary-breath",
       "title": "Voluntary vs. Involuntary Breath",
-      "overview": "A practice used to shape breathing, attention, or state.",
-      "details": "How to practice:\nBegin in a clear posture and follow the core instruction of the technique with steady pacing.\n- Keep the form simple enough to stay aware of what is happening.\n- Adjust effort so the practice remains sustainable.\n- Continue for several rounds or minutes.\n- Pause afterward and notice the effect before moving on.\n\nPurpose:\nUsed to create a specific shift in breathing, attention, or nervous-system state. The emphasis depends on the technique, but usually involves regulation, awareness, or directed mental focus.\n\nWhy it works:\nBreathing patterns and attentional patterns both influence autonomic state, muscular tone, and perception. Repetition makes the effect more reliable by linking deliberate practice with physiological and neurophysiological change.",
+      "overview": "Breathing runs on its own, but you can also guide it intentionally.",
+      "details": "Breathing is unusual because it belongs to both automatic life support and conscious practice.\n\nInvoluntary breathing:\n- runs without effort\n- is regulated automatically to keep oxygen and carbon dioxide stable\n- supports life continuously, even during sleep\n\nVoluntary breathing:\n- can be slowed, deepened, counted, paused, or directed\n- allows the rhythm and depth of breathing to be shaped intentionally\n- is what makes breathwork possible\n\nWhy the distinction matters:\n- The involuntary side keeps you alive.\n- The voluntary side lets you influence state, attention, and recovery.\n- Breathwork works because conscious intervention can temporarily shape a process that is otherwise automatic.\n\nThis makes the breath a bridge between physiology and practice.",
       "tags": [
         "is_technique",
         "discipline_breathwork",
@@ -493,8 +493,8 @@
     "quality-quantity-capacity-axis": {
       "id": "quality-quantity-capacity-axis",
       "title": "Quality / Quantity / Capacity Axis",
-      "overview": "A concept used to organize understanding and guidance.",
-      "details": "Clear concepts make practice easier to understand, compare, and teach.\n\nWhy it matters:\n- language becomes more precise\n- distinctions become easier to hold\n- related practices make more sense in context\n\nKey points:\n- Concepts are most useful when they stay connected to lived practice.",
+      "overview": "A simple way to compare what changes, how much changes, and what can be sustained.",
+      "details": "Use this axis to separate three different questions.\n\n- **Quality** asks: what is the character of the breath?\n  - smooth or uneven\n  - calm or agitated\n  - natural or forced\n  - soft or strained\n\n- **Quantity** asks: how much breath or technique is being used?\n  - length of inhale or exhale\n  - number of rounds\n  - breathing rate\n  - ratio or count\n\n- **Capacity** asks: how much can the system hold well?\n  - Can the pattern be sustained?\n  - Does the person stay steady?\n  - Is there enough tolerance for the technique?\n  - Does the body remain workable rather than strained?\n\nThese distinctions stop everything from being lumped together. A breath may increase in quantity without improving quality. A pattern may look good in theory but exceed capacity in practice. This axis helps breathwork stay responsive, safe, and honest.",
       "tags": [
         "is_concept",
         "discipline_breathwork",
@@ -512,8 +512,8 @@
     "diaphragmatic-thoracic-clavicular-breathing": {
       "id": "diaphragmatic-thoracic-clavicular-breathing",
       "title": "Diaphragmatic / Thoracic / Clavicular Breathing",
-      "overview": "A practice used to shape breathing, attention, or state.",
-      "details": "How to practice:\nBring attention to where the breath is moving in the body and shape it deliberately.\n- Notice whether movement is happening more in the belly, ribs, chest, or upper chest.\n- Guide the breath toward the area the technique emphasizes.\n- Keep unnecessary effort low so sensation stays clear.\n- Repeat slowly enough to feel the pattern rather than only think about it.\n\nPurpose:\nUsed to improve awareness of breathing mechanics, expand control over where the breath moves, and make later regulation techniques more precise. The emphasis is skill, sensation, and functional breathing quality.\n\nWhy it works:\nBreathing mechanics affect diaphragm use, rib movement, posture, and the amount of muscular effort needed for each breath. Clearer mechanical awareness improves interoception, helps reduce compensatory tension, and creates a better foundation for both calming and energising practices.",
+      "overview": "A comparison of three common breathing patterns.",
+      "details": "These patterns describe where the breath is being led in the torso and which structures are doing most of the work.\n\n- **Diaphragmatic breathing**: movement is led from the lower belly and lower ribs. The diaphragm contracts on the inhale, the lower abdomen and lower rib cage expand, and the breath is usually fuller, smoother, and less effortful.\n- **Thoracic or costal breathing**: movement is led mainly through the ribcage and chest. The intercostal muscles contribute more obviously and the chest expands more than the belly.\n- **Clavicular breathing**: movement rises into the upper chest. The shoulders and collarbones lift, the upper rib cage elevates, and the top third of the lungs does most of the visible movement. This pattern is often shallow and stress-linked.\n\nA simple way to tell them apart is by what moves most:\n\n- **Belly and lower ribs** → diaphragmatic\n- **Ribcage and chest** → thoracic or costal\n- **Upper chest, shoulders, collarbones** → clavicular\n\nThese distinctions matter because they show whether the breath is low, middle, or high in the torso and where compensation may be happening. Diaphragmatic breathing is generally the most efficient. Thoracic breathing sits in the middle. Clavicular breathing is usually the shallowest and most effortful.",
       "tags": [
         "is_technique",
         "discipline_breathwork",
@@ -530,8 +530,8 @@
     "down-regulation-up-regulation": {
       "id": "down-regulation-up-regulation",
       "title": "Down Regulation / Up Regulation",
-      "overview": "A concept used to organize understanding and guidance.",
-      "details": "Clear concepts make practice easier to understand, compare, and teach.\n\nWhy it matters:\n- language becomes more precise\n- distinctions become easier to hold\n- related practices make more sense in context\n\nKey points:\n- Concepts are most useful when they stay connected to lived practice.",
+      "overview": "A way to tell calming breath work from energizing breath work.",
+      "details": "These terms describe the direction a breathing practice is meant to move the nervous system.\n\n- **Down regulation** supports calming, soothing, grounding, and balancing.\n- **Up regulation** supports greater activation, alertness, and energy.\n\nUse the distinction to match the breath to the state someone is in:\n\n- When a person feels tense, overwhelmed, scattered, or overstimulated, choose work that down regulates.\n- When a person feels dull, collapsed, lethargic, or under-activated, choose work that up regulates.\n\nThe direction matters as much as the technique. A method is not chosen only because it exists, but because the system needs to be settled or awakened.\n\nImportant to remember:\n- down regulation reduces activation\n- up regulation increases activation\n- the right choice depends on the state that is present now",
       "tags": [
         "is_concept",
         "discipline_breathwork",
@@ -607,6 +607,7 @@
         "color_blue"
       ],
       "parents": [
+        "opening-invitation",
         "functional-breathing-and-breath-awareness"
       ],
       "children": [],
@@ -692,7 +693,8 @@
         "color_blue"
       ],
       "parents": [
-        "functional-breathing-and-breath-awareness"
+        "functional-breathing-and-breath-awareness",
+        "cts-circle-triangle-square"
       ],
       "children": [],
       "related": []
@@ -709,7 +711,8 @@
         "color_blue"
       ],
       "parents": [
-        "functional-breathing-and-breath-awareness"
+        "functional-breathing-and-breath-awareness",
+        "360-ipa"
       ],
       "children": [],
       "related": []
@@ -726,7 +729,8 @@
         "color_blue"
       ],
       "parents": [
-        "functional-breathing-and-breath-awareness"
+        "functional-breathing-and-breath-awareness",
+        "pxc"
       ],
       "children": [],
       "related": [
@@ -787,7 +791,8 @@
         "color_blue"
       ],
       "parents": [
-        "balanced-breathing"
+        "balanced-breathing",
+        "cts-circle-triangle-square"
       ],
       "children": [],
       "related": [
@@ -809,7 +814,8 @@
         "color_blue"
       ],
       "parents": [
-        "balanced-breathing"
+        "balanced-breathing",
+        "360-ipa"
       ],
       "children": [],
       "related": []
@@ -826,7 +832,8 @@
         "color_blue"
       ],
       "parents": [
-        "balanced-breathing"
+        "balanced-breathing",
+        "360-ipa"
       ],
       "children": [],
       "related": []
@@ -896,7 +903,8 @@
         "color_blue"
       ],
       "parents": [
-        "down-regulation-techniques"
+        "down-regulation-techniques",
+        "pxc"
       ],
       "children": [],
       "related": [
@@ -918,7 +926,9 @@
         "color_blue"
       ],
       "parents": [
-        "down-regulation-techniques"
+        "down-regulation-techniques",
+        "pxc",
+        "xlt"
       ],
       "children": [],
       "related": [
@@ -940,7 +950,8 @@
         "color_blue"
       ],
       "parents": [
-        "down-regulation-techniques"
+        "down-regulation-techniques",
+        "cts-circle-triangle-square"
       ],
       "children": [],
       "related": []
@@ -957,7 +968,8 @@
         "color_blue"
       ],
       "parents": [
-        "down-regulation-techniques"
+        "down-regulation-techniques",
+        "xlt"
       ],
       "children": [],
       "related": []
@@ -1008,7 +1020,8 @@
         "color_blue"
       ],
       "parents": [
-        "down-regulation-techniques"
+        "down-regulation-techniques",
+        "xlt"
       ],
       "children": [],
       "related": []
@@ -1203,8 +1216,8 @@
     "lions-breath": {
       "id": "lions-breath",
       "title": "Lion’s Breath",
-      "overview": "A practice used to shape breathing, attention, or state.",
-      "details": "How to practice:\nBegin in an upright posture with enough space for the ribcage and abdomen to move.\n- Make the inhale more active, sharper, or more expansive.\n- Let the exhale either release naturally or support the rhythm without collapsing posture.\n- Use a clear cadence for a short set of rounds.\n- Pause afterward and notice whether the body feels more awake, warm, and available.\n\nPurpose:\nUsed to increase alertness, raise energy, and mobilize attention when more activation is useful. The main emphasis is uplift, readiness, and momentum rather than calming.\n\nWhy it works:\nMore active inhalation and stronger respiratory movement increase arousal and can raise heart rate, thoracic expansion, and sensory alertness. The pattern recruits respiratory muscles more strongly, changes blood gases more quickly, and tends to shift the nervous system toward sympathetic activation and readiness.",
+      "overview": "A forceful exhale practice that clears stale air and stimulates the senses.",
+      "details": "**How to practice**\n1. Lean the upper body forward slightly.\n2. Inhale through the nose with the mouth closed.\n3. Open the mouth wide and extend the tongue down toward the chin.\n4. Exhale forcefully with a `ha` sound, letting the breath travel strongly across the tongue.\n5. Repeat 5-10 times.\n\n**Purpose**\n- Clears stale air from the body.\n- Stimulates the senses and creates a more awake, vivid feeling.\n- Can also create an immediate discharge that reduces held stress.\n\n**Why it works**\n- The open-mouthed forceful exhale increases respiratory effort and changes facial, throat, and chest involvement at the same time.\n- The strong `ha` release creates a sharper sensory event than a quiet breath.\n- This helps interrupt dullness, stagnation, or internal build-up and can leave the body feeling clearer and more responsive.",
       "tags": [
         "is_technique",
         "discipline_breathwork",
@@ -1360,8 +1373,8 @@
     "nsrt-method": {
       "id": "nsrt-method",
       "title": "NSRT Method",
-      "overview": "The NSRT method as the named umbrella for nervous system regulation techniques.",
-      "details": "The method gathers techniques into a practical framework for balancing, down-regulating, up-regulating, and restoring. The protocol families below show how the framework is organized in use.",
+      "overview": "A framework for choosing breathwork practices that match the nervous system’s current state.",
+      "details": "NSRT stands for Nervous System Regulation Techniques. It is the practical method used to guide breathwork according to the state the nervous system is in.\n\nThe method works in three moves:\n1. recognise the current state\n2. choose the right protocol family\n3. sustain the shift long enough for the body to respond\n\nThe main protocol families are:\n- Balanced: for steadiness, equilibrium, and homeostatic support\n- Down Regulation: for stress, anxiety, overwhelm, and hyperstimulation\n- Up Regulation: for low energy, dullness, or under-activation\n- Restorative: for deeper rest, recovery, and parasympathetic support\n\nWhy it matters:\n- It turns breathwork into responsive guidance instead of random technique use.\n- It helps match the breath to the state rather than asking one practice to do everything.\n- It gives teachers a simple framework for sequencing regulation work with purpose.\n\nImportant to remember:\n- Recognition comes before intervention.\n- The aim is not just to change the breath, but to change the state safely and effectively.",
       "tags": [
         "is_method",
         "discipline_breathwork",
@@ -1425,8 +1438,8 @@
     "cts-circle-triangle-square": {
       "id": "cts-circle-triangle-square",
       "title": "CTS — Circle / Triangle / Square",
-      "overview": "A concept used to organize understanding and guidance.",
-      "details": "Clear concepts make practice easier to understand, compare, and teach.\n\nWhy it matters:\n- language becomes more precise\n- distinctions become easier to hold\n- related practices make more sense in context\n\nKey points:\n- Concepts are most useful when they stay connected to lived practice.",
+      "overview": "A basic breathing protocol for steadiness and autonomic balance.",
+      "details": "CTS means Circle, Triangle, Square. It is a foundational balanced protocol built from three simple breathing patterns that progressively increase structure.\n\n## Purpose\n- supports autonomic balance\n- improves respiratory efficiency\n- helps coordinate inhale, pause, exhale, and retention\n- can create a smoother, more regulated breathing cycle\n- provides a base for more advanced breathwork\n\n## How the practices work together\n- **Even Breath** is the starting point. Inhalation and exhalation are the same length, making it the simplest way to establish steadiness.\n- **Triangle Breathing** introduces a three-part rhythm with pauses, adding structure and greater control.\n- **Box Breathing** extends that pattern into four equal phases, reinforcing consistency, calm, and rhythmic regulation.\n\n## What the sequence develops\n- even pacing\n- a sense of balance in the breath\n- stronger breath control\n- a more efficient, settled breathing pattern\n\nSuggested progression:\n1. establish steadiness with Even Breath\n2. add three-part control with Triangle Breathing\n3. deepen structure and clarity with Box Breathing\n\nThis makes CTS a simple way to optimise autonomic balance while giving the practitioner a clear breathing foundation.",
       "tags": [
         "is_concept",
         "discipline_breathwork",
@@ -1436,14 +1449,18 @@
       "parents": [
         "balanced-nsrt-protocols"
       ],
-      "children": [],
+      "children": [
+        "even-breath",
+        "triangle-breathing",
+        "box-breathing"
+      ],
       "related": []
     },
     "360-ipa": {
       "id": "360-ipa",
       "title": "360° IPA",
-      "overview": "A concept used to organize understanding and guidance.",
-      "details": "Clear concepts make practice easier to understand, compare, and teach.\n\nWhy it matters:\n- language becomes more precise\n- distinctions become easier to hold\n- related practices make more sense in context\n\nKey points:\n- Concepts are most useful when they stay connected to lived practice.",
+      "overview": "A sustained balanced breathing sequence for restoring steady, supported breathing.",
+      "details": "360 IPA is a balanced protocol used to return the breath toward homeostasis or to maintain an already steady state.\n\n### How the techniques work together\n- **360 Breathing** builds full torso breath capacity. It encourages even expansion through the rib cage and supports a fuller, more distributed breath.\n- **Inspired Pause** slows the breath by adding a deliberate pause at the top of the inhale. This can settle the system, ease the heart rate, and create space before the exhale.\n- **Alternate Nostril Breathing** adds rhythm and attention to the breath. It helps steady the breathing pattern and supports calm, balance, and overall equilibrium.\n\nUsed together, these techniques create a balanced practice that restores rather than drives the breath. The aim is a calm, even rhythm you can return to whenever you need support.\n\nSuggested flow:\n1. build full torso support with 360 Breathing\n2. introduce spaciousness with Inspired Pause\n3. refine balance and concentration with Alternate Nostril Breathing\n\nThe overall effect is regulation without urgency.",
       "tags": [
         "is_concept",
         "discipline_breathwork",
@@ -1453,7 +1470,11 @@
       "parents": [
         "balanced-nsrt-protocols"
       ],
-      "children": [],
+      "children": [
+        "360-breathing",
+        "inspired-pause",
+        "alternate-nostril-breathing"
+      ],
       "related": []
     },
     "down-regulation-protocols": {
@@ -1484,8 +1505,8 @@
     "pxc": {
       "id": "pxc",
       "title": "PXC",
-      "overview": "A concept used to organize understanding and guidance.",
-      "details": "Clear concepts make practice easier to understand, compare, and teach.\n\nWhy it matters:\n- language becomes more precise\n- distinctions become easier to hold\n- related practices make more sense in context\n\nKey points:\n- Concepts are most useful when they stay connected to lived practice.",
+      "overview": "A rapid breathing sequence for direct stress relief.",
+      "details": "Use this when stress, anxiety, overwhelm, or overstimulation is building and you need a quick shift toward calm.\n\n## Purpose\nThis protocol is designed to dissolve stress fast. It supports the body’s relaxation response by down regulating the sympathetic nervous system, making it useful as a direct response rather than a gradual practice.\n\n## How the techniques work together\n- **Physiological sigh**: creates an immediate down regulating effect and helps interrupt the stress pattern.\n- **Extended exhale**: slows the pace and lengthens the out-breath, helping activate the parasympathetic nervous system and ease tension.\n- **Coherent breathing**: steadies the breath into a balanced rhythm so calm can settle and be maintained.\n\n## Practice flow\n1. Begin with physiological sighing to quickly reduce arousal.\n2. Continue with extended exhales to deepen relaxation.\n3. Finish with coherent breathing to stabilize the nervous system.\n\n## When to use it\n- During acute stress\n- When feeling anxious or overwhelmed\n- After overstimulation\n- As a short reset before returning to activity\n\nThe sequence moves from interruption, to decompression, to stabilization.",
       "tags": [
         "is_concept",
         "discipline_breathwork",
@@ -1495,14 +1516,18 @@
       "parents": [
         "down-regulation-protocols"
       ],
-      "children": [],
+      "children": [
+        "physiological-sigh",
+        "extended-exhale",
+        "coherent-breath"
+      ],
       "related": []
     },
     "xlt": {
       "id": "xlt",
       "title": "XLT",
-      "overview": "A concept used to organize understanding and guidance.",
-      "details": "Clear concepts make practice easier to understand, compare, and teach.\n\nWhy it matters:\n- language becomes more precise\n- distinctions become easier to hold\n- related practices make more sense in context\n\nKey points:\n- Concepts are most useful when they stay connected to lived practice.",
+      "overview": "A calming breath protocol for down-regulating stress and restoring balance.",
+      "details": "XLT is a calming protocol for sustained rest. It is best used when the aim is not only to stop stress quickly, but to settle into a more durable parasympathetic response.\n\n### How the techniques work together\n- **Extended Exhale** begins the process by making the out-breath longer than the in-breath. This helps release tension quickly and soften arousal.\n- **Low Frequency Humming Breath** adds a steady humming vibration on the exhale. This can further settle the breath rhythm and support a deeper sense of calm.\n- **Triangle 4-7-8** brings a structured breathing pattern that reinforces regulation through clear timing and a restful pace.\n\n### What it is for\n- calming the nervous system\n- reducing the intensity of stress\n- supporting relaxation and decompression\n- encouraging slower, more controlled breathing\n- helping the body shift into sustained rest\n\n### When to use it\nUse this sequence when you want a restorative breathing practice that gradually lowers stress and supports recovery, rather than an energising or activating breath practice.\n\nThe sequence moves from release, to soothing, to structured calm.",
       "tags": [
         "is_concept",
         "discipline_breathwork",
@@ -1512,7 +1537,11 @@
       "parents": [
         "down-regulation-protocols"
       ],
-      "children": [],
+      "children": [
+        "extended-exhale",
+        "low-frequency-humming-breath",
+        "triangle-4-7-8"
+      ],
       "related": []
     },
     "up-regulation-protocols": {
@@ -1842,8 +1871,8 @@
     "the-thinking-mind": {
       "id": "the-thinking-mind",
       "title": "The Thinking Mind",
-      "overview": "An introduction to meditation through the mind's activity rather than by fighting it.",
-      "details": "Meditation begins by meeting the activity of the mind directly instead of fighting it. Thoughts, impulses, and distractions become part of the field of practice and help clarify the role of awareness, witnessing, and non-doing.",
+      "overview": "Meditation begins by meeting mental activity directly.",
+      "details": "The thinking mind is active, interpretive, restless, and often crowded. Meditation begins by understanding this activity instead of fighting it blindly.\n\nWhen attention is pulled into thought, the task is to notice that movement clearly. This creates a useful distinction:\n\n- **Attention** is the place the mind is drawn to\n- **Awareness** is the wider field that notices what is happening\n- **Witnessing** is the ability to observe mental activity without being carried away by it\n\nThis changes meditation from thought-suppression into recognition. The aim is not to stop the mind by force, but to see mental activity clearly enough that it stops ruling the whole experience.\n\nThis is the doorway into witness state, present moment awareness, and deeper non-doing practices.",
       "tags": [
         "is_concept",
         "discipline_meditation",
@@ -1864,8 +1893,8 @@
     "witness-state": {
       "id": "witness-state",
       "title": "Witness State",
-      "overview": "The capacity to notice thoughts, sensations, and experience without fully becoming them.",
-      "details": "Witness state is a key meditation concept in the curriculum. It supports steadiness, perspective, and less entanglement with the constant movement of the mind.",
+      "overview": "A steady awareness that observes experience without getting caught in it.",
+      "details": "Witness state is the capacity to remain as the observer while thoughts, sensations, moods, and inner activity continue to move.\n\n- It creates a gap between experience and reaction.\n- It allows you to see thoughts as passing events rather than as facts or commands.\n- It helps reduce entanglement with stress, craving, worry, and repetitive mental noise.\n- It supports calm observation when the mind is busy, emotional, or unsettled.\n\nIn this state, awareness is present, alert, and receptive. Experience is allowed to arise and change while you remain rooted in noticing rather than in reacting.\n\nThis is one of the central shifts in meditation practice because it turns experience into something that can be observed rather than something that must be obeyed.",
       "tags": [
         "is_concept",
         "discipline_meditation",
@@ -1887,8 +1916,8 @@
     "non-doing": {
       "id": "non-doing",
       "title": "Non-doing",
-      "overview": "Practice that moves away from forcing and toward allowing, resting, and simply noticing.",
-      "details": "Non-doing is a core meditation principle here. It is not passivity in the careless sense, but a disciplined softening of effort and control.",
+      "overview": "A quiet inward practice of allowing instead of forcing.",
+      "details": "Non-doing is the contemplative shift from making experience happen to allowing awareness to deepen without interference.\n\nIt is not passivity or laziness. The mind is still present and attentive, but it stops reaching, fixing, and managing. Rather than pushing for a result, attention rests in what is already unfolding.\n\n## What defines it\n- Inward rather than outward\n- Quietly attentive rather than effortful\n- Non-striving rather than goal-driven\n- More receptive than controlling\n\n## What it involves\n- Letting sensations, thoughts, and moods be as they are\n- Allowing awareness to deepen without mental interference\n- Reducing the habit of intellectual translation\n- Resting in direct experience with less commentary\n\n## What it is like\n- A sense of ease and softness in practice\n- Less mental grip and less strain\n- A more settled, embodied, and simple awareness\n- Trust in the depth that appears when effort relaxes\n\n## What belongs here\nThis is the style of practice that turns inward and becomes established in being. It supports an effortless mind state, reduced attachment to thought, and deeper inward rest.",
       "tags": [
         "is_concept",
         "discipline_meditation",
@@ -1904,8 +1933,8 @@
     "awareness": {
       "id": "awareness",
       "title": "Awareness",
-      "overview": "Awareness as the broad field of noticing that makes all other practice possible.",
-      "details": "Awareness is the broad field of noticing that comes before control or correction. Sensations, thoughts, emotions, breath, and environment can all be included without immediately needing to change them.",
+      "overview": "The open field of noticing that underlies practice.",
+      "details": "Awareness is the broad field in which experience is noticed. It includes breath, body, thought, sensation, mood, and environment before anything is narrowed into a specific focus.\n\n## How it differs from attention and intention\n- **Awareness** is spacious and receptive. It holds what is present.\n- **Attention** is narrower and more specific. It selects one thing to focus on.\n- **Intention** is the choice that directs attention or shapes how you respond.\n\n## What awareness makes possible\n- Recognizing what is arising in the moment\n- Noticing patterns without immediate reaction\n- Including both inner experience and outer stimulus\n- Creating a clear starting point for breath practice, meditation, and regulation\n\n## In practice\nA simple way to work with awareness is to pause and observe without changing anything. You might notice:\n- the movement of breathing\n- tension or ease in the body\n- mental activity\n- emotional tone\n- sounds, silence, or other environmental cues\n\nThis is why awareness is foundational. It is the ground from which attention can be placed and intention can be expressed with clarity.",
       "tags": [
         "is_concept",
         "discipline_meditation",
@@ -1921,8 +1950,8 @@
     "attention": {
       "id": "attention",
       "title": "Attention",
-      "overview": "Attention as the narrower placement of focus within the larger field of awareness.",
-      "details": "The distinction matters throughout the training. Awareness is broad and receptive; attention is the deliberate directing of focus to a chosen object or instruction.",
+      "overview": "The deliberate directing of the mind within practice.",
+      "details": "Attention is the deliberate placing of the mind on one chosen point. Where awareness is broad, attention is selective.\n\nIn practice, attention is often directed inward. Helpful ways to support this shift include:\n\n- closing the eyes, or softening the gaze if that feels more appropriate\n- becoming still and reducing unnecessary movement\n- simplifying the environment and limiting distractions\n- returning to the present moment whenever the mind wanders\n\nThis is not rigid concentration for its own sake. It is a calm, repeatable return from distraction toward what matters now.\n\nPlaced well, attention reduces mental spread and gives practice shape.",
       "tags": [
         "is_concept",
         "discipline_meditation",
@@ -1938,8 +1967,8 @@
     "intention": {
       "id": "intention",
       "title": "Intention",
-      "overview": "The felt and stated purpose that shapes how a practice is entered and guided.",
-      "details": "Intention helps frame practice without making it rigid. In teaching, it supports clarity, coherence, and a shared direction for the participant.",
+      "overview": "A purposeful direction that shapes how practice begins and unfolds.",
+      "details": "Intention is the `why` of the practice. It gives the session a clear direction before any technique begins.\n\n- It gives the practice a meaningful start.\n- It narrows attention so your energy is not scattered.\n- It supports clarity, coherence, and a sense of purpose.\n- It can be personal, professional, or shared when guiding others.\n\nA simple intention can be enough. For example:\n- become present\n- soften and settle\n- cultivate focus\n- rest and recover\n- support another person with care\n\nIn breathwork, meditation, and deep rest, intention clarifies what is being offered and what the practice is trying to support.\n\nHeld well, intention gives coherence without becoming pressure.",
       "tags": [
         "is_concept",
         "discipline_meditation",
@@ -1976,8 +2005,8 @@
     "established-in-being": {
       "id": "established-in-being",
       "title": "Established in Being",
-      "overview": "",
-      "details": "",
+      "overview": "A non-doing approach that lets awareness settle beyond effort.",
+      "details": "Established in Being is the contemplative depth of meditation concerned with being rather than doing.\n\nWhat defines it:\n- non-doing contemplative practice\n- going deeply inward\n- non-striving transcendence\n- less disturbance from the thinking mind or ego\n- awareness that rests rather than performs\n\nThese practices fit when the method asks for quiet presence, surrender, or deep inward settling rather than active concentration or narrative.\n\n- **Being Technique**: a direct method for resting in presence.\n- **Just Breathe Meditation**: simple breath-based settling used as a doorway into stillness.\n- **Being Mantra Meditation**: mantra used in a way that supports inward settling rather than concentration.\n- **Mantra Practice**: mantra work that supports this deeper state of presence.\n- **Stillness / Non-doing Practice**: practices centered on silence, openness, and letting go of effort.\n\nPurpose:\n- de-stimulate the mind\n- reduce attachment triggers\n- cultivate awareness without strain\n- support an effortless inward state",
       "tags": [
         "is_category",
         "discipline_meditation",
@@ -2040,8 +2069,8 @@
     "being-mantra-meditation": {
       "id": "being-mantra-meditation",
       "title": "Being Mantra Meditation",
-      "overview": "A practice used to shape breathing, attention, or state.",
-      "details": "Clear concepts make practice easier to understand, compare, and teach.\n\nWhy it matters:\n- language becomes more precise\n- distinctions become easier to hold\n- related practices make more sense in context\n\nKey points:\n- Concepts are most useful when they stay connected to lived practice.",
+      "overview": "A non-doing meditation that uses mantra to support presence in being.",
+      "details": "This practice uses mantra inside the established-in-being depth of meditation. The mantra is not used as an aggressive concentration device, but as a gentle support for inward settling.\n\nHow it works:\n- the mantra invites attention inward\n- repetition softens outer distraction\n- effort gradually reduces\n- awareness is allowed to rest more deeply in being\n\nWhat makes it distinct:\n- the point is not to perform the mantra perfectly\n- the mantra is a support, not the destination\n- stillness and inward absorption matter more than mechanical repetition\n\nThis makes it well suited to meditative states that are quiet, contemplative, and less driven by the thinking mind.",
       "tags": [
         "is_concept",
         "discipline_meditation",
@@ -2074,8 +2103,8 @@
     "stillness-non-doing-practice": {
       "id": "stillness-non-doing-practice",
       "title": "Stillness / Non-doing Practice",
-      "overview": "A concept used to organize understanding and guidance.",
-      "details": "Clear concepts make practice easier to understand, compare, and teach.\n\nWhy it matters:\n- language becomes more precise\n- distinctions become easier to hold\n- related practices make more sense in context\n\nKey points:\n- Concepts are most useful when they stay connected to lived practice.",
+      "overview": "A deliberate way of entering rest and awareness.",
+      "details": "Stillness is a deliberate reduction of stimulation so the body and mind can settle into deep rest and quiet awareness.\n\n### What it involves\n- **Sit**: create the conditions for rest with a comfortable, supported posture.\n- **Settle**: allow remaining movement, energy, and mental activity to soften.\n- **Be still**: reduce distractions, close the eyes or use a soft gaze if needed, and give yourself time to arrive.\n\n### How to practice it\n- Choose a quiet, settled space.\n- Remove distractions and temptations where possible.\n- Let the breath be natural rather than trying to control it.\n- Notice body and mind without judging the experience.\n- Stay long enough for deep rest to emerge, then return gently.\n\n### Why it matters\nStillness supports awareness, regulation, and recovery. It gives the mind and body time to be at ease completely and keeps the return to the outer environment from being rushed.\n\n### Keep in mind\nStillness is a commitment to less, not a dramatic achievement. It is practised through gentleness, patience, and enough time to let deep rest emerge.",
       "tags": [
         "is_concept",
         "discipline_meditation",
@@ -2092,8 +2121,8 @@
     "present-moment-awareness": {
       "id": "present-moment-awareness",
       "title": "Present Moment Awareness",
-      "overview": "",
-      "details": "",
+      "overview": "Attention is held on what is happening now.",
+      "details": "Present Moment Awareness is the depth of practice that places awareness on what is unfolding now, inwardly and directly.\n\nWhat belongs here:\n- Body-based scanning practices that move attention through physical sensations\n- Breath-based awareness practices that stay with the inhale, exhale, and subtle breathing sensations\n- Sensory practices that rest on what is seen, heard, felt, tasted, or smelled in the immediate moment\n- Focused gazing practices such as candle gazing or cloud watching\n- Practices that observe mental patterns as they arise without following them\n- Awareness of the body’s layers or dimensions of experience, such as the koshas\n\nWhat defines it:\n- Requires steady, detailed attention\n- Often feels like relentless attention\n- Observes physical sensation or mental pattern as it unfolds\n- Can still use an outward object, such as focused gaze, when the awareness remains fully in the here and now\n\nPurpose:\n- train witness-based observation\n- reduce intellectual translation\n- develop intuitive self-awareness and embodiment\n- keep attention in real-time experience",
       "tags": [
         "is_category",
         "discipline_meditation",
@@ -2261,8 +2290,8 @@
     "focused-intention": {
       "id": "focused-intention",
       "title": "Focused Intention",
-      "overview": "",
-      "details": "",
+      "overview": "This style uses intention, meaning, and image to guide attention.",
+      "details": "Focused Intention is the meditation depth that directs attention toward a concept, image, meaning, story, or emotional quality.\n\nThese practices often work through:\n\n- narrative and story\n- imagery and visualisation\n- heartfelt meaning or spiritual connection\n- repeated phrases, sounds, or affirming language\n\nThese practices often begin in the head and become felt in the heart. The intellect is still being engaged, but in a more guided and meaningful way.\n\nCommon practices in this group include:\n\n- loving-kindness and metta bhavana, which direct goodwill toward self and others\n- ajapa-japa, which uses the natural rhythm of mantra repetition\n- visualisation, which works with mental imagery\n- guided or intention-led meditation, which uses spoken narrative and direction\n- mantras, which focus the mind through repeated sacred sound or phrase\n- affirmations, which repeat supportive statements to reinforce a chosen state\n\nPurpose:\n- quiet the mind through meaningful direction\n- create heartfelt connection to an idea, quality, or emotion\n- use imagination, wisdom, or mantra as a steadying force",
       "tags": [
         "is_category",
         "discipline_meditation",
@@ -3064,8 +3093,8 @@
     "3-gratitudes": {
       "id": "3-gratitudes",
       "title": "3 Gratitudes",
-      "overview": "A short reflective prompt that supports grounding, appreciation, and integration.",
-      "details": "Three gratitudes offer a simple way to soften attention, reconnect, and notice what is already supportive. The practice can help orient the mind toward steadiness, appreciation, and integration.",
+      "overview": "A closing ritual of three intentional breaths.",
+      "details": "Three intentional breaths complete the practice with acknowledgement, gratitude, and a clear emotional landing.\n\n1. Breath for you\n- Acknowledge yourself for taking the time to practice.\n- Honour the effort and commitment it took to arrive here fully.\n- Recognise yourself as you are, right now.\n\n2. Breath for support\n- Offer gratitude for the people, conditions, or forms of support that sustain you.\n- This may be loved ones, teachers, community, a group, or anything that helps carry your well-being.\n\n3. Breath for this moment\n- Appreciate this moment exactly as it is.\n- Let the final breath seal in the quiet of the practice and the sense of time well spent.\n\nWhy it matters:\n- It gives the practice a ritual ending rather than an abrupt stop.\n- It shifts the mind from effort into appreciation.\n- It helps the state of practice land with sincerity rather than drift away.\n\nImportant to remember:\n- The first breath is for you.\n- The second breath is for support.\n- The third breath is for this moment.\n- The closing is simple, but it should feel meaningful.",
       "tags": [
         "is_concept",
         "discipline_integrated",
@@ -3082,8 +3111,8 @@
     "notice-what-you-notice-feel-what-you-feel": {
       "id": "notice-what-you-notice-feel-what-you-feel",
       "title": "Notice what you notice, feel what you feel",
-      "overview": "A permissive cue for presence, honesty, and direct experience without over-managing it.",
-      "details": "The phrase captures the tone of the method: notice directly, feel directly, and allow the moment to be what it is. Awareness takes priority over performance.",
+      "overview": "A cue to stay with direct experience before analysis begins.",
+      "details": "This is an awareness instruction.\n\nIt asks for three things at once:\n- notice the moment as it is\n- feel what is actually present\n- delay interpretation, judgement, and self-management\n\nIn practice:\n- Stay with sensation before explanation.\n- Let mood, breath, tension, ease, or restlessness be known directly.\n- Do not rush into \"why am I like this?\" or \"what should I do about this?\"\n- Observe first, then respond.\n\nThis cue is especially useful:\n- at the start of practice, when attention is arriving\n- at the end of practice, when the new state needs to be recognised\n- during guidance, after an invitation to soften or settle\n\nImportant to remember:\n- The instruction is observational, not analytical.\n- It supports honesty without drama.\n- It helps awareness stay primary and keeps the mind from qualifying the moment too quickly.",
       "tags": [
         "is_concept",
         "discipline_integrated",
@@ -3450,6 +3479,7 @@
       ],
       "children": [
         "close-your-eyes-be-still-just-breathe",
+        "conscious-breath",
         "notice-what-you-notice-feel-what-you-feel"
       ],
       "related": []
