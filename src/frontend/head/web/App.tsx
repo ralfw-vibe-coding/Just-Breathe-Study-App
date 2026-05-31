@@ -1567,9 +1567,6 @@ export function App() {
         </>
       ) : (
         <section className="panel chat-panel">
-          <div className="chat-intro">
-            <p>Ask about breathwork, meditation, deep rest, sequencing, or how to guide a practice.</p>
-          </div>
           <div className="section-head chat-head">
             <button className="section-title-button" type="button">
               Chat with the Just Breathe Training Material
