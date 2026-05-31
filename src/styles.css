@@ -878,6 +878,12 @@ textarea {
   gap: 0.8rem;
 }
 
+.active-card-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
 .active-card-titlebar h2 {
   margin: 0;
   font-size: clamp(1.8rem, 4vw, 2.4rem);

@@ -4,6 +4,7 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUp,
+  Sparkles,
   BookOpen,
   ChevronDown,
   ChevronUp,
@@ -986,8 +987,11 @@ export function App() {
     }
   }
 
-  async function sendCurrentChatMessage() {
-    const content = chatDraft.trim();
+  async function sendChatMessage(
+    contentSource?: string,
+    options?: { replaceHistory?: boolean }
+  ) {
+    const content = (contentSource ?? chatDraft).trim();
     if (!content || isChatting) {
       return;
     }
@@ -999,7 +1003,9 @@ export function App() {
       createdAt: new Date().toISOString()
     };
 
-    const nextConversation = [...chatMessages, nextUserMessage];
+    const nextConversation = options?.replaceHistory
+      ? [nextUserMessage]
+      : [...chatMessages, nextUserMessage];
     setChatMessages(nextConversation);
     setChatDraft("");
     setChatError(null);
@@ -1019,9 +1025,20 @@ export function App() {
     }
   }
 
+  async function sendCurrentChatMessage() {
+    await sendChatMessage();
+  }
+
   async function handleSendChatMessage(event: React.FormEvent) {
     event.preventDefault();
     await sendCurrentChatMessage();
+  }
+
+  async function handleChatFromCard(card: Card) {
+    const seededPrompt = `I want to know more about this. Start with a short anwser about this: ${card.title} / ${card.details}`.trim();
+    handleNewChat();
+    setActiveWorkspace("chat");
+    await sendChatMessage(seededPrompt, { replaceHistory: true });
   }
 
   if (authState === "loading") {
@@ -1420,14 +1437,26 @@ export function App() {
                               <Icon size={20} />
                               <h2>{currentCard.title}</h2>
                             </div>
-                            <button
-                              className={`favorite-toggle ${
-                                overlay.favorites.includes(currentCard.id) ? "active" : ""
-                              }`}
-                              onClick={() => toggleFavorite(currentCard.id)}
-                            >
-                              <Heart size={16} />
-                            </button>
+                            <div className="active-card-actions">
+                              {hasDetails ? (
+                                <button
+                                  className="favorite-toggle"
+                                  type="button"
+                                  onClick={() => void handleChatFromCard(currentCard)}
+                                  aria-label="Start a new AI chat from this card"
+                                >
+                                  <Sparkles size={16} />
+                                </button>
+                              ) : null}
+                              <button
+                                className={`favorite-toggle ${
+                                  overlay.favorites.includes(currentCard.id) ? "active" : ""
+                                }`}
+                                onClick={() => toggleFavorite(currentCard.id)}
+                              >
+                                <Heart size={16} />
+                              </button>
+                            </div>
                           </div>
                         </div>
                       );
