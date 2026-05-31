@@ -11,4 +11,8 @@ export class LoginReactor {
   async requestOtp(email: string): Promise<void> {
     await this.apiClient.requestOtp(email);
   }
+
+  async updateUsername(username: string): Promise<SessionResponse> {
+    return await this.apiClient.updateUsername(username);
+  }
 }

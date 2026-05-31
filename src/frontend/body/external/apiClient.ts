@@ -69,6 +69,13 @@ export class ApiClient {
     });
   }
 
+  async updateUsername(username: string): Promise<SessionResponse> {
+    return await request<SessionResponse>("/api/profile", {
+      method: "PATCH",
+      body: JSON.stringify({ username })
+    });
+  }
+
   async logout(): Promise<void> {
     await request("/api/logout", { method: "POST" });
   }

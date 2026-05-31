@@ -332,11 +332,16 @@ export function App() {
   const [activeTagFilters, setActiveTagFilters] = useState<string[]>([]);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isHistoryMenuOpen, setIsHistoryMenuOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [usernameDraft, setUsernameDraft] = useState("");
+  const [profileError, setProfileError] = useState<string | null>(null);
+  const [isSavingProfile, setIsSavingProfile] = useState(false);
   const [isSearchResultsOpen, setIsSearchResultsOpen] = useState(true);
   const [backStack, setBackStack] = useState<ViewState[]>([]);
   const [forwardStack, setForwardStack] = useState<ViewState[]>([]);
   const noteSaveTimer = useRef<number | null>(null);
   const detailSectionRef = useRef<HTMLElement | null>(null);
+  const userMenuRef = useRef<HTMLDivElement | null>(null);
 
   const { saveStatus, persist } = useRetryingBackgroundSave(overlay);
 
@@ -389,6 +394,36 @@ export function App() {
       block: "start"
     });
   }, [currentCardId]);
+
+  useEffect(() => {
+    if (profile) {
+      setUsernameDraft(profile.username);
+    }
+  }, [profile]);
+
+  useEffect(() => {
+    function handlePointerDown(event: MouseEvent) {
+      if (!isUserMenuOpen) {
+        return;
+      }
+
+      const target = event.target;
+      if (!(target instanceof Node)) {
+        return;
+      }
+
+      if (userMenuRef.current?.contains(target)) {
+        return;
+      }
+
+      setIsUserMenuOpen(false);
+    }
+
+    window.addEventListener("mousedown", handlePointerDown);
+    return () => {
+      window.removeEventListener("mousedown", handlePointerDown);
+    };
+  }, [isUserMenuOpen]);
 
   useEffect(() => {
     if (search.trim() || activeTagFilters.length) {
@@ -657,6 +692,28 @@ export function App() {
     navigate("/");
   }
 
+  async function handleProfileSave(event: React.FormEvent) {
+    event.preventDefault();
+    setIsSavingProfile(true);
+    setProfileError(null);
+
+    try {
+      const reactor = new LoginReactor(apiClient);
+      const { profile: updatedProfile } = await reactor.updateUsername(usernameDraft);
+      setProfile(updatedProfile);
+      setIsProfileOpen(false);
+      setIsUserMenuOpen(false);
+    } catch (saveError) {
+      setProfileError(
+        saveError instanceof Error
+          ? saveError.message
+          : "Saving profile failed."
+      );
+    } finally {
+      setIsSavingProfile(false);
+    }
+  }
+
   if (authState === "loading") {
     return <div className="screen-state">Loading JBSapp...</div>;
   }
@@ -724,7 +781,7 @@ export function App() {
             <h1>JBSapp</h1>
             <p className="claim">From novice to instructor in no time!</p>
           </div>
-          <div className="user-menu-wrap">
+          <div className="user-menu-wrap" ref={userMenuRef}>
             <button
               className="user-menu-trigger"
               onClick={() => setIsUserMenuOpen((value) => !value)}
@@ -740,7 +797,11 @@ export function App() {
                 </div>
                 <button
                   className="user-menu-item"
-                  onClick={() => setIsUserMenuOpen(false)}
+                  onClick={() => {
+                    setIsProfileOpen(true);
+                    setIsUserMenuOpen(false);
+                    setProfileError(null);
+                  }}
                 >
                   Profile
                 </button>
@@ -903,6 +964,46 @@ export function App() {
       </section>
 
       <section className="content-grid">
+        {isProfileOpen ? (
+          <section className="panel detail-panel full-width">
+            <div className="section-head">
+              <button className="section-title-button" type="button">
+                Profile
+              </button>
+            </div>
+            <form className="profile-form" onSubmit={handleProfileSave}>
+              <label>
+                <span>Username *</span>
+                <input
+                  value={usernameDraft}
+                  onChange={(event) => setUsernameDraft(event.target.value)}
+                  required
+                />
+              </label>
+              <label>
+                <span>Email</span>
+                <input value={profile.email} disabled />
+              </label>
+              {profileError ? <p className="form-error">{profileError}</p> : null}
+              <div className="auth-actions">
+                <button
+                  className="secondary-button"
+                  type="button"
+                  onClick={() => {
+                    setIsProfileOpen(false);
+                    setProfileError(null);
+                    setUsernameDraft(profile.username);
+                  }}
+                >
+                  Cancel
+                </button>
+                <button className="primary-button" disabled={isSavingProfile} type="submit">
+                  {isSavingProfile ? "Saving..." : "Save"}
+                </button>
+              </div>
+            </form>
+          </section>
+        ) : null}
         <section className="panel detail-panel full-width" ref={detailSectionRef}>
           <div className="section-head">
             <button

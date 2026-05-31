@@ -68,3 +68,45 @@ export async function createUserForEmail(email: string): Promise<UserProfile> {
   );
   return inserted.rows[0]!;
 }
+
+export async function updateUsername(
+  userId: string,
+  username: string
+): Promise<UserProfile> {
+  await ensureSchema();
+  const pool = getPool();
+  const normalizedUsername = username.trim();
+
+  if (!normalizedUsername) {
+    throw new Error("Username is required.");
+  }
+
+  const existing = await pool.query<{ id: string }>(
+    "select id from app_users where username = $1 and id <> $2",
+    [normalizedUsername, userId]
+  );
+
+  if (existing.rowCount) {
+    throw new Error("This username is already taken.");
+  }
+
+  const result = await pool.query<{
+    id: string;
+    email: string;
+    username: string;
+  }>(
+    `
+      update app_users
+      set username = $2, updated_at = now()
+      where id = $1
+      returning id, email, username
+    `,
+    [userId, normalizedUsername]
+  );
+
+  if (!result.rowCount) {
+    throw new Error("User not found.");
+  }
+
+  return result.rows[0]!;
+}
