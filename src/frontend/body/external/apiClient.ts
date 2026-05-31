@@ -5,24 +5,40 @@ import type {
 } from "../../../shared/types";
 
 async function request<T>(input: string, init?: RequestInit): Promise<T> {
-  const response = await fetch(input, {
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-      ...(init?.headers ?? {})
-    },
-    ...init
-  });
+  let response: Response;
+  try {
+    response = await fetch(input, {
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        ...(init?.headers ?? {})
+      },
+      ...init
+    });
+  } catch (error) {
+    const message =
+      error instanceof Error
+        ? error.message
+        : "Network error while contacting the server.";
+    throw new Error(`Network error: ${message}`);
+  }
 
   if (!response.ok) {
-    let message = "Request failed.";
+    let message = `Request failed (${response.status}).`;
     try {
       const body = (await response.json()) as { error?: string };
       if (body.error) {
         message = body.error;
       }
     } catch {
-      // Ignore JSON parsing errors for fallback message.
+      try {
+        const text = await response.text();
+        if (text.trim()) {
+          message = `${message} ${text.trim()}`;
+        }
+      } catch {
+        // Ignore body parsing errors for fallback message.
+      }
     }
     throw new Error(message);
   }

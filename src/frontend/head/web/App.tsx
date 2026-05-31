@@ -184,7 +184,15 @@ function LoginScreen({
     try {
       const reactor = new LoginReactor(apiClient);
       const { profile } = await reactor.process(email, otp);
-      await onLoggedIn(profile);
+      try {
+        await onLoggedIn(profile);
+      } catch (bootstrapError) {
+        setError(
+          bootstrapError instanceof Error
+            ? `Login worked, but loading the study space failed: ${bootstrapError.message}`
+            : "Login worked, but loading the study space failed."
+        );
+      }
     } catch (loginError) {
       setError(
         loginError instanceof Error ? loginError.message : "Login failed."
