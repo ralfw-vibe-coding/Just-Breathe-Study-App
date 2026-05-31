@@ -1,18 +1,22 @@
 ---
 id: mantra-practice
 title: "Mantra Practice"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "A meditative repetition of sound or phrase that steadies the mind."
 ---
 
-How to practice:
-Sit in a steady posture and choose the phrase, image, or inner direction the practice uses.
-- Repeat, visualize, or evoke it gently and consistently.
-- Let attention return to that chosen point whenever distraction appears.
-- Keep effort present but not rigid.
-- Stay with the practice long enough for the intention to become felt rather than merely verbal.
+**How to practice**
+1. Settle the body and allow the breath to quieten.
+2. Introduce the chosen mantra softly rather than forcefully.
+3. Let it repeat with ease in the background of the mind.
+4. When thoughts pull attention away, return to the mantra without struggle.
+5. Allow the mantra to soften as the mind settles more deeply.
 
-Purpose:
-Used to shape the tone of the mind through a chosen inner object such as a mantra, image, phrase, or emotional orientation. The emphasis is direction, conditioning, and deliberate mental framing.
+**Purpose**
+- quiet the thinking mind
+- create continuity of attention
+- support inward movement through gentle repetition
 
-Why it works:
-Focused repetition recruits attention, memory, and emotional salience at the same time. A stable inner object reduces fragmentation, while repeated exposure can gradually influence expectation, affective tone, and the nervous system's habitual response patterns.
+**Why it works**
+- repetition gives the mind one stable inner object instead of many competing thoughts
+- a softly repeated mantra reduces the temptation to keep following mental loops
+- over time the mantra can become more subtle, helping the mind settle into quieter layers

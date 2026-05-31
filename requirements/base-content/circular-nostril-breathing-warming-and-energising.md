@@ -1,18 +1,22 @@
 ---
 id: circular-nostril-breathing-warming-and-energising
 title: "Circular Nostril Breathing — Warming & Energising"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "A single-loop nostril breath for heat, energy, and enthusiasm."
 ---
 
-How to practice:
-Begin in an upright posture with enough space for the ribcage and abdomen to move.
-- Make the inhale more active, sharper, or more expansive.
-- Let the exhale either release naturally or support the rhythm without collapsing posture.
-- Use a clear cadence for a short set of rounds.
-- Pause afterward and notice whether the body feels more awake, warm, and available.
+**How to practice**
+1. Sit comfortably and lift the right hand to the nose.
+2. Close the left nostril with the ring finger and inhale through the right nostril.
+3. Close the right nostril with the thumb, release the left nostril, and exhale through the left.
+4. Continue in this way, always inhaling through the right and exhaling through the left, for 1-3 minutes.
 
-Purpose:
-Used to increase alertness, raise energy, and mobilize attention when more activation is useful. The main emphasis is uplift, readiness, and momentum rather than calming.
+**Purpose**
+- create heat and energy
+- strengthen enthusiasm and willpower
+- increase respiratory flow and alertness
+- give the breath a clear energising direction
 
-Why it works:
-More active inhalation and stronger respiratory movement increase arousal and can raise heart rate, thoracic expansion, and sensory alertness. The pattern recruits respiratory muscles more strongly, changes blood gases more quickly, and tends to shift the nervous system toward sympathetic activation and readiness.
+**Why it works**
+- the one-direction nostril pattern creates a steady, activating rhythm
+- the right-sided inhale emphasis is used here to encourage warmth and upward drive
+- the consistent alternation sharpens attention and gives the body a more energised breathing pattern

@@ -1,15 +1,15 @@
 ---
 id: time-well-spent
 title: "Time well spent"
-overview: "A concept used to organize understanding and guidance."
+overview: "Practice time is treated as meaningful, restorative time rather than as lost productivity."
 ---
 
-Clear concepts make practice easier to understand, compare, and teach.
+Time spent breathing, settling, meditating, or resting is not treated as wasted time. It is treated as meaningful, restorative time.
 
-Why it matters:
-- language becomes more precise
-- distinctions become easier to hold
-- related practices make more sense in context
+This phrase helps correct a common modern bias: only outward productivity is seen as valuable, while recovery, reflection, and quiet are treated as optional or secondary.
 
-Key points:
-- Concepts are most useful when they stay connected to lived practice.
+In this approach, practice time matters because it:
+- down-regulates the nervous system
+- supports mental and emotional steadiness
+- improves the quality of how the rest of life is lived
+- protects space for recovery instead of endless output

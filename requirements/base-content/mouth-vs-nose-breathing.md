@@ -1,18 +1,26 @@
 ---
 id: mouth-vs-nose-breathing
 title: "Mouth vs. Nose Breathing"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "The nose is built for efficient breathing; the mouth is a secondary route."
 ---
 
-How to practice:
-Begin in a clear posture and follow the core instruction of the technique with steady pacing.
-- Keep the form simple enough to stay aware of what is happening.
-- Adjust effort so the practice remains sustainable.
-- Continue for several rounds or minutes.
-- Pause afterward and notice the effect before moving on.
+Both routes bring air into the body, but they do not prepare that air in the same way.
 
-Purpose:
-Used to create a specific shift in breathing, attention, or nervous-system state. The emphasis depends on the technique, but usually involves regulation, awareness, or directed mental focus.
+Nose breathing is the preferred default because the nose is designed for breathing:
+- nasal hairs help filter dust, pollen, and other foreign particles
+- the nasal passages warm and humidify the air before it reaches the lungs
+- the nose releases nitric oxide, which supports vasodilation and oxygen circulation
 
-Why it works:
-Breathing patterns and attentional patterns both influence autonomic state, muscular tone, and perception. Repetition makes the effect more reliable by linking deliberate practice with physiological and neurophysiological change.
+Mouth breathing is sometimes necessary:
+- when the nose is congested
+- when structural limitations make nasal breathing difficult
+- in specific techniques that intentionally use a mouth exhale
+
+Breathing mainly through the mouth comes with trade-offs:
+- the air is less filtered, warmed, and humidified
+- the mouth dries out more easily
+- it is more associated with snoring, sleep disturbance, and irritation from unfiltered air
+
+Important to remember:
+- Everyday breathing is best led through the nose whenever possible.
+- Mouth breathing can be useful in selected practices, but it is not the ideal baseline pattern.

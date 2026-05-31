@@ -4,12 +4,20 @@ title: "Breath Awareness"
 overview: "A practice of noticing more clearly before trying to change anything."
 ---
 
-Clear concepts make practice easier to understand, compare, and teach.
+Breath awareness begins by noticing the breath as it is before trying to alter it.
 
-Why it matters:
-- language becomes more precise
-- distinctions become easier to hold
-- related practices make more sense in context
+Attention is placed on:
+- where the breath is moving
+- how much breath is present
+- whether the inhale and exhale feel smooth, restricted, shallow, or full
+- the natural rhythm and effort of the breath
 
-Key points:
-- Concepts are most useful when they stay connected to lived practice.
+Purpose:
+- establish a baseline
+- increase sensitivity to the actual state of the breath
+- make later interventions more appropriate and precise
+
+Why it works:
+- observation alone often softens unnecessary interference
+- better awareness improves self-assessment and technique choice
+- the breath becomes a direct source of information about activation, tension, and regulation

@@ -1,18 +1,23 @@
 ---
 id: humming-breath
 title: "Humming Breath"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "A soothing breath that uses vibration to calm the system."
 ---
 
-How to practice:
-Start in a steady posture and let the breath become deliberate rather than automatic.
-- Slow the rhythm down.
-- Give more time or emphasis to the exhale than to the inhale.
-- Keep the face, jaw, and shoulders as soft as possible.
-- Continue for several rounds until the breath and overall tone begin to settle.
+**How to practice**
+1. Sit comfortably and let the jaw, throat, and shoulders soften.
+2. Inhale through the nose to a comfortable fullness.
+3. Exhale slowly with a gentle humming sound.
+4. Feel the vibration in the face, throat, chest, or head.
+5. Repeat for several rounds, allowing the breath to lengthen and settle.
 
-Purpose:
-Used to reduce activation, create a stronger sense of safety, and help the system shift toward steadiness. The main emphasis is down-regulation rather than intensity.
+**Purpose**
+- reduce activation
+- soothe agitation
+- steady attention through sound and vibration
+- support a quicker move toward calm
 
-Why it works:
-A longer or softer exhale tends to increase parasympathetic influence through vagal pathways and reduces the urgency of the breathing pattern. Slower breathing can also improve carbon dioxide tolerance, reduce unnecessary chest tension, and signal to the nervous system that immediate mobilization is no longer needed.
+**Why it works**
+- the humming sound lengthens the exhale and slows the overall rhythm
+- vibration can feel immediately regulating and settling
+- the combination of sound, exhale, and focused sensation gives the mind a simple inward anchor

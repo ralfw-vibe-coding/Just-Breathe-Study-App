@@ -1,18 +1,21 @@
 ---
 id: there-is-no-such-thing-as-a-bad-meditation
 title: "There is no such thing as a bad meditation"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "A difficult sitting can still be a real practice."
 ---
 
-How to practice:
-Begin with a posture that is stable but not rigid.
-- Choose the main instruction and stay close to it.
-- Notice distraction without turning it into a problem.
-- Return again and again to the intended point of practice.
-- End by pausing long enough to notice the overall effect.
+Meditation is not only valuable when it feels peaceful, clear, or pleasant.
 
-Purpose:
-Used to steady attention, deepen awareness, and create a more workable relationship with mental activity. The emphasis depends on the technique, but usually includes clarity, settling, and reduced reactivity.
+A sitting may include:
+- distraction
+- restlessness
+- boredom
+- emotional surfacing
+- resistance
 
-Why it works:
-Meditation changes how attention is deployed and how strongly thoughts or stimuli trigger automatic reactions. Repetition builds familiarity with observing rather than immediately identifying with experience, which can alter both cognitive and autonomic patterns over time.
+None of that automatically means the practice failed. A useful measure is not only what happened during the sitting, but how the practice shapes the state afterward.
+
+Important to remember:
+- challenge does not cancel value
+- staying with the technique matters more than chasing a particular feeling
+- even messy sittings can strengthen awareness, patience, and honesty

@@ -1,15 +1,23 @@
 ---
 id: direct-response-gradual-response
 title: "Direct Response / Gradual Response"
-overview: "A concept used to organize understanding and guidance."
+overview: "Two ways of matching a practice to the urgency of the state."
 ---
 
-Clear concepts make practice easier to understand, compare, and teach.
+Direct response is used in moments of heightened overwhelm, stress, or panic. The techniques are chosen because they are physical, tangible, and immediately down-regulating.
 
-Why it matters:
-- language becomes more precise
-- distinctions become easier to hold
-- related practices make more sense in context
+Gradual response is used when the breath and nervous system need to be shifted over a period of time. This usually means a sequence, a structured practice, or a technique repeated through a series of rounds or ratios.
 
-Key points:
-- Concepts are most useful when they stay connected to lived practice.
+Examples of direct response:
+- physiological sigh
+- humming breath
+- audible release
+
+Examples of gradual response:
+- extended exhale over multiple rounds
+- coherent breathing
+- a structured down-regulation or up-regulation protocol
+
+This distinction helps match the practice to the moment:
+- direct response interrupts acute escalation
+- gradual response reshapes state more progressively and sustainably

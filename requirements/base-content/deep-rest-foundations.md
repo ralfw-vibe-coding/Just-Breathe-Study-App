@@ -1,15 +1,20 @@
 ---
 id: deep-rest-foundations
 title: "Deep Rest Foundations"
-overview: "A concept used to organize understanding and guidance."
+overview: "Deep rest is a deliberate state of conscious unwinding."
 ---
 
-Clear concepts make practice easier to understand, compare, and teach.
+Deep rest is the intentional state of conscious unwinding over a dedicated period of time.
 
-Why it matters:
-- language becomes more precise
-- distinctions become easier to hold
-- related practices make more sense in context
+It is not accidental collapse and it is not just stopping. The body is allowed to rest without needing constant action, correction, or technique.
 
-Key points:
-- Concepts are most useful when they stay connected to lived practice.
+Deep rest supports:
+- recovery
+- healing
+- rejuvenation
+- reduction of inner and outer demand
+
+Important to remember:
+- effort recedes, but awareness remains
+- the value lies in allowing the body to unwind without forcing an outcome
+- deep rest is one of the three pillars of the wider method because regulation is not complete without recovery

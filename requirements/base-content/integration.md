@@ -1,7 +1,7 @@
 ---
 id: integration
 title: "Integration"
-overview: "A concept used to organize understanding and guidance."
+overview: "The period in which the effects of practice are allowed to settle and become usable."
 related:
   - deep-rest
   - closing-sequence
@@ -9,12 +9,18 @@ related:
   - stillness
 ---
 
-Clear concepts make practice easier to understand, compare, and teach.
+Integration is the landing phase after technique, meditation, or deep rest.
 
-Why it matters:
-- language becomes more precise
-- distinctions become easier to hold
-- related practices make more sense in context
+Its purpose is to:
+- let the nervous system absorb the effect
+- recognise the state that has been created
+- avoid an abrupt return to outer activity
+- help the experience carry into daily life
 
-Key points:
-- Concepts are most useful when they stay connected to lived practice.
+Integration can include:
+- a few quiet breaths
+- renewed awareness of how the body and mind now feel
+- stillness before moving
+- a closing ritual such as gratitude
+
+Without integration, the benefit of practice is more easily lost in a rushed transition.

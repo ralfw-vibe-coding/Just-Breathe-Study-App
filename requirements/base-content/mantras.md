@@ -1,18 +1,20 @@
 ---
 id: mantras
 title: "Mantras"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "Repeated sounds or phrases used to steady attention and shape inner state."
 ---
 
-How to practice:
-Sit in a steady posture and choose the phrase, image, or inner direction the practice uses.
-- Repeat, visualize, or evoke it gently and consistently.
-- Let attention return to that chosen point whenever distraction appears.
-- Keep effort present but not rigid.
-- Stay with the practice long enough for the intention to become felt rather than merely verbal.
+Mantras are repeated sounds, words, or phrases used as a stable inner reference point.
 
-Purpose:
-Used to shape the tone of the mind through a chosen inner object such as a mantra, image, phrase, or emotional orientation. The emphasis is direction, conditioning, and deliberate mental framing.
+They help:
+- reduce mental scattering
+- support concentration
+- deepen inward focus
+- shape the emotional tone of practice
 
-Why it works:
-Focused repetition recruits attention, memory, and emotional salience at the same time. A stable inner object reduces fragmentation, while repeated exposure can gradually influence expectation, affective tone, and the nervous system's habitual response patterns.
+A mantra may be neutral, traditional, personal, devotional, or functional. What matters is that it can be returned to easily and held without strain.
+
+Why they work:
+- repetition narrows the field of attention
+- the mind is given one thing to stay with instead of many things to chase
+- with time, the sound or phrase can become more subtle and inwardly felt

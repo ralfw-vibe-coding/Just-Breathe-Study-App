@@ -1,18 +1,24 @@
 ---
 id: opposite-alternate-nostril-breathing-inhale
 title: "Opposite Alternate Nostril Breathing — Inhale"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "An alternate-nostril pattern that inhales through one side at a time."
 ---
 
-How to practice:
-Begin in an upright posture with enough space for the ribcage and abdomen to move.
-- Make the inhale more active, sharper, or more expansive.
-- Let the exhale either release naturally or support the rhythm without collapsing posture.
-- Use a clear cadence for a short set of rounds.
-- Pause afterward and notice whether the body feels more awake, warm, and available.
+**How to practice**
+1. Sit comfortably and lift the right hand to the nose.
+2. Close the right nostril with the thumb and inhale through the left nostril.
+3. Release the seal and exhale through both nostrils.
+4. Close the left nostril with the ring finger and inhale through the right nostril.
+5. Release the seal and exhale again through both nostrils.
+6. This completes one round. Continue for about 10 rounds.
 
-Purpose:
-Used to increase alertness, raise energy, and mobilize attention when more activation is useful. The main emphasis is uplift, readiness, and momentum rather than calming.
+**Purpose**
+- calm and focus the mind
+- help balance emotion
+- improve respiratory control without heavy intensity
+- create an organised, attentive breathing pattern
 
-Why it works:
-More active inhalation and stronger respiratory movement increase arousal and can raise heart rate, thoracic expansion, and sensory alertness. The pattern recruits respiratory muscles more strongly, changes blood gases more quickly, and tends to shift the nervous system toward sympathetic activation and readiness.
+**Why it works**
+- alternating the nostril on the inhale increases attentiveness and precision
+- the full bilateral exhale keeps the release simple and prevents the technique from becoming too effortful
+- the patterned switching stabilises attention and can reduce mental agitation through steady, repeated control

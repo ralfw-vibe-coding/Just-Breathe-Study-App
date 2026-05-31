@@ -1,18 +1,23 @@
 ---
 id: just-breathe-meditation
 title: "Just Breathe Meditation"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "A simple meditation that uses breath and stillness to quiet the mind."
 ---
 
-How to practice:
-Choose a stable posture and let the body become relatively still.
-- Place attention on the chosen object, such as the breath, the body, or a visual point.
-- When the mind wanders, notice it and return without force.
-- Stay with direct experience rather than trying to perform well.
-- Continue long enough for attention to settle and perception to become clearer.
+**How to practice**
+1. Begin with the opening invitation: close the eyes, become still, and allow attention to turn inward.
+2. Sit long enough to arrive rather than rushing into technique.
+3. Notice the breath as it is before trying to shape or control it.
+4. Let the breath become the main anchor for attention.
+5. When the mind wanders, gently return to the breath again.
+6. Close with a conscious breath, renewed awareness, stillness, and gratitude.
 
-Purpose:
-Used to strengthen attention, increase present-moment awareness, and reduce entanglement with constant mental activity. The emphasis is observation, steadiness, and clearer contact with experience.
+**Purpose**
+- quiet the thinking mind through simplicity
+- support inwardness and steady presence
+- create an accessible meditation for everyday practice
 
-Why it works:
-Repeatedly returning attention trains attentional control and metacognitive awareness. Interoceptive and sensory focus can reduce mental scattering, while steadier observation changes how strongly thoughts, impulses, and external stimuli capture the nervous system.
+**Why it works**
+- the breath gives the mind one natural point of contact
+- repeated return reduces mental scattering and strengthens steadiness
+- stillness, breath awareness, and simple structure reduce overstimulation and support ease

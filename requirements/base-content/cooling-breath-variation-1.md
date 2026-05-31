@@ -1,18 +1,24 @@
 ---
 id: cooling-breath-variation-1
 title: "Cooling Breath Variation 1"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "A cooling breath that draws air across the tongue to reduce heat and agitation."
 ---
 
-How to practice:
-Start in a steady posture and let the breath become deliberate rather than automatic.
-- Slow the rhythm down.
-- Give more time or emphasis to the exhale than to the inhale.
-- Keep the face, jaw, and shoulders as soft as possible.
-- Continue for several rounds until the breath and overall tone begin to settle.
+**How to practice**
+1. Sit comfortably and take a few neutral breaths.
+2. Open the mouth and curl the tongue lengthwise into a straw shape.
+3. Inhale gently across the tongue so the air moves over its surface.
+4. At the end of the inhale, relax the tongue and close the mouth.
+5. Exhale through the nose.
+6. Repeat for 10-12 rounds and notice the cooling effect on the body.
 
-Purpose:
-Used to reduce activation, create a stronger sense of safety, and help the system shift toward steadiness. The main emphasis is down-regulation rather than intensity.
+**Purpose**
+- cool the body
+- improve focus
+- reduce agitation
+- soften anger and anxiety
 
-Why it works:
-A longer or softer exhale tends to increase parasympathetic influence through vagal pathways and reduces the urgency of the breathing pattern. Slower breathing can also improve carbon dioxide tolerance, reduce unnecessary chest tension, and signal to the nervous system that immediate mobilization is no longer needed.
+**Why it works**
+- drawing the inhale across the tongue creates a direct cooling sensation
+- the slower, more deliberate inhale reduces urgency and sharpness in the breathing pattern
+- the nasal exhale helps keep the release steady and controlled rather than abrupt

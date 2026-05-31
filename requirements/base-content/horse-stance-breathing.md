@@ -1,18 +1,22 @@
 ---
 id: horse-stance-breathing
 title: "Horse Stance Breathing"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "A grounded stance that gives stronger access to abdominal breathing effort."
 ---
 
-How to practice:
-Begin in an upright posture with enough space for the ribcage and abdomen to move.
-- Make the inhale more active, sharper, or more expansive.
-- Let the exhale either release naturally or support the rhythm without collapsing posture.
-- Use a clear cadence for a short set of rounds.
-- Pause afterward and notice whether the body feels more awake, warm, and available.
+**How to practice**
+1. Stand with the legs spread and the knees bent.
+2. Lean forward and place one hand on each knee.
+3. Let the abdomen drop and hang forward so it is easy to feel abdominal movement.
+4. Use this position with `Cleansing & Clearing Breath` or another energising breath practice.
 
-Purpose:
-Used to increase alertness, raise energy, and mobilize attention when more activation is useful. The main emphasis is uplift, readiness, and momentum rather than calming.
+**Purpose**
+- create easier access to abdominal engagement
+- support energising breathing techniques
+- reduce restriction in the belly during active breathwork
+- give the body a grounded, stable base for stronger respiratory effort
 
-Why it works:
-More active inhalation and stronger respiratory movement increase arousal and can raise heart rate, thoracic expansion, and sensory alertness. The pattern recruits respiratory muscles more strongly, changes blood gases more quickly, and tends to shift the nervous system toward sympathetic activation and readiness.
+**Why it works**
+- the forward-leaning stance frees the abdomen so active exhalation is easier to perform
+- the wide base gives stability during more vigorous breathing
+- posture can change the quality of technique by making the main working muscles easier to recruit

@@ -1,15 +1,23 @@
 ---
 id: direct-response-tools
 title: "Direct Response Tools"
-overview: "A concept used to organize understanding and guidance."
+overview: "Practices used when the state needs immediate support rather than a gradual build."
 ---
 
-Clear concepts make practice easier to understand, compare, and teach.
+Direct response tools are used when the state needs immediate support.
 
-Why it matters:
-- language becomes more precise
-- distinctions become easier to hold
-- related practices make more sense in context
+They are chosen for acute moments such as:
+- stress spikes
+- anxiety
+- overwhelm
+- panic
+- sudden dysregulation
 
-Key points:
-- Concepts are most useful when they stay connected to lived practice.
+These tools are physical, tangible, and immediate. They aim to create a useful shift before the state deepens further.
+
+Examples include:
+- physiological sigh
+- humming breath
+- audible release
+
+The emphasis is not on a long sequence, but on the fastest effective intervention.

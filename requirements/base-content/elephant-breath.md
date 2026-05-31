@@ -1,18 +1,23 @@
 ---
 id: elephant-breath
 title: "Elephant Breath"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "A dynamic nasal breathing practice for energy and circulation."
 ---
 
-How to practice:
-Begin in an upright posture with enough space for the ribcage and abdomen to move.
-- Make the inhale more active, sharper, or more expansive.
-- Let the exhale either release naturally or support the rhythm without collapsing posture.
-- Use a clear cadence for a short set of rounds.
-- Pause afterward and notice whether the body feels more awake, warm, and available.
+**How to practice**
+1. Stand with the feet about shoulder-width apart and the knees slightly bent.
+2. Inhale quickly through the nose as the arms swing forward and up overhead.
+3. Exhale quickly through the nose as the knees bend and the body folds forward, keeping the arms heavy.
+4. Repeat for a few rounds.
+5. Pause in stillness and return to the natural breath.
 
-Purpose:
-Used to increase alertness, raise energy, and mobilize attention when more activation is useful. The main emphasis is uplift, readiness, and momentum rather than calming.
+**Purpose**
+- stimulate and energise the body
+- increase oxygen availability and blood flow
+- gently heat the body
+- create a brisk, alert state
 
-Why it works:
-More active inhalation and stronger respiratory movement increase arousal and can raise heart rate, thoracic expansion, and sensory alertness. The pattern recruits respiratory muscles more strongly, changes blood gases more quickly, and tends to shift the nervous system toward sympathetic activation and readiness.
+**Why it works**
+- the faster nasal rhythm temporarily increases sympathetic activation
+- the folding and lifting movement recruits the whole body and strengthens circulatory response
+- the repeated dynamic pattern creates a quick shift from inertia toward wakefulness

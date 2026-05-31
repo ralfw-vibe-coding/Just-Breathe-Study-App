@@ -1,15 +1,15 @@
 ---
 id: conscious-unwinding
 title: "Conscious Unwinding"
-overview: "A concept used to organize understanding and guidance."
+overview: "A gradual letting-go in which rest is entered knowingly rather than by accident."
 ---
 
-Clear concepts make practice easier to understand, compare, and teach.
+Conscious unwinding is the process of moving toward rest while staying aware of the shift.
 
-Why it matters:
-- language becomes more precise
-- distinctions become easier to hold
-- related practices make more sense in context
+It involves:
+- reducing effort
+- softening stimulation
+- allowing tension to drop
+- staying with the settling process instead of rushing past it
 
-Key points:
-- Concepts are most useful when they stay connected to lived practice.
+This matters because many people can stop, but do not truly unwind. Conscious unwinding gives the nervous system time to move out of doing, reacting, and bracing.

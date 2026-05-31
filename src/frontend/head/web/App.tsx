@@ -1427,7 +1427,7 @@ export function App() {
 
                     {hasDetails ? (
                       <article className="card-copy card-details">
-                        <p>{currentCard.details}</p>
+                        <MarkdownMessage content={currentCard.details} />
                       </article>
                     ) : null}
 

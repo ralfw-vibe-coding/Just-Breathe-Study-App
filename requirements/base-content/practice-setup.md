@@ -1,22 +1,28 @@
 ---
 id: practice-setup
 title: "Practice Setup"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "The conditions that make quiet practice easier to enter and sustain."
 related:
   - opening-sequence
   - movement-preparation
   - nervous-system-reset
 ---
 
-How to practice:
-Begin in a clear posture and follow the core instruction of the technique with steady pacing.
-- Keep the form simple enough to stay aware of what is happening.
-- Adjust effort so the practice remains sustainable.
-- Continue for several rounds or minutes.
-- Pause afterward and notice the effect before moving on.
+Good setup reduces friction before the practice even begins.
+
+Helpful conditions include:
+- a comfortable and settled position
+- as few distractions or temptations as possible
+- enough support that the body is not busy holding itself unnecessarily
+- enough time to arrive before moving into technique
 
 Purpose:
-Used to create a specific shift in breathing, attention, or nervous-system state. The emphasis depends on the technique, but usually involves regulation, awareness, or directed mental focus.
+- make stillness more accessible
+- reduce unnecessary resistance
+- help the nervous system feel safe enough to settle
+- improve the quality and consistency of the practice
 
 Why it works:
-Breathing patterns and attentional patterns both influence autonomic state, muscular tone, and perception. Repetition makes the effect more reliable by linking deliberate practice with physiological and neurophysiological change.
+- a body that feels supported spends less energy on guarding and adjustment
+- fewer distractions reduce outward pull and mental fragmentation
+- strong setup makes the transition into breathwork, meditation, or deep rest more reliable

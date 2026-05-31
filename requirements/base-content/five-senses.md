@@ -1,15 +1,24 @@
 ---
 id: five-senses
 title: "Five Senses"
-overview: "A concept used to organize understanding and guidance."
+overview: "A present-moment practice that stabilizes attention through direct sensory awareness."
 ---
 
-Clear concepts make practice easier to understand, compare, and teach.
+Attention is guided toward direct sensory experience in the present moment:
+- what is seen
+- what is heard
+- what is felt
+- what is smelled
+- what is tasted
 
-Why it matters:
-- language becomes more precise
-- distinctions become easier to hold
-- related practices make more sense in context
+This shifts the mind away from abstraction and back into immediate experience.
 
-Key points:
-- Concepts are most useful when they stay connected to lived practice.
+Purpose:
+- bring awareness fully into the here and now
+- interrupt spiralling thought
+- strengthen observation through simple sensory contact
+
+Why it works:
+- the senses are always happening in real time
+- sensory attention gives the mind something concrete instead of conceptual
+- direct perception reduces the tendency to drift into memory, projection, or analysis

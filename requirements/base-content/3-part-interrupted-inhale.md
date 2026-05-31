@@ -1,18 +1,27 @@
 ---
 id: 3-part-interrupted-inhale
 title: "3-Part Interrupted Inhale"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "A staged inhale that expands length and capacity."
 ---
 
-How to practice:
-Begin in an upright posture with enough space for the ribcage and abdomen to move.
-- Make the inhale more active, sharper, or more expansive.
-- Let the exhale either release naturally or support the rhythm without collapsing posture.
-- Use a clear cadence for a short set of rounds.
-- Pause afterward and notice whether the body feels more awake, warm, and available.
+**How to practice**
+1. Find a comfortable seated or reclined position.
+2. Take a few clearing breaths.
+3. On the next inhale, fill the lungs to about one third of capacity.
+4. Take a short pause.
+5. Fill the next third.
+6. Take another short pause.
+7. Fill the final third, or until the lungs are comfortably full.
+8. Take a final short pause.
+9. Exhale fully.
 
-Purpose:
-Used to increase alertness, raise energy, and mobilize attention when more activation is useful. The main emphasis is uplift, readiness, and momentum rather than calming.
+**Purpose**
+- expand the length of the inhale
+- increase awareness of inhalation capacity
+- build more controlled upward respiratory effort
+- prepare the body for energising or capacity-building work
 
-Why it works:
-More active inhalation and stronger respiratory movement increase arousal and can raise heart rate, thoracic expansion, and sensory alertness. The pattern recruits respiratory muscles more strongly, changes blood gases more quickly, and tends to shift the nervous system toward sympathetic activation and readiness.
+**Why it works**
+- pausing between thirds makes the inhale more conscious and segmented
+- the lungs and ribcage are filled progressively rather than all at once
+- the staged pattern improves awareness of how breath volume is distributed across the inhale

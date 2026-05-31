@@ -1,15 +1,24 @@
 ---
 id: five-bodies-koshas
 title: "Five Bodies / Koshas"
-overview: "A concept used to organize understanding and guidance."
+overview: "A layered awareness practice that moves through different dimensions of experience."
 ---
 
-Clear concepts make practice easier to understand, compare, and teach.
+This practice uses the kosha model to explore experience in layers rather than reducing it to physical sensation alone.
 
-Why it matters:
-- language becomes more precise
-- distinctions become easier to hold
-- related practices make more sense in context
+Attention may move through:
+- the physical body
+- the energetic or breath body
+- the mental and emotional field
+- deeper intuitive or wisdom layers
+- the quieter layer of being beneath activity
 
-Key points:
-- Concepts are most useful when they stay connected to lived practice.
+Purpose:
+- broaden embodiment
+- deepen self-awareness
+- help experience be felt more holistically
+
+Why it works:
+- layered observation widens attention beyond one single level of experience
+- moving through the koshas can soften rigid identification with thoughts or symptoms
+- the practice helps the meditator sense that awareness is larger than surface activity

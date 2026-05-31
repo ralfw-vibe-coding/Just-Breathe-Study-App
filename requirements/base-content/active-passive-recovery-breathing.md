@@ -1,18 +1,27 @@
 ---
 id: active-passive-recovery-breathing
 title: "Active / Passive / Recovery Breathing"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "Three useful distinctions for how effort appears across a breath cycle."
 ---
 
-How to practice:
-Start in a steady posture and let the breath become deliberate rather than automatic.
-- Slow the rhythm down.
-- Give more time or emphasis to the exhale than to the inhale.
-- Keep the face, jaw, and shoulders as soft as possible.
-- Continue for several rounds until the breath and overall tone begin to settle.
+These three distinctions help describe how a breathing technique is being performed and how much deliberate effort is being used.
 
-Purpose:
-Used to reduce activation, create a stronger sense of safety, and help the system shift toward steadiness. The main emphasis is down-regulation rather than intensity.
+Active breathing uses intentional muscular action:
+- the inhale may be shaped, expanded, interrupted, or intensified
+- the exhale may be forced, lengthened, or controlled
+- active phases usually create more influence over pace, pressure, heat, or stimulation
 
-Why it works:
-A longer or softer exhale tends to increase parasympathetic influence through vagal pathways and reduces the urgency of the breathing pattern. Slower breathing can also improve carbon dioxide tolerance, reduce unnecessary chest tension, and signal to the nervous system that immediate mobilization is no longer needed.
+Passive breathing allows one part of the cycle to happen more naturally:
+- the breath is received rather than driven
+- a passive inhale often follows an active exhale
+- a passive exhale often appears in softer, settling, or recovery-oriented work
+
+Recovery breathing is the conscious return toward a more natural rhythm after technique:
+- the breath is allowed to smooth out
+- effort drops away
+- the body is given time to absorb the effect of the practice
+
+Why it matters:
+- It clarifies whether a technique asks for effort, surrender, or transition.
+- It helps explain why some techniques feel energising while others feel settling.
+- It makes it easier to guide someone out of technique without abruptly stopping.

@@ -1,18 +1,25 @@
 ---
 id: cooling-breath-variation-2
 title: "Cooling Breath Variation 2"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "A cooling breath for people who cannot curl the tongue."
 ---
 
-How to practice:
-Start in a steady posture and let the breath become deliberate rather than automatic.
-- Slow the rhythm down.
-- Give more time or emphasis to the exhale than to the inhale.
-- Keep the face, jaw, and shoulders as soft as possible.
-- Continue for several rounds until the breath and overall tone begin to settle.
+**How to practice**
+1. Sit comfortably and take a few neutral breaths.
+2. Bring the teeth together while keeping the lips open.
+3. Press the tip of the tongue lightly to the back of the top teeth.
+4. Inhale gently, allowing the air to pass through the gaps in the teeth and create a soft hissing sound.
+5. At the end of the inhale, release the teeth and tongue and close the lips.
+6. Exhale through the nose.
+7. Repeat for 10-12 rounds and notice the cooling effect on the body.
 
-Purpose:
-Used to reduce activation, create a stronger sense of safety, and help the system shift toward steadiness. The main emphasis is down-regulation rather than intensity.
+**Purpose**
+- cool the body
+- improve focus
+- reduce agitation
+- offer a workable alternative to tongue-curl cooling breath
 
-Why it works:
-A longer or softer exhale tends to increase parasympathetic influence through vagal pathways and reduces the urgency of the breathing pattern. Slower breathing can also improve carbon dioxide tolerance, reduce unnecessary chest tension, and signal to the nervous system that immediate mobilization is no longer needed.
+**Why it works**
+- the narrow oral pathway slows the inhale and creates a cooling sensation
+- the hissing intake gives the mind a clear sensory anchor and reduces scattered attention
+- the nasal exhale steadies the release and supports a calmer overall rhythm

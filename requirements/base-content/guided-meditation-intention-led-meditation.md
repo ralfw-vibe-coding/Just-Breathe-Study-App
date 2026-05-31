@@ -1,15 +1,23 @@
 ---
 id: guided-meditation-intention-led-meditation
 title: "Guided Meditation / Intention-led Meditation"
-overview: "A way of giving practice direction and purpose."
+overview: "A spoken meditation shaped by theme, direction, and meaningful narrative."
 ---
 
-Clear concepts make practice easier to understand, compare, and teach.
+The practice uses spoken guidance to lead attention through a deliberate inner journey.
 
-Why it matters:
-- language becomes more precise
-- distinctions become easier to hold
-- related practices make more sense in context
+It may include:
+- a theme or central idea
+- a clear beginning, middle, and end
+- reflective or evocative language
+- imagery, inquiry, or emotional direction
 
-Key points:
-- Concepts are most useful when they stay connected to lived practice.
+Purpose:
+- offer a gentler entry into meditation
+- hold attention through meaningful spoken structure
+- help an intention become felt, not just understood
+
+Why it works:
+- guidance reduces uncertainty for people who struggle with silence or open practice
+- a strong theme gives attention a coherent direction
+- language can shape mood, meaning, and felt experience when it is paced well

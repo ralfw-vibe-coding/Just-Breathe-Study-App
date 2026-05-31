@@ -1,18 +1,27 @@
 ---
 id: functional-systematic-experiential-breathwork
 title: "Functional / Systematic / Experiential Breathwork"
-overview: "A practice used to shape breathing, attention, or state."
+overview: "Three complementary ways of understanding how breathwork can be taught and practiced."
 ---
 
-How to practice:
-Begin in a clear posture and follow the core instruction of the technique with steady pacing.
-- Keep the form simple enough to stay aware of what is happening.
-- Adjust effort so the practice remains sustainable.
-- Continue for several rounds or minutes.
-- Pause afterward and notice the effect before moving on.
+Breathwork can be approached in three complementary ways:
 
-Purpose:
-Used to create a specific shift in breathing, attention, or nervous-system state. The emphasis depends on the technique, but usually involves regulation, awareness, or directed mental focus.
+Functional:
+- focused on how the breath is working
+- builds awareness of mechanics, efficiency, and breathing quality
+- helps create better foundations before stronger techniques are added
 
-Why it works:
-Breathing patterns and attentional patterns both influence autonomic state, muscular tone, and perception. Repetition makes the effect more reliable by linking deliberate practice with physiological and neurophysiological change.
+Systematic:
+- focused on structure and repeatability
+- uses chosen techniques, ratios, rounds, and clear intended effects
+- helps guide longer practices with reason and consistency
+
+Experiential:
+- focused on felt experience
+- invites the practitioner to notice state, sensation, and response directly
+- helps the practice remain lived rather than purely conceptual
+
+Why this distinction matters:
+- different needs call for different approaches
+- some moments need skill building, some need structure, and some need direct felt experience
+- strong teaching often moves fluidly between all three rather than reducing breathwork to only one mode

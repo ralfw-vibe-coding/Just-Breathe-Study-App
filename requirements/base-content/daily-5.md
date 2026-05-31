@@ -1,15 +1,22 @@
 ---
 id: daily-5
 title: "Daily 5"
-overview: "A concept used to organize understanding and guidance."
+overview: "A short movement preparation that helps the body arrive before quieter practice."
 ---
 
-Clear concepts make practice easier to understand, compare, and teach.
+Daily 5 is a signature five-movement preparation used to calm and soothe the nervous system before quieter practice.
 
-Why it matters:
-- language becomes more precise
-- distinctions become easier to hold
-- related practices make more sense in context
+The sequence includes:
+- shoulder rolls
+- hip circles
+- shake and brush
+- circulation awakening
+- standing twist
 
-Key points:
-- Concepts are most useful when they stay connected to lived practice.
+Purpose:
+- reduce stiffness and holding
+- create mobility and circulation
+- release stale tension
+- make stillness easier to access
+
+Each movement is simple, short, and functional. The aim is not fitness or performance, but preparation for regulation and practice.

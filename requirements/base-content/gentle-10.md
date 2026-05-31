@@ -1,15 +1,17 @@
 ---
 id: gentle-10
 title: "Gentle 10"
-overview: "A concept used to organize understanding and guidance."
+overview: "A ten-movement preparation for easing tension and supporting stillness."
 ---
 
-Clear concepts make practice easier to understand, compare, and teach.
+Gentle 10 is a ten-movement physical preparation designed to help the body prepare for stillness.
 
-Why it matters:
-- language becomes more precise
-- distinctions become easier to hold
-- related practices make more sense in context
+It begins with the `Daily 5` and adds five more movements to create a fuller pre-practice sequence.
 
-Key points:
-- Concepts are most useful when they stay connected to lived practice.
+Purpose:
+- awaken the senses
+- create more space in the body
+- support longer periods of sitting
+- help a wide range of body types arrive more comfortably
+
+This sequence is especially useful before breathwork, meditation, or deeper unwinding formats when the body needs a little more preparation than simple stillness alone.

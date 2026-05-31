@@ -1,15 +1,25 @@
 ---
 id: 3xv
 title: "3XV"
-overview: "A concept used to organize understanding and guidance."
+overview: "A restorative protocol for sleep response and downward settling."
 ---
 
-Clear concepts make practice easier to understand, compare, and teach.
+A restorative breathing protocol designed to support the sleep response.
 
-Why it matters:
-- language becomes more precise
-- distinctions become easier to hold
-- related practices make more sense in context
+The sequence combines:
+- `Low Frequency Humming Breath`
+- `Pinhole Breath`
+- `Extended Exhale`
 
-Key points:
-- Concepts are most useful when they stay connected to lived practice.
+Purpose:
+- reduce physiological arousal
+- soften agitation
+- lengthen the exhale and slow the overall breathing rhythm
+- help the system drift toward sleep and deeper parasympathetic rest
+
+Why the sequence works:
+- humming adds vibration that soothes the nervous system and quiets agitation
+- pinhole breathing slows the exhale and reduces real-time stress
+- extended exhale reinforces relaxation and tension decompression without adding breath holds
+
+This protocol is suited to moments when the body needs a downward slope into rest rather than a fast interruption.
