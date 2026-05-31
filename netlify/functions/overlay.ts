@@ -9,18 +9,27 @@ export const handler: Handler = async (event) => {
     return methodNotAllowed();
   }
 
-  const sessionReactor = new SessionUserReactor();
-  const sessionProfile = await sessionReactor.process(event);
+  try {
+    const sessionReactor = new SessionUserReactor();
+    const sessionProfile = await sessionReactor.process(event);
 
-  if (!sessionProfile) {
-    return jsonResponse(401, { error: "Unauthorized." });
+    if (!sessionProfile) {
+      return jsonResponse(401, { error: "Unauthorized." });
+    }
+
+    const profile = await findUserByEmail(sessionProfile.email);
+    if (!profile) {
+      return jsonResponse(404, { error: "User not found." });
+    }
+
+    const reactor = new LoadOverlayReactor();
+    return jsonResponse(200, await reactor.process(profile));
+  } catch (error) {
+    return jsonResponse(500, {
+      error:
+        error instanceof Error
+          ? `Overlay loading failed: ${error.message}`
+          : "Overlay loading failed."
+    });
   }
-
-  const profile = await findUserByEmail(sessionProfile.email);
-  if (!profile) {
-    return jsonResponse(404, { error: "User not found." });
-  }
-
-  const reactor = new LoadOverlayReactor();
-  return jsonResponse(200, await reactor.process(profile));
 };

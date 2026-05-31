@@ -10,10 +10,27 @@ export class BootstrapAppReactor {
   constructor(private readonly apiClient: ApiClient) {}
 
   async process(): Promise<BootstrapState> {
-    const [base, overlay] = await Promise.all([
-      this.apiClient.getBase(),
-      this.apiClient.getOverlay()
-    ]);
+    let base: KnowledgeBase;
+    try {
+      base = await this.apiClient.getBase();
+    } catch (error) {
+      throw new Error(
+        `Loading the knowledge base failed: ${
+          error instanceof Error ? error.message : "unknown error"
+        }`
+      );
+    }
+
+    let overlay: OverlayResponse;
+    try {
+      overlay = await this.apiClient.getOverlay();
+    } catch (error) {
+      throw new Error(
+        `Loading your personal overlay failed: ${
+          error instanceof Error ? error.message : "unknown error"
+        }`
+      );
+    }
 
     return { base, overlay };
   }

@@ -7,8 +7,17 @@ const authedHandler: Handler = withAuth(async (event) => {
     return methodNotAllowed();
   }
 
-  const reactor = new LoadKnowledgeBaseReactor();
-  return jsonResponse(200, await reactor.process());
+  try {
+    const reactor = new LoadKnowledgeBaseReactor();
+    return jsonResponse(200, await reactor.process());
+  } catch (error) {
+    return jsonResponse(500, {
+      error:
+        error instanceof Error
+          ? `Knowledge base loading failed: ${error.message}`
+          : "Knowledge base loading failed."
+    });
+  }
 });
 
 export const handler = authedHandler;
