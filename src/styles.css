@@ -924,6 +924,12 @@ textarea {
   background: rgba(255, 255, 255, 0.82);
 }
 
+.active-card-titlebar .favorite-toggle.active {
+  background: #dc5c6c;
+  border-color: rgba(172, 57, 77, 0.42);
+  color: white;
+}
+
 .card-copy {
   padding: 0;
   border-radius: 0;
