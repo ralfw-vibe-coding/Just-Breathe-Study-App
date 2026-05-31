@@ -171,15 +171,41 @@ function LoginScreen({
 }: {
   onLoggedIn: (profile: UserProfile) => Promise<void>;
 }) {
+  const [step, setStep] = useState<"email" | "otp">("email");
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [submitting, setSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState<"idle" | "requesting" | "verifying">(
+    "idle"
+  );
+
+  async function requestOtp() {
+    setSubmitting("requesting");
+    setError(null);
+    setStatusMessage(null);
+
+    try {
+      const reactor = new LoginReactor(apiClient);
+      await reactor.requestOtp(email);
+      setStep("otp");
+      setStatusMessage("OTP sent. Check your email.");
+    } catch (requestError) {
+      setError(
+        requestError instanceof Error
+          ? requestError.message
+          : "Requesting OTP failed."
+      );
+    } finally {
+      setSubmitting("idle");
+    }
+  }
 
   async function submit(event: React.FormEvent) {
     event.preventDefault();
-    setSubmitting(true);
+    setSubmitting("verifying");
     setError(null);
+    setStatusMessage(null);
 
     try {
       const reactor = new LoginReactor(apiClient);
@@ -198,7 +224,7 @@ function LoginScreen({
         loginError instanceof Error ? loginError.message : "Login failed."
       );
     } finally {
-      setSubmitting(false);
+      setSubmitting("idle");
     }
   }
 
@@ -211,36 +237,80 @@ function LoginScreen({
           <p className="claim">From novice to instructor in no time!</p>
         </div>
 
-        <form className="auth-form" onSubmit={submit}>
-          <label>
-            <span>Email</span>
-            <input
-              autoComplete="email"
-              inputMode="email"
-              type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              placeholder="you@example.com"
-              required
-            />
-          </label>
+        {step === "email" ? (
+          <form
+            className="auth-form"
+            onSubmit={(event) => {
+              event.preventDefault();
+              void requestOtp();
+            }}
+          >
+            <label>
+              <span>Email</span>
+              <input
+                autoComplete="email"
+                inputMode="email"
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder="you@example.com"
+                required
+              />
+            </label>
 
-          <label>
-            <span>OTP</span>
-            <input
-              value={otp}
-              onChange={(event) => setOtp(event.target.value)}
-              placeholder="Secret OTP"
-              required
-            />
-          </label>
+            {statusMessage ? <p className="form-status">{statusMessage}</p> : null}
+            {error ? <p className="form-error">{error}</p> : null}
 
-          {error ? <p className="form-error">{error}</p> : null}
+            <div className="auth-actions single">
+              <button
+                className="primary-button"
+                disabled={submitting !== "idle"}
+                type="submit"
+              >
+                {submitting === "requesting" ? "Sending OTP..." : "Login"}
+              </button>
+            </div>
+          </form>
+        ) : (
+          <form className="auth-form" onSubmit={submit}>
+            <label>
+              <span>OTP</span>
+              <input
+                value={otp}
+                onChange={(event) => setOtp(event.target.value)}
+                placeholder="Enter your OTP"
+                required
+              />
+            </label>
 
-          <button className="primary-button" disabled={submitting} type="submit">
-            {submitting ? "Entering..." : "Enter JBSapp"}
-          </button>
-        </form>
+            <p className="form-status">Sending to: {email}</p>
+            {statusMessage ? <p className="form-status">{statusMessage}</p> : null}
+            {error ? <p className="form-error">{error}</p> : null}
+
+            <div className="auth-actions">
+              <button
+                className="secondary-button"
+                disabled={submitting !== "idle"}
+                type="button"
+                onClick={() => {
+                  setStep("email");
+                  setOtp("");
+                  setError(null);
+                  setStatusMessage(null);
+                }}
+              >
+                Back
+              </button>
+              <button
+                className="primary-button"
+                disabled={submitting !== "idle"}
+                type="submit"
+              >
+                {submitting === "verifying" ? "Entering..." : "Enter JBSapp"}
+              </button>
+            </div>
+          </form>
+        )}
       </section>
     </main>
   );
@@ -325,6 +395,22 @@ export function App() {
       setIsSearchResultsOpen(true);
     }
   }, [activeTagFilters.length, search]);
+
+  useEffect(() => {
+    if (!overlay) {
+      return;
+    }
+
+    const availableTags = new Set<string>();
+    Object.values(overlay.tags).forEach((tags) => {
+      tags.forEach((tag) => availableTags.add(tag));
+    });
+
+    setActiveTagFilters((current) => {
+      const next = current.filter((tag) => availableTags.has(tag));
+      return next.length === current.length ? current : next;
+    });
+  }, [overlay]);
 
   const favoriteCards = useMemo(() => {
     if (!base || !overlay) {
@@ -558,6 +644,15 @@ export function App() {
     setBase(null);
     setOverlay(null);
     setProfile(null);
+    setBackStack([]);
+    setForwardStack([]);
+    setActiveTagFilters([]);
+    setSearch("");
+    setDraftNote("");
+    setNewTag("");
+    setIsUserMenuOpen(false);
+    setIsHistoryMenuOpen(false);
+    setIsSearchResultsOpen(true);
     setAuthState("anon");
     navigate("/");
   }

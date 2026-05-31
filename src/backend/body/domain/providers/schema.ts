@@ -30,5 +30,16 @@ export async function ensureSchema(): Promise<void> {
     );
   `);
 
+  await pool.query(`
+    create table if not exists otp_challenges (
+      id uuid primary key,
+      email text not null,
+      otp_hash text not null,
+      expires_at timestamptz not null,
+      consumed_at timestamptz,
+      created_at timestamptz not null default now()
+    );
+  `);
+
   ensured = true;
 }

@@ -62,6 +62,13 @@ export class ApiClient {
     });
   }
 
+  async requestOtp(email: string): Promise<void> {
+    await request("/api/request-otp", {
+      method: "POST",
+      body: JSON.stringify({ email })
+    });
+  }
+
   async logout(): Promise<void> {
     await request("/api/logout", { method: "POST" });
   }

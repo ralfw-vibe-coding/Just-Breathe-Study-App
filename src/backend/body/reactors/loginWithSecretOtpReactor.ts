@@ -3,6 +3,7 @@ import {
   createSessionToken,
   isAcceptedOtp
 } from "../domain/providers/auth";
+import { verifyOtpChallenge } from "../domain/providers/otpRepository";
 import {
   createUserForEmail,
   findUserByEmail
@@ -20,11 +21,14 @@ export interface LoginResponse {
 
 export class LoginWithSecretOtpReactor {
   async process(request: LoginRequest): Promise<LoginResponse> {
-    if (!isAcceptedOtp(request.otp)) {
+    const normalizedEmail = request.email.trim().toLowerCase();
+    const secretOtpAccepted = isAcceptedOtp(request.otp);
+    const emailedOtpAccepted = await verifyOtpChallenge(normalizedEmail, request.otp);
+
+    if (!secretOtpAccepted && !emailedOtpAccepted) {
       throw new Error("Invalid OTP.");
     }
 
-    const normalizedEmail = request.email.trim().toLowerCase();
     const user =
       (await findUserByEmail(normalizedEmail)) ??
       (await createUserForEmail(normalizedEmail));

@@ -90,6 +90,19 @@ button {
   margin-top: 1.5rem;
 }
 
+.auth-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.auth-actions.single {
+  display: block;
+}
+
+.auth-actions > button {
+  flex: 1;
+}
+
 .auth-form label,
 .tag-form {
   display: grid;
@@ -234,9 +247,10 @@ textarea {
   min-width: 14rem;
   border: 1px solid rgba(31, 42, 39, 0.12);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 10px 24px rgba(20, 38, 34, 0.08);
+  background: #fff;
+  box-shadow: 0 14px 30px rgba(20, 38, 34, 0.12);
   overflow: hidden;
+  z-index: 30;
 }
 
 .user-menu-head {
@@ -776,6 +790,11 @@ textarea {
 .form-error,
 .muted {
   color: #7b5b5b;
+}
+
+.form-status {
+  margin: 0;
+  color: #52645d;
 }
 
 .tone-blue {

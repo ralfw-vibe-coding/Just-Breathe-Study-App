@@ -7,4 +7,8 @@ export class LoginReactor {
   async process(email: string, otp: string): Promise<SessionResponse> {
     return await this.apiClient.login(email, otp);
   }
+
+  async requestOtp(email: string): Promise<void> {
+    await this.apiClient.requestOtp(email);
+  }
 }
