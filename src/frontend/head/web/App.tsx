@@ -18,8 +18,10 @@ import {
   Trash2,
   User,
   X,
-  Wind
+  Wind,
+  icons
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import type {
   Card,
   ChatMessage,
@@ -53,32 +55,28 @@ function tagValue(tags: string[], prefix: string): string | null {
   return hit ? hit.slice(prefix.length) : null;
 }
 
-function iconForCard(card: Card) {
-  const iconTag = tagValue(card.tags, "icon_");
-  switch (iconTag) {
-    case "wind":
-      return Wind;
-    case "book_open":
-      return BookOpen;
-    default:
-      return BookOpen;
-  }
+function iconNameForCard(card: Card): string | null {
+  return tagValue(card.tags, "icon_");
 }
 
-function colorClassForCard(card: Card): string {
-  const colorTag = tagValue(card.tags, "color_");
-  switch (colorTag) {
-    case "blue":
-      return "tone-blue";
-    case "sand":
-      return "tone-sand";
-    case "green":
-      return "tone-green";
-    case "rose":
-      return "tone-rose";
-    default:
-      return "tone-neutral";
+function iconForCard(card: Card) {
+  const iconTag = tagValue(card.tags, "icon_");
+  if (!iconTag) {
+    return BookOpen;
   }
+
+  const iconName = iconTag
+    .split(/[-_]/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join("");
+
+  const candidate = (icons as Record<string, LucideIcon | undefined>)[iconName];
+  return candidate ?? BookOpen;
+}
+
+function colorNameForCard(card: Card): string {
+  return tagValue(card.tags, "color_") ?? "neutral";
 }
 
 function normalizeTag(tag: string): string {
@@ -1274,7 +1272,9 @@ export function App() {
                 {favoriteCards.map((card) => (
                   <button
                     key={card.id}
-                    className={`favorite-chip ${colorClassForCard(card)}`}
+                    className="favorite-chip"
+                    data-color={colorNameForCard(card)}
+                    data-icon={iconNameForCard(card) ?? ""}
                     onClick={() => openCard(card.id, { trail: [card.id] })}
                   >
                     {card.title}
@@ -1374,7 +1374,9 @@ export function App() {
                     return (
                       <li key={card.id}>
                         <button
-                          className={`browse-card ${colorClassForCard(card)}`}
+                          className="browse-card"
+                          data-color={colorNameForCard(card)}
+                          data-icon={iconNameForCard(card) ?? ""}
                           onClick={() => openCard(card.id, { trail: [card.id] })}
                         >
                           <div className="browse-card-head">
@@ -1389,7 +1391,7 @@ export function App() {
                 </ul>
               ) : (
                 <div className="card-stack">
-                  {stackCards.slice(0, -1).map((card, index) => (
+              {stackCards.slice(0, -1).map((card, index) => (
                     <button
                       key={card.id}
                       className="stack-peek"
@@ -1405,19 +1407,31 @@ export function App() {
                   ))}
 
                   <article className="active-card-sheet">
-                    <div className="detail-header">
-                      <div>
-                        <h2>{currentCard.title}</h2>
-                      </div>
-                      <button
-                        className={`favorite-toggle ${
-                          overlay.favorites.includes(currentCard.id) ? "active" : ""
-                        }`}
-                        onClick={() => toggleFavorite(currentCard.id)}
-                      >
-                        <Heart size={16} />
-                      </button>
-                    </div>
+                    {(() => {
+                      const Icon = iconForCard(currentCard);
+                      return (
+                        <div
+                          className="active-card-titlebar"
+                          data-color={colorNameForCard(currentCard)}
+                          data-icon={iconNameForCard(currentCard) ?? ""}
+                        >
+                          <div className="active-card-titlebar-row">
+                            <div className="active-card-titlebar-inner">
+                              <Icon size={20} />
+                              <h2>{currentCard.title}</h2>
+                            </div>
+                            <button
+                              className={`favorite-toggle ${
+                                overlay.favorites.includes(currentCard.id) ? "active" : ""
+                              }`}
+                              onClick={() => toggleFavorite(currentCard.id)}
+                            >
+                              <Heart size={16} />
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })()}
 
                     {hasOverview ? (
                       <article className="card-copy card-overview">
@@ -1436,7 +1450,12 @@ export function App() {
                         <div className="child-list">
                           {visibleChildren.map((childId) => {
                             const child = base.cards[childId];
-                            return child ? (
+                            if (!child) {
+                              return null;
+                            }
+
+                            const Icon = iconForCard(child);
+                            return (
                               <button
                                 key={child.id}
                                 className="child-link"
@@ -1447,10 +1466,13 @@ export function App() {
                                   })
                                 }
                               >
-                                <span>{child.title}</span>
+                                <span className="link-with-icon">
+                                  <Icon size={16} />
+                                  <span>{child.title}</span>
+                                </span>
                                 <ChevronRight size={16} />
                               </button>
-                            ) : null;
+                            );
                           })}
                         </div>
                       </div>
@@ -1462,19 +1484,28 @@ export function App() {
                         <div className="chip-row">
                           {visibleRelated.map((relatedId) => {
                             const related = base.cards[relatedId];
-                            return related ? (
+                            if (!related) {
+                              return null;
+                            }
+
+                            const Icon = iconForCard(related);
+                            return (
                               <button
                                 key={related.id}
                                 className="context-chip subtle"
+                                data-color={colorNameForCard(related)}
                                 onClick={() =>
                                   openCard(related.id, {
                                     trail: buildNextTrail(trailIds, related.id)
                                   })
                                 }
                               >
-                                {related.title}
+                                <span className="link-with-icon">
+                                  <Icon size={14} />
+                                  <span>{related.title}</span>
+                                </span>
                               </button>
-                            ) : null;
+                            );
                           })}
                         </div>
                       </div>
@@ -1486,19 +1517,28 @@ export function App() {
                         <div className="chip-row">
                           {visibleParents.map((parentId) => {
                             const parent = base.cards[parentId];
-                            return parent ? (
+                            if (!parent) {
+                              return null;
+                            }
+
+                            const Icon = iconForCard(parent);
+                            return (
                               <button
                                 key={parent.id}
                                 className="context-chip subtle"
+                                data-color={colorNameForCard(parent)}
                                 onClick={() =>
                                   openCard(parent.id, {
                                     trail: buildNextTrail(trailIds, parent.id)
                                   })
                                 }
                               >
-                                {parent.title}
+                                <span className="link-with-icon">
+                                  <Icon size={14} />
+                                  <span>{parent.title}</span>
+                                </span>
                               </button>
-                            ) : null;
+                            );
                           })}
                         </div>
                       </div>

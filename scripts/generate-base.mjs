@@ -10,8 +10,8 @@ const outline = JSON.parse(fs.readFileSync(outlinePath, "utf8"));
 
 const rootConfig = {
   "Session Architecture": {
-    color: "color_sand",
-    icon: "icon_git_branch",
+    color: "color_rose",
+    icon: "icon_graduation_cap",
     discipline: "discipline_integrated",
   },
   Breathwork: {
@@ -20,8 +20,8 @@ const rootConfig = {
     discipline: "discipline_breathwork",
   },
   "Breathwork Protocols": {
-    color: "color_teal",
-    icon: "icon_activity",
+    color: "color_blue",
+    icon: "icon_wind",
     discipline: "discipline_breathwork",
   },
   Meditation: {
@@ -35,18 +35,18 @@ const rootConfig = {
     discipline: "discipline_deep_rest",
   },
   "Preparatory & Support Practices": {
-    color: "color_amber",
-    icon: "icon_compass",
+    color: "color_rose",
+    icon: "icon_graduation_cap",
     discipline: "discipline_integrated",
   },
   "Full Practice Formats": {
     color: "color_rose",
-    icon: "icon_layers_3",
+    icon: "icon_graduation_cap",
     discipline: "discipline_integrated",
   },
   "Concept Cards": {
     color: "color_slate",
-    icon: "icon_book_open",
+    icon: "icon_compass",
     discipline: "discipline_integrated",
   },
 };
@@ -664,31 +664,69 @@ function removeParent(childId, parentId) {
   cards[childId].parents = cards[childId].parents.filter((id) => id !== parentId);
 }
 
-ensureSyntheticCard("from-stress-to-rest", "From Stress to Rest", "color_sand", "icon_sunrise");
+function replaceTagGroup(card, prefix, replacement) {
+  card.tags = card.tags.filter((tag) => !tag.startsWith(prefix));
+  if (replacement) {
+    uniquePush(card.tags, replacement);
+  }
+}
+
+function getEffectiveRootId(cardId, rootIdSet, cache = new Map()) {
+  if (cache.has(cardId)) {
+    return cache.get(cardId);
+  }
+
+  if (rootIdSet.has(cardId)) {
+    cache.set(cardId, cardId);
+    return cardId;
+  }
+
+  const card = cards[cardId];
+  if (!card) {
+    cache.set(cardId, null);
+    return null;
+  }
+
+  for (const parentId of card.parents) {
+    if (!parentId) {
+      continue;
+    }
+    const resolved = getEffectiveRootId(parentId, rootIdSet, cache);
+    if (resolved) {
+      cache.set(cardId, resolved);
+      return resolved;
+    }
+  }
+
+  cache.set(cardId, null);
+  return null;
+}
+
+ensureSyntheticCard("from-stress-to-rest", "From Stress to Rest", "color_amber", "icon_sunrise");
 ensureSyntheticCard(
   "opening-invitation",
   "Opening Invitation",
-  "color_sand",
+  "color_amber",
   "icon_sparkles",
 );
 ensureSyntheticCard(
   "integration-teaching-methods",
   "Integration & Teaching Methods",
   "color_rose",
-  "icon_layers_3",
+  "icon_graduation_cap",
 );
 ensureSyntheticCard(
   "principles-of-guidance",
   "Principles of Guidance",
   "color_slate",
-  "icon_book_open",
+  "icon_compass",
 );
-ensureSyntheticCard("session-structure", "Session Structure", "color_sand", "icon_git_branch");
-ensureSyntheticCard("session-frameworks", "Session Frameworks", "color_sand", "icon_panels_top_left");
+ensureSyntheticCard("session-structure", "Session Structure", "color_rose", "icon_graduation_cap");
+ensureSyntheticCard("session-frameworks", "Session Frameworks", "color_rose", "icon_graduation_cap");
 ensureSyntheticCard("deep-rest-principles", "Deep Rest Principles", "color_emerald", "icon_bed_double");
-ensureSyntheticCard("deep-rest-practices", "Deep Rest Practices", "color_emerald", "icon_moon");
-ensureSyntheticCard("guiding-principles", "Guiding Principles", "color_slate", "icon_book_open");
-ensureSyntheticCard("reference-views", "Reference Views", "color_slate", "icon_network");
+ensureSyntheticCard("deep-rest-practices", "Deep Rest Practices", "color_emerald", "icon_bed_double");
+ensureSyntheticCard("guiding-principles", "Guiding Principles", "color_slate", "icon_compass");
+ensureSyntheticCard("reference-views", "Reference Views", "color_slate", "icon_compass");
 
 setChildren("from-stress-to-rest", [
   "core-practice-concepts",
@@ -878,6 +916,29 @@ const rootIds = [
   "integration-teaching-methods",
   "principles-of-guidance",
 ];
+
+const rootVisuals = {
+  "from-stress-to-rest": { color: "color_amber", icon: "icon_sunrise" },
+  breathwork: { color: "color_blue", icon: "icon_wind" },
+  meditation: { color: "color_indigo", icon: "icon_moon_star" },
+  "deep-rest": { color: "color_emerald", icon: "icon_bed_double" },
+  "integration-teaching-methods": { color: "color_rose", icon: "icon_graduation_cap" },
+  "principles-of-guidance": { color: "color_slate", icon: "icon_compass" },
+};
+
+const rootIdSet = new Set(rootIds);
+const rootResolutionCache = new Map();
+
+for (const card of Object.values(cards)) {
+  const effectiveRootId = getEffectiveRootId(card.id, rootIdSet, rootResolutionCache);
+  const visuals = rootVisuals[effectiveRootId];
+  if (!visuals) {
+    continue;
+  }
+
+  replaceTagGroup(card, "icon_", visuals.icon);
+  replaceTagGroup(card, "color_", visuals.color);
+}
 
 const base = {
   rootIds,

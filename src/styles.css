@@ -648,6 +648,10 @@ textarea {
   gap: 0.6rem;
 }
 
+.browse-card-head {
+  gap: 0.55rem;
+}
+
 .section-head h2,
 .section-head h3,
 .detail-header h2,
@@ -853,18 +857,45 @@ textarea {
   scroll-margin-top: 12rem;
 }
 
-.detail-header {
-  align-items: start;
+.active-card-titlebar {
+  margin: -0.95rem -1rem 0;
+  padding: 1rem 1rem 0.95rem;
+  border-bottom: 1px solid rgba(31, 42, 39, 0.08);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
-.detail-header h2 {
+.active-card-titlebar-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.active-card-titlebar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.active-card-titlebar h2 {
+  margin: 0;
   font-size: clamp(1.8rem, 4vw, 2.4rem);
   line-height: 1.08;
+}
+
+.detail-header {
+  align-items: start;
 }
 
 .favorite-toggle.active {
   background: #dc5c6c;
   color: white;
+}
+
+.active-card-titlebar .favorite-toggle {
+  border: 1px solid rgba(31, 42, 39, 0.14);
+  background: rgba(255, 255, 255, 0.82);
 }
 
 .card-copy {
@@ -924,6 +955,46 @@ textarea {
   padding: 0.35rem 0.55rem;
 }
 
+.context-chip.subtle[data-color="blue"] {
+  border: 1px solid rgba(56, 124, 181, 0.18);
+  background: rgba(231, 241, 249, 0.8);
+}
+
+.context-chip.subtle[data-color="indigo"] {
+  border: 1px solid rgba(94, 93, 185, 0.18);
+  background: rgba(236, 237, 252, 0.82);
+}
+
+.context-chip.subtle[data-color="amber"] {
+  border: 1px solid rgba(191, 141, 45, 0.18);
+  background: rgba(251, 245, 220, 0.84);
+}
+
+.context-chip.subtle[data-color="emerald"] {
+  border: 1px solid rgba(52, 145, 114, 0.18);
+  background: rgba(232, 247, 239, 0.82);
+}
+
+.context-chip.subtle[data-color="rose"] {
+  border: 1px solid rgba(186, 98, 112, 0.17);
+  background: rgba(252, 236, 239, 0.8);
+}
+
+.context-chip.subtle[data-color="slate"] {
+  border: 1px solid rgba(97, 112, 122, 0.18);
+  background: rgba(238, 242, 245, 0.84);
+}
+
+.context-chip.subtle[data-color="sand"] {
+  border: 1px solid rgba(176, 140, 87, 0.18);
+  background: rgba(249, 243, 230, 0.8);
+}
+
+.context-chip.subtle[data-color="green"] {
+  border: 1px solid rgba(74, 142, 113, 0.18);
+  background: rgba(231, 245, 238, 0.8);
+}
+
 .child-list {
   display: grid;
   gap: 0;
@@ -949,6 +1020,12 @@ textarea {
 .child-link span {
   font-weight: 600;
   font-family: "Avenir Next", "Segoe UI", sans-serif;
+}
+
+.link-with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
 }
 
 .tag-input-shell {
@@ -1036,28 +1113,60 @@ textarea {
   color: #52645d;
 }
 
-.tone-blue {
+.browse-card[data-color="blue"],
+.favorite-chip[data-color="blue"],
+.active-card-titlebar[data-color="blue"] {
   border-color: rgba(56, 124, 181, 0.25);
   background: rgba(231, 241, 249, 0.85);
 }
 
-.tone-sand {
-  border-color: rgba(176, 140, 87, 0.25);
-  background: rgba(249, 243, 230, 0.85);
+.browse-card[data-color="indigo"],
+.favorite-chip[data-color="indigo"],
+.active-card-titlebar[data-color="indigo"] {
+  border-color: rgba(94, 93, 185, 0.24);
+  background: rgba(236, 237, 252, 0.9);
 }
 
-.tone-green {
-  border-color: rgba(74, 142, 113, 0.25);
-  background: rgba(231, 245, 238, 0.85);
+.browse-card[data-color="amber"],
+.favorite-chip[data-color="amber"],
+.active-card-titlebar[data-color="amber"] {
+  border-color: rgba(191, 141, 45, 0.24);
+  background: rgba(251, 245, 220, 0.92);
 }
 
-.tone-rose {
+.browse-card[data-color="emerald"],
+.favorite-chip[data-color="emerald"],
+.active-card-titlebar[data-color="emerald"] {
+  border-color: rgba(52, 145, 114, 0.24);
+  background: rgba(232, 247, 239, 0.9);
+}
+
+.browse-card[data-color="rose"],
+.favorite-chip[data-color="rose"],
+.active-card-titlebar[data-color="rose"] {
   border-color: rgba(186, 98, 112, 0.2);
   background: rgba(252, 236, 239, 0.85);
 }
 
-.tone-neutral {
-  border-color: rgba(23, 53, 47, 0.12);
+.browse-card[data-color="slate"],
+.favorite-chip[data-color="slate"],
+.active-card-titlebar[data-color="slate"] {
+  border-color: rgba(97, 112, 122, 0.22);
+  background: rgba(238, 242, 245, 0.92);
+}
+
+.browse-card[data-color="sand"],
+.favorite-chip[data-color="sand"],
+.active-card-titlebar[data-color="sand"] {
+  border-color: rgba(176, 140, 87, 0.25);
+  background: rgba(249, 243, 230, 0.85);
+}
+
+.browse-card[data-color="green"],
+.favorite-chip[data-color="green"],
+.active-card-titlebar[data-color="green"] {
+  border-color: rgba(74, 142, 113, 0.25);
+  background: rgba(231, 245, 238, 0.85);
 }
 
 @media (min-width: 900px) {
