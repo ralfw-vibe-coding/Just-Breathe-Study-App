@@ -963,9 +963,19 @@ export function App() {
         ) : null}
       </section>
 
-      <section className="content-grid">
-        {isProfileOpen ? (
-          <section className="panel detail-panel full-width">
+      {isProfileOpen ? (
+        <div
+          className="overlay-backdrop"
+          onClick={() => {
+            setIsProfileOpen(false);
+            setProfileError(null);
+            setUsernameDraft(profile.username);
+          }}
+        >
+          <section
+            className="panel profile-dialog"
+            onClick={(event) => event.stopPropagation()}
+          >
             <div className="section-head">
               <button className="section-title-button" type="button">
                 Profile
@@ -1003,7 +1013,10 @@ export function App() {
               </div>
             </form>
           </section>
-        ) : null}
+        </div>
+      ) : null}
+
+      <section className="content-grid">
         <section className="panel detail-panel full-width" ref={detailSectionRef}>
           <div className="section-head">
             <button

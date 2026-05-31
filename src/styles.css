@@ -390,6 +390,26 @@ textarea {
   gap: 1rem;
 }
 
+.overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(244, 240, 231, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+.profile-dialog {
+  width: min(100%, 28rem);
+}
+
+.profile-form {
+  display: grid;
+  gap: 1rem;
+}
+
 .full-width {
   width: 100%;
 }
