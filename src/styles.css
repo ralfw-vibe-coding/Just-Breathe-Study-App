@@ -190,7 +190,8 @@ textarea {
   min-width: 0;
 }
 
-.header-nav {
+.header-nav,
+.workspace-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -203,6 +204,7 @@ textarea {
   align-items: center;
   gap: 0.55rem;
   flex-wrap: wrap;
+  min-width: 0;
 }
 
 .workspace-tab {

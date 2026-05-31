@@ -1142,29 +1142,28 @@ export function App() {
             ) : null}
           </div>
         </div>
-        <div className="workspace-tabs">
-          <button
-            className={`workspace-tab ${
-              activeWorkspace === "knowledge" ? "active" : ""
-            }`}
-            onClick={() => setActiveWorkspace("knowledge")}
-            type="button"
-          >
-            <BookOpen size={16} />
-            <span>Knowledge Base</span>
-          </button>
-          <button
-            className={`workspace-tab ${activeWorkspace === "chat" ? "active" : ""}`}
-            onClick={() => setActiveWorkspace("chat")}
-            type="button"
-          >
-            <MessageSquare size={16} />
-            <span>Chat</span>
-          </button>
-        </div>
-        {activeWorkspace === "knowledge" ? (
-          <div className="header-nav">
-            <div className="nav-title-spacer" />
+        <div className="workspace-row">
+          <div className="workspace-tabs">
+            <button
+              className={`workspace-tab ${
+                activeWorkspace === "knowledge" ? "active" : ""
+              }`}
+              onClick={() => setActiveWorkspace("knowledge")}
+              type="button"
+            >
+              <BookOpen size={16} />
+              <span>Knowledge Base</span>
+            </button>
+            <button
+              className={`workspace-tab ${activeWorkspace === "chat" ? "active" : ""}`}
+              onClick={() => setActiveWorkspace("chat")}
+              type="button"
+            >
+              <MessageSquare size={16} />
+              <span>Chat</span>
+            </button>
+          </div>
+          {activeWorkspace === "knowledge" ? (
             <div className="header-actions">
               <button
                 className="ghost-button nav-button"
@@ -1218,8 +1217,8 @@ export function App() {
                 <ArrowRight size={16} />
               </button>
             </div>
-          </div>
-        ) : null}
+          ) : null}
+        </div>
       </header>
 
       {isProfileOpen ? (
