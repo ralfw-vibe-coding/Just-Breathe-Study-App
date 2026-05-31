@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   ArrowLeft,
   ArrowRight,
+  ArrowUp,
   BookOpen,
   ChevronDown,
   ChevronUp,
@@ -11,7 +12,7 @@ import {
   History,
   Heart,
   MessageSquare,
-  Plus,
+  MessageSquarePlus,
   Search,
   Tag,
   Trash2,
@@ -38,6 +39,12 @@ type ViewState = {
   trail: string[];
 };
 type WorkspaceTab = "knowledge" | "chat";
+
+type MarkdownNode =
+  | { type: "heading"; level: number; text: string }
+  | { type: "paragraph"; text: string }
+  | { type: "unordered-list"; items: string[] }
+  | { type: "ordered-list"; items: string[] };
 
 const apiClient = new ApiClient();
 
@@ -152,6 +159,173 @@ function parseStoredChat(value: string | null): ChatMessage[] {
   } catch {
     return [];
   }
+}
+
+function renderInlineMarkdown(text: string): React.ReactNode[] {
+  const nodes: React.ReactNode[] = [];
+  const pattern =
+    /(\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|\*\*([^*]+)\*\*|__([^_]+)__|_([^_]+)_|\*([^*]+)\*)/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = pattern.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push(text.slice(lastIndex, match.index));
+    }
+
+    if (match[2] && match[3]) {
+      nodes.push(
+        <a
+          key={`${match.index}-link`}
+          href={match[3]}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {match[2]}
+        </a>
+      );
+    } else if (match[4]) {
+      nodes.push(<strong key={`${match.index}-strong`}>{match[4]}</strong>);
+    } else if (match[5]) {
+      nodes.push(<u key={`${match.index}-underline`}>{match[5]}</u>);
+    } else if (match[6]) {
+      nodes.push(<em key={`${match.index}-italic1`}>{match[6]}</em>);
+    } else if (match[7]) {
+      nodes.push(<em key={`${match.index}-italic2`}>{match[7]}</em>);
+    }
+
+    lastIndex = pattern.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    nodes.push(text.slice(lastIndex));
+  }
+
+  return nodes;
+}
+
+function parseMarkdown(content: string): MarkdownNode[] {
+  const lines = content.split(/\r?\n/);
+  const nodes: MarkdownNode[] = [];
+  let index = 0;
+
+  while (index < lines.length) {
+    const line = lines[index]!.trimEnd();
+    const trimmed = line.trim();
+
+    if (!trimmed) {
+      index += 1;
+      continue;
+    }
+
+    const headingMatch = trimmed.match(/^(#{1,3})\s+(.+)$/);
+    if (headingMatch) {
+      nodes.push({
+        type: "heading",
+        level: headingMatch[1].length,
+        text: headingMatch[2]
+      });
+      index += 1;
+      continue;
+    }
+
+    const unorderedMatch = trimmed.match(/^[-*]\s+(.+)$/);
+    if (unorderedMatch) {
+      const items: string[] = [];
+      while (index < lines.length) {
+        const candidate = lines[index]!.trim();
+        const candidateMatch = candidate.match(/^[-*]\s+(.+)$/);
+        if (!candidateMatch) {
+          break;
+        }
+        items.push(candidateMatch[1]);
+        index += 1;
+      }
+      nodes.push({ type: "unordered-list", items });
+      continue;
+    }
+
+    const orderedMatch = trimmed.match(/^\d+\.\s+(.+)$/);
+    if (orderedMatch) {
+      const items: string[] = [];
+      while (index < lines.length) {
+        const candidate = lines[index]!.trim();
+        const candidateMatch = candidate.match(/^\d+\.\s+(.+)$/);
+        if (!candidateMatch) {
+          break;
+        }
+        items.push(candidateMatch[1]);
+        index += 1;
+      }
+      nodes.push({ type: "ordered-list", items });
+      continue;
+    }
+
+    const paragraphLines = [trimmed];
+    index += 1;
+    while (index < lines.length) {
+      const candidate = lines[index]!.trim();
+      if (
+        !candidate ||
+        /^(#{1,3})\s+/.test(candidate) ||
+        /^[-*]\s+/.test(candidate) ||
+        /^\d+\.\s+/.test(candidate)
+      ) {
+        break;
+      }
+      paragraphLines.push(candidate);
+      index += 1;
+    }
+
+    nodes.push({
+      type: "paragraph",
+      text: paragraphLines.join(" ")
+    });
+  }
+
+  return nodes;
+}
+
+function MarkdownMessage({ content }: { content: string }) {
+  const nodes = useMemo(() => parseMarkdown(content), [content]);
+
+  return (
+    <div className="markdown-copy">
+      {nodes.map((node, index) => {
+        if (node.type === "heading") {
+          if (node.level === 1) {
+            return <h1 key={index}>{renderInlineMarkdown(node.text)}</h1>;
+          }
+          if (node.level === 2) {
+            return <h2 key={index}>{renderInlineMarkdown(node.text)}</h2>;
+          }
+          return <h3 key={index}>{renderInlineMarkdown(node.text)}</h3>;
+        }
+
+        if (node.type === "unordered-list") {
+          return (
+            <ul key={index}>
+              {node.items.map((item, itemIndex) => (
+                <li key={itemIndex}>{renderInlineMarkdown(item)}</li>
+              ))}
+            </ul>
+          );
+        }
+
+        if (node.type === "ordered-list") {
+          return (
+            <ol key={index}>
+              {node.items.map((item, itemIndex) => (
+                <li key={itemIndex}>{renderInlineMarkdown(item)}</li>
+              ))}
+            </ol>
+          );
+        }
+
+        return <p key={index}>{renderInlineMarkdown(node.text)}</p>;
+      })}
+    </div>
+  );
 }
 
 function useRetryingBackgroundSave(overlay: OverlayPayload | null) {
@@ -380,6 +554,7 @@ export function App() {
   const [chatDraft, setChatDraft] = useState("");
   const [chatError, setChatError] = useState<string | null>(null);
   const [isChatting, setIsChatting] = useState(false);
+  const [copiedMessageId, setCopiedMessageId] = useState<string | null>(null);
   const [backStack, setBackStack] = useState<ViewState[]>([]);
   const [forwardStack, setForwardStack] = useState<ViewState[]>([]);
   const noteSaveTimer = useRef<number | null>(null);
@@ -791,9 +966,13 @@ export function App() {
     }
   }
 
-  async function copyText(value: string) {
+  async function copyText(messageId: string, value: string) {
     try {
       await navigator.clipboard.writeText(value);
+      setCopiedMessageId(messageId);
+      window.setTimeout(() => {
+        setCopiedMessageId((current) => (current === messageId ? null : current));
+      }, 900);
     } catch {
       // Ignore clipboard failures for now.
     }
@@ -1388,13 +1567,20 @@ export function App() {
         </>
       ) : (
         <section className="panel chat-panel">
+          <div className="chat-intro">
+            <p>Ask about breathwork, meditation, deep rest, sequencing, or how to guide a practice.</p>
+          </div>
           <div className="section-head chat-head">
             <button className="section-title-button" type="button">
               Chat with the Just Breathe Training Material
             </button>
-            <button className="secondary-button chat-reset-button" onClick={handleNewChat}>
-              <Plus size={16} />
-              <span>New chat</span>
+            <button
+              className="secondary-button chat-reset-button icon-only"
+              onClick={handleNewChat}
+              aria-label="Start new chat"
+              title="New chat"
+            >
+              <MessageSquarePlus size={15} />
             </button>
           </div>
 
@@ -1410,15 +1596,17 @@ export function App() {
                       {message.role === "user" ? profile.username : "Just Breathe Chatbot"}
                     </span>
                     <button
-                      className="chat-copy-button"
-                      onClick={() => void copyText(message.content)}
+                      className={`chat-copy-button ${
+                        copiedMessageId === message.id ? "copied" : ""
+                      }`}
+                      onClick={() => void copyText(message.id, message.content)}
                       aria-label="Copy message"
                     >
                       <Copy size={14} />
                     </button>
                   </div>
                   <div className="chat-bubble">
-                    <p>{message.content}</p>
+                    <MarkdownMessage content={message.content} />
                   </div>
                 </article>
               ))}
@@ -1436,32 +1624,35 @@ export function App() {
             </div>
           ) : (
             <div className="chat-empty-state">
-              <p>Ask about breathwork, meditation, deep rest, sequencing, or how to guide a practice.</p>
+              <p>Start a conversation below.</p>
             </div>
           )}
 
           {chatError ? <p className="form-error chat-error">{chatError}</p> : null}
 
           <form className="chat-composer" onSubmit={handleSendChatMessage}>
-            <textarea
-              className="chat-input"
-              value={chatDraft}
-              onChange={(event) => setChatDraft(event.target.value)}
-              placeholder="Ask the Just Breathe Coach..."
-              onKeyDown={(event) => {
-                if (event.key === "Enter" && !event.shiftKey) {
-                  event.preventDefault();
-                  void sendCurrentChatMessage();
-                }
-              }}
-            />
-            <button
-              className="primary-button chat-send-button"
-              disabled={!chatDraft.trim() || isChatting}
-              type="submit"
-            >
-              {isChatting ? "Sending..." : "Send"}
-            </button>
+            <div className="chat-composer-row">
+              <textarea
+                className="chat-input"
+                value={chatDraft}
+                onChange={(event) => setChatDraft(event.target.value)}
+                placeholder="Ask the Just Breathe Coach..."
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" && !event.shiftKey) {
+                    event.preventDefault();
+                    void sendCurrentChatMessage();
+                  }
+                }}
+              />
+              <button
+                className="chat-send-button"
+                disabled={!chatDraft.trim() || isChatting}
+                type="submit"
+                aria-label={isChatting ? "Sending" : "Send"}
+              >
+                <ArrowUp size={16} />
+              </button>
+            </div>
           </form>
         </section>
       )}

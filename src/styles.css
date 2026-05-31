@@ -421,11 +421,23 @@ textarea {
   align-items: center;
 }
 
+.chat-intro p {
+  margin: 0;
+  color: #57645f;
+}
+
 .chat-reset-button {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
   flex: none;
+}
+
+.chat-reset-button.icon-only {
+  width: 2.3rem;
+  height: 2.3rem;
+  padding: 0;
+  justify-content: center;
 }
 
 .chat-thread {
@@ -457,7 +469,7 @@ textarea {
 }
 
 .chat-message-meta {
-  width: min(100%, 44rem);
+  width: min(82%, 40rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -476,10 +488,21 @@ textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  border-radius: 999px;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.chat-copy-button.copied {
+  background: rgba(74, 142, 113, 0.14);
+  color: #2f6b53;
+  transform: scale(1.08);
 }
 
 .chat-bubble {
-  width: min(100%, 44rem);
+  width: min(82%, 40rem);
   padding: 0.85rem 1rem;
   border-radius: 16px;
   border: 1px solid rgba(31, 42, 39, 0.1);
@@ -499,6 +522,48 @@ textarea {
   white-space: pre-wrap;
 }
 
+.markdown-copy {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.markdown-copy h1,
+.markdown-copy h2,
+.markdown-copy h3,
+.markdown-copy p,
+.markdown-copy ul,
+.markdown-copy ol {
+  margin: 0;
+}
+
+.markdown-copy h1,
+.markdown-copy h2,
+.markdown-copy h3 {
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  line-height: 1.2;
+}
+
+.markdown-copy h1 {
+  font-size: 1.2rem;
+}
+
+.markdown-copy h2 {
+  font-size: 1.08rem;
+}
+
+.markdown-copy h3 {
+  font-size: 1rem;
+}
+
+.markdown-copy ul,
+.markdown-copy ol {
+  padding-left: 1.25rem;
+}
+
+.markdown-copy a {
+  color: #215f90;
+}
+
 .chat-composer {
   display: grid;
   gap: 0.75rem;
@@ -506,14 +571,33 @@ textarea {
   border-top: 1px solid rgba(31, 42, 39, 0.08);
 }
 
+.chat-composer-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 0.65rem;
+}
+
 .chat-input {
-  min-height: 5.5rem;
+  min-height: 4.5rem;
   line-height: 1.6;
 }
 
 .chat-send-button {
-  justify-self: end;
-  min-width: 7.5rem;
+  width: 2.7rem;
+  height: 2.7rem;
+  border: 1px solid rgba(31, 42, 39, 0.12);
+  border-radius: 999px;
+  background: rgba(31, 42, 39, 0.07);
+  color: #243934;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-send-button:disabled {
+  opacity: 0.45;
+  cursor: default;
 }
 
 .chat-error {
