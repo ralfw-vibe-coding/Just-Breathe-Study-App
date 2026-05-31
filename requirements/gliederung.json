@@ -1,0 +1,321 @@
+[
+  {
+    "title": "Session Architecture",
+    "children": [
+      { "title": "Universal Practice Framework" },
+      { "title": "Opening Sequence" },
+      { "title": "Closing Sequence" },
+      { "title": "Breathwork Session Framework" },
+      { "title": "Meditation Session Framework" },
+      { "title": "Integration / Recovery / Stillness" }
+    ]
+  },
+  {
+    "title": "Breathwork",
+    "children": [
+      {
+        "title": "Breathwork Foundations",
+        "children": [
+          { "title": "Functional Breath Awareness" },
+          { "title": "Systematic Breathwork" },
+          { "title": "Experiential Breathwork" },
+          { "title": "Nervous System Recognition" },
+          { "title": "Nervous System Regulation" },
+          { "title": "Nervous System Release" }
+        ]
+      },
+      {
+        "title": "Breath Concepts",
+        "children": [
+          { "title": "Anatomy of the Breath" },
+          { "title": "Respiratory System" },
+          { "title": "Nervous System" },
+          { "title": "Mouth vs. Nose Breathing" },
+          { "title": "4-Part Breathing Architecture" },
+          { "title": "Active / Passive / Recovery Breathing" },
+          { "title": "Voluntary vs. Involuntary Breath" },
+          { "title": "Quality / Quantity / Capacity Axis" },
+          { "title": "Diaphragmatic / Thoracic / Clavicular Breathing" },
+          { "title": "Down Regulation / Up Regulation" }
+        ]
+      },
+      {
+        "title": "Breathwork Techniques",
+        "children": [
+          {
+            "title": "Functional Breathing & Breath Awareness",
+            "children": [
+              { "title": "Conscious Breath" },
+              { "title": "Recovery Breath" },
+              { "title": "Diaphragmatic Breathing" },
+              { "title": "Costal Breath / Chest Breathing" },
+              { "title": "Clavicular Breath / Upper Chest Breathing" },
+              { "title": "Even Breath" },
+              { "title": "360 Breathing" },
+              { "title": "Coherent Breath" },
+              { "title": "365 Method" }
+            ]
+          },
+          {
+            "title": "Balanced Breathing",
+            "children": [
+              { "title": "Box Breathing" },
+              { "title": "Inspired Pause" },
+              { "title": "Alternate Nostril Breathing" },
+              { "title": "3-Part Inhale / Exhale" }
+            ]
+          },
+          {
+            "title": "Down Regulation",
+            "children": [
+              { "title": "Physiological Sigh" },
+              { "title": "Extended Exhale" },
+              { "title": "Triangle Breathing" },
+              { "title": "Triangle 4-7-8" },
+              { "title": "3-Part Breathing" },
+              { "title": "Pinhole Breath" },
+              { "title": "Low Frequency Humming Breath" },
+              { "title": "Humming Breath" },
+              { "title": "3-Part Interrupted Exhale" },
+              { "title": "Circular Nostril Breathing — Cooling & Calming" },
+              { "title": "Cooling Breath Variation 1" },
+              { "title": "Cooling Breath Variation 2" },
+              { "title": "Opposite Alternate Nostril Breathing — Exhale" }
+            ]
+          },
+          {
+            "title": "Up Regulation",
+            "children": [
+              { "title": "Energising Breath" },
+              { "title": "Cleansing & Clearing Breath" },
+              { "title": "Bellows Breath" },
+              { "title": "Lion’s Breath" },
+              { "title": "3-Part Interrupted Inhale" },
+              { "title": "Circular Nostril Breathing — Warming & Energising" },
+              { "title": "Opposite Alternate Nostril Breathing — Inhale" },
+              { "title": "Elephant Breath" },
+              { "title": "Breath of Joy" },
+              { "title": "Horse Stance Breathing" },
+              { "title": "Squatted Belly" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Breathwork Protocols",
+    "children": [
+      { "title": "NSRT Method" },
+      {
+        "title": "NSRT Protocols",
+        "children": [
+          {
+            "title": "Balanced",
+            "children": [
+              { "title": "CTS — Circle / Triangle / Square" },
+              { "title": "360° IPA" }
+            ]
+          },
+          {
+            "title": "Down Regulation",
+            "children": [
+              { "title": "PXC" },
+              { "title": "XLT" }
+            ]
+          },
+          {
+            "title": "Up Regulation",
+            "children": [
+              { "title": "E3J" },
+              { "title": "3CC" }
+            ]
+          },
+          {
+            "title": "Restorative",
+            "children": [
+              { "title": "3XV" },
+              { "title": "CAP" }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "ABC123 Method & Practice Sequences",
+        "children": [
+          { "title": "Balancing - The Power of the Pause" },
+          { "title": "Calming - Release and Reset" },
+          { "title": "Softening - A Gentle Unwinding" },
+          { "title": "Cleansing & Clearing - Making Space" },
+          { "title": "Inspiring & Uplifting - Inviting the Inhale" },
+          { "title": "Grounding - Expanding the Exhale" },
+          { "title": "Stimulating - Rise & Energise" },
+          { "title": "Empowering - Awakening the Breath" }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Meditation",
+    "children": [
+      {
+        "title": "Meditation Foundations",
+        "children": [
+          { "title": "The Thinking Mind" },
+          { "title": "Witness State" },
+          { "title": "Non-doing" },
+          { "title": "Awareness" },
+          { "title": "Attention" },
+          { "title": "Intention" }
+        ]
+      },
+      {
+        "title": "Meditation Techniques / 3 Depths of Practice",
+        "children": [
+          {
+            "title": "Established in Being",
+            "children": [
+              { "title": "Being Technique" },
+              { "title": "Just Breathe Meditation" },
+              { "title": "Being Mantra Meditation" },
+              { "title": "Mantra Practice" },
+              { "title": "Stillness / Non-doing Practice" }
+            ]
+          },
+          {
+            "title": "Present Moment Awareness",
+            "children": [
+              { "title": "Body Scan" },
+              { "title": "Five Senses" },
+              { "title": "Five Bodies / Koshas" },
+              { "title": "Trataka / Focused Gaze" },
+              { "title": "Watching the Breath" },
+              { "title": "Breath Awareness" },
+              { "title": "Open Monitoring" },
+              { "title": "Witness State Practice" }
+            ]
+          },
+          {
+            "title": "Focused Intention",
+            "children": [
+              { "title": "Loving Kindness / Metta Bhavana" },
+              { "title": "Ajapa-Japa" },
+              { "title": "Visualisation" },
+              { "title": "Guided Meditation / Intention-led Meditation" },
+              { "title": "Mantras" },
+              { "title": "Affirmations" }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Meditation Concepts",
+        "children": [
+          { "title": "6 Phases of Non-doing" },
+          { "title": "Acknowledge, don’t indulge" },
+          { "title": "There is no such thing as a bad meditation" }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Deep Rest",
+    "children": [
+      { "title": "Deep Rest Foundations" },
+      { "title": "Conscious Unwinding" },
+      { "title": "Resting Position / Supported Practice" },
+      { "title": "Stillness" },
+      { "title": "Integration" }
+    ]
+  },
+  {
+    "title": "Preparatory & Support Practices",
+    "children": [
+      {
+        "title": "Movement Preparation",
+        "children": [
+          { "title": "Daily 5" },
+          { "title": "Gentle 10" }
+        ]
+      },
+      { "title": "Nervous System Reset" },
+      { "title": "Direct Response Tools" },
+      { "title": "Awareness Exercises" },
+      { "title": "Practice Setup" }
+    ]
+  },
+  {
+    "title": "Full Practice Formats",
+    "children": [
+      {
+        "title": "Signature Practices",
+        "children": [
+          { "title": "Exhale" },
+          { "title": "Full Unwinding" }
+        ]
+      },
+      {
+        "title": "Full Session Combinations",
+        "children": [
+          { "title": "Breathwork + Meditation + Deep Rest" },
+          { "title": "Gentle 10 + Exhale" },
+          { "title": "Meditation + Deep Rest" },
+          { "title": "NSRT + Meditation + Stillness" }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Concept Cards",
+    "children": [
+      {
+        "title": "Core Practice Concepts",
+        "children": [
+          { "title": "Just Breathe Method" },
+          { "title": "Quiet Practices" },
+          { "title": "Time well spent" },
+          { "title": "Close your eyes, be still, just breathe" },
+          { "title": "3 Gratitudes" },
+          { "title": "Notice what you notice, feel what you feel" }
+        ]
+      },
+      {
+        "title": "Stress & Rest Concepts",
+        "children": [
+          { "title": "S.T.R.E.S.S." },
+          { "title": "The Big Six" },
+          { "title": "R.E.S.T." },
+          { "title": "Stress Container" },
+          { "title": "Stress Signature" },
+          { "title": "Stimulus → Response Gap" },
+          { "title": "5 Pillars of Well-being" }
+        ]
+      },
+      {
+        "title": "Breathwork Concepts",
+        "children": [
+          { "title": "Functional / Systematic / Experiential Breathwork" },
+          { "title": "Nervous System Recognition / Regulation / Release" },
+          { "title": "Direct Response / Gradual Response" },
+          { "title": "Down Regulation / Up Regulation" },
+          { "title": "Quality / Quantity / Capacity Axis" },
+          { "title": "4-Part Breathing Architecture" },
+          { "title": "Active / Passive / Recovery Breathing" }
+        ]
+      },
+      {
+        "title": "Meditation Concepts",
+        "children": [
+          { "title": "3 Depths of Practice" },
+          { "title": "Established in Being" },
+          { "title": "Present Moment Awareness" },
+          { "title": "Focused Intention" },
+          { "title": "Witness State" },
+          { "title": "Being Technique" },
+          { "title": "6 Phases of Non-doing" }
+        ]
+      },
+      { "title": "Guidance Concepts" }
+    ]
+  }
+]
