@@ -7,8 +7,11 @@ import {
   ChevronDown,
   ChevronUp,
   ChevronRight,
+  Copy,
   History,
   Heart,
+  MessageSquare,
+  Plus,
   Search,
   Tag,
   Trash2,
@@ -18,6 +21,7 @@ import {
 } from "lucide-react";
 import type {
   Card,
+  ChatMessage,
   KnowledgeBase,
   OverlayPayload,
   UserProfile
@@ -33,6 +37,7 @@ type ViewState = {
   parentId: string | null;
   trail: string[];
 };
+type WorkspaceTab = "knowledge" | "chat";
 
 const apiClient = new ApiClient();
 
@@ -114,6 +119,39 @@ function sameView(left: ViewState, right: ViewState): boolean {
     left.parentId === right.parentId &&
     left.trail.join(",") === right.trail.join(",")
   );
+}
+
+function chatStorageKey(userId: string): string {
+  return `jbsapp.chat.${userId}`;
+}
+
+function parseStoredChat(value: string | null): ChatMessage[] {
+  if (!value) {
+    return [];
+  }
+
+  try {
+    const parsed = JSON.parse(value) as unknown;
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+
+    return parsed.filter((entry): entry is ChatMessage => {
+      if (!entry || typeof entry !== "object") {
+        return false;
+      }
+
+      const message = entry as Partial<ChatMessage>;
+      return (
+        typeof message.id === "string" &&
+        (message.role === "user" || message.role === "assistant") &&
+        typeof message.content === "string" &&
+        typeof message.createdAt === "string"
+      );
+    });
+  } catch {
+    return [];
+  }
 }
 
 function useRetryingBackgroundSave(overlay: OverlayPayload | null) {
@@ -330,6 +368,7 @@ export function App() {
   const [newTag, setNewTag] = useState("");
   const [draftNote, setDraftNote] = useState("");
   const [activeTagFilters, setActiveTagFilters] = useState<string[]>([]);
+  const [activeWorkspace, setActiveWorkspace] = useState<WorkspaceTab>("knowledge");
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isHistoryMenuOpen, setIsHistoryMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -337,11 +376,16 @@ export function App() {
   const [profileError, setProfileError] = useState<string | null>(null);
   const [isSavingProfile, setIsSavingProfile] = useState(false);
   const [isSearchResultsOpen, setIsSearchResultsOpen] = useState(true);
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
+  const [chatDraft, setChatDraft] = useState("");
+  const [chatError, setChatError] = useState<string | null>(null);
+  const [isChatting, setIsChatting] = useState(false);
   const [backStack, setBackStack] = useState<ViewState[]>([]);
   const [forwardStack, setForwardStack] = useState<ViewState[]>([]);
   const noteSaveTimer = useRef<number | null>(null);
   const detailSectionRef = useRef<HTMLElement | null>(null);
   const userMenuRef = useRef<HTMLDivElement | null>(null);
+  const chatBottomRef = useRef<HTMLDivElement | null>(null);
 
   const { saveStatus, persist } = useRetryingBackgroundSave(overlay);
 
@@ -385,7 +429,7 @@ export function App() {
   }, [currentCard, overlay]);
 
   useEffect(() => {
-    if (!currentCard || !detailSectionRef.current) {
+    if (activeWorkspace !== "knowledge" || !currentCard || !detailSectionRef.current) {
       return;
     }
 
@@ -393,13 +437,41 @@ export function App() {
       behavior: "smooth",
       block: "start"
     });
-  }, [currentCardId]);
+  }, [activeWorkspace, currentCardId]);
 
   useEffect(() => {
     if (profile) {
       setUsernameDraft(profile.username);
     }
   }, [profile]);
+
+  useEffect(() => {
+    if (!profile) {
+      setChatMessages([]);
+      return;
+    }
+
+    setChatMessages(parseStoredChat(window.localStorage.getItem(chatStorageKey(profile.id))));
+  }, [profile]);
+
+  useEffect(() => {
+    if (!profile) {
+      return;
+    }
+
+    window.localStorage.setItem(
+      chatStorageKey(profile.id),
+      JSON.stringify(chatMessages)
+    );
+  }, [chatMessages, profile]);
+
+  useEffect(() => {
+    if (activeWorkspace !== "chat") {
+      return;
+    }
+
+    chatBottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [activeWorkspace, chatMessages, isChatting]);
 
   useEffect(() => {
     function handlePointerDown(event: MouseEvent) {
@@ -679,6 +751,11 @@ export function App() {
     setBase(null);
     setOverlay(null);
     setProfile(null);
+    setActiveWorkspace("knowledge");
+    setChatMessages([]);
+    setChatDraft("");
+    setChatError(null);
+    setIsChatting(false);
     setBackStack([]);
     setForwardStack([]);
     setActiveTagFilters([]);
@@ -712,6 +789,62 @@ export function App() {
     } finally {
       setIsSavingProfile(false);
     }
+  }
+
+  async function copyText(value: string) {
+    try {
+      await navigator.clipboard.writeText(value);
+    } catch {
+      // Ignore clipboard failures for now.
+    }
+  }
+
+  function handleNewChat() {
+    setChatMessages([]);
+    setChatDraft("");
+    setChatError(null);
+
+    if (profile) {
+      window.localStorage.removeItem(chatStorageKey(profile.id));
+    }
+  }
+
+  async function sendCurrentChatMessage() {
+    const content = chatDraft.trim();
+    if (!content || isChatting) {
+      return;
+    }
+
+    const nextUserMessage: ChatMessage = {
+      id: crypto.randomUUID(),
+      role: "user",
+      content,
+      createdAt: new Date().toISOString()
+    };
+
+    const nextConversation = [...chatMessages, nextUserMessage];
+    setChatMessages(nextConversation);
+    setChatDraft("");
+    setChatError(null);
+    setIsChatting(true);
+
+    try {
+      const { message } = await apiClient.chat(nextConversation);
+      setChatMessages((current) => [...current, message]);
+    } catch (chatRequestError) {
+      setChatError(
+        chatRequestError instanceof Error
+          ? chatRequestError.message
+          : "Chat request failed."
+      );
+    } finally {
+      setIsChatting(false);
+    }
+  }
+
+  async function handleSendChatMessage(event: React.FormEvent) {
+    event.preventDefault();
+    await sendCurrentChatMessage();
   }
 
   if (authState === "loading") {
@@ -815,153 +948,85 @@ export function App() {
             ) : null}
           </div>
         </div>
-        <div className="header-nav">
-          <div className="nav-title-spacer" />
-          <div className="header-actions">
-            <button
-              className="ghost-button nav-button"
-              disabled={!backTarget}
-              onClick={() => goBackInApp()}
-            >
-              <ArrowLeft size={16} />
-              <span>{titleForView(backTarget)}</span>
-            </button>
-            <div className="history-menu-wrap">
-              <button
-                className="ghost-button history-button"
-                onClick={() => setIsHistoryMenuOpen((value) => !value)}
-              >
-                <History size={16} />
-              </button>
-              {isHistoryMenuOpen ? (
-                <div className="history-menu">
-                  <div className="history-menu-head">
-                    <strong>History</strong>
-                    <button
-                      className="history-clear-button"
-                      onClick={() => clearHistory()}
-                      aria-label="Clear history"
-                    >
-                      <Trash2 size={14} />
-                    </button>
-                  </div>
-                  <div className="history-list">
-                    {historyEntries.map((entry, index) => (
-                      <button
-                        key={`${entry.cardId ?? "home"}-${index}`}
-                        className={`history-item ${
-                          sameView(entry, currentView) ? "current" : ""
-                        }`}
-                        onClick={() => jumpToHistoryView(entry)}
-                      >
-                        {titleForView(entry)}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-            </div>
-            <button
-              className="ghost-button nav-button"
-              disabled={!forwardTarget}
-              onClick={() => goForwardInApp()}
-            >
-              <span>{titleForView(forwardTarget)}</span>
-              <ArrowRight size={16} />
-            </button>
-          </div>
+        <div className="workspace-tabs">
+          <button
+            className={`workspace-tab ${
+              activeWorkspace === "knowledge" ? "active" : ""
+            }`}
+            onClick={() => setActiveWorkspace("knowledge")}
+            type="button"
+          >
+            <BookOpen size={16} />
+            <span>Knowledge Base</span>
+          </button>
+          <button
+            className={`workspace-tab ${activeWorkspace === "chat" ? "active" : ""}`}
+            onClick={() => setActiveWorkspace("chat")}
+            type="button"
+          >
+            <MessageSquare size={16} />
+            <span>Chat</span>
+          </button>
         </div>
-      </header>
-
-      {favoriteCards.length ? (
-        <section className="panel favorites-panel">
-          <div className="section-head">
-            <Heart size={16} />
-            <button className="section-title-button" type="button">
-              Favorites
-            </button>
-          </div>
-          <div className="chip-row">
-            {favoriteCards.map((card) => (
+        {activeWorkspace === "knowledge" ? (
+          <div className="header-nav">
+            <div className="nav-title-spacer" />
+            <div className="header-actions">
               <button
-                key={card.id}
-                className={`favorite-chip ${colorClassForCard(card)}`}
-                onClick={() => openCard(card.id, { trail: [card.id] })}
+                className="ghost-button nav-button"
+                disabled={!backTarget}
+                onClick={() => goBackInApp()}
               >
-                {card.title}
+                <ArrowLeft size={16} />
+                <span>{titleForView(backTarget)}</span>
               </button>
-            ))}
-          </div>
-        </section>
-      ) : null}
-
-      <section className="panel search-panel">
-        <div className="search-row">
-          <Search size={16} />
-          <input
-            className="search-input plain"
-            placeholder="Search cards..."
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-          />
-          {search ? (
-            <button
-              className="search-clear-button"
-              onClick={() => setSearch("")}
-              aria-label="Clear search"
-            >
-              <X size={14} />
-            </button>
-          ) : null}
-        </div>
-        {tagSuggestions.length ? (
-          <div className="search-tag-filters">
-            {tagSuggestions.map((tag) => (
-              <button
-                key={tag}
-                className={`filter-chip ${
-                  activeTagFilters.includes(tag) ? "active" : ""
-                }`}
-                onClick={() => toggleTagFilter(tag)}
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
-        ) : null}
-        {hasSearchContext ? (
-          <div className="search-results-toggle-row">
-            <button
-              className="search-results-toggle"
-              onClick={() => setIsSearchResultsOpen((value) => !value)}
-            >
-              {isSearchResultsOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-              <span>
-                {isSearchResultsOpen ? "Hide search results" : "Show search results"}
-              </span>
-            </button>
-          </div>
-        ) : null}
-        {hasSearchContext && isSearchResultsOpen ? (
-          <ul className="result-list">
-            {searchResults.map((card) => (
-              <li key={card.id}>
+              <div className="history-menu-wrap">
                 <button
-                  className="result-button"
-                  onClick={() => {
-                    setIsSearchResultsOpen(false);
-                    openCard(card.id, { trail: [card.id] });
-                  }}
+                  className="ghost-button history-button"
+                  onClick={() => setIsHistoryMenuOpen((value) => !value)}
                 >
-                  <strong>{card.title}</strong>
-                  <span>{card.overview}</span>
+                  <History size={16} />
                 </button>
-              </li>
-            ))}
-            {!searchResults.length ? <li className="muted">No matching cards.</li> : null}
-          </ul>
+                {isHistoryMenuOpen ? (
+                  <div className="history-menu">
+                    <div className="history-menu-head">
+                      <strong>History</strong>
+                      <button
+                        className="history-clear-button"
+                        onClick={() => clearHistory()}
+                        aria-label="Clear history"
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    </div>
+                    <div className="history-list">
+                      {historyEntries.map((entry, index) => (
+                        <button
+                          key={`${entry.cardId ?? "home"}-${index}`}
+                          className={`history-item ${
+                            sameView(entry, currentView) ? "current" : ""
+                          }`}
+                          onClick={() => jumpToHistoryView(entry)}
+                        >
+                          {titleForView(entry)}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+              <button
+                className="ghost-button nav-button"
+                disabled={!forwardTarget}
+                onClick={() => goForwardInApp()}
+              >
+                <span>{titleForView(forwardTarget)}</span>
+                <ArrowRight size={16} />
+              </button>
+            </div>
+          </div>
         ) : null}
-      </section>
+      </header>
 
       {isProfileOpen ? (
         <div
@@ -1016,227 +1081,390 @@ export function App() {
         </div>
       ) : null}
 
-      <section className="content-grid">
-        <section className="panel detail-panel full-width" ref={detailSectionRef}>
-          <div className="section-head">
-            <button
-              className="section-icon-button"
-              onClick={() => goHome()}
-              aria-label="Show root cards"
-            >
-              <BookOpen size={16} />
+      {activeWorkspace === "knowledge" ? (
+        <>
+          {favoriteCards.length ? (
+            <section className="panel favorites-panel">
+              <div className="section-head">
+                <Heart size={16} />
+                <button className="section-title-button" type="button">
+                  Favorites
+                </button>
+              </div>
+              <div className="chip-row">
+                {favoriteCards.map((card) => (
+                  <button
+                    key={card.id}
+                    className={`favorite-chip ${colorClassForCard(card)}`}
+                    onClick={() => openCard(card.id, { trail: [card.id] })}
+                  >
+                    {card.title}
+                  </button>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          <section className="panel search-panel">
+            <div className="search-row">
+              <Search size={16} />
+              <input
+                className="search-input plain"
+                placeholder="Search cards..."
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+              />
+              {search ? (
+                <button
+                  className="search-clear-button"
+                  onClick={() => setSearch("")}
+                  aria-label="Clear search"
+                >
+                  <X size={14} />
+                </button>
+              ) : null}
+            </div>
+            {tagSuggestions.length ? (
+              <div className="search-tag-filters">
+                {tagSuggestions.map((tag) => (
+                  <button
+                    key={tag}
+                    className={`filter-chip ${
+                      activeTagFilters.includes(tag) ? "active" : ""
+                    }`}
+                    onClick={() => toggleTagFilter(tag)}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            ) : null}
+            {hasSearchContext ? (
+              <div className="search-results-toggle-row">
+                <button
+                  className="search-results-toggle"
+                  onClick={() => setIsSearchResultsOpen((value) => !value)}
+                >
+                  {isSearchResultsOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                  <span>
+                    {isSearchResultsOpen ? "Hide search results" : "Show search results"}
+                  </span>
+                </button>
+              </div>
+            ) : null}
+            {hasSearchContext && isSearchResultsOpen ? (
+              <ul className="result-list">
+                {searchResults.map((card) => (
+                  <li key={card.id}>
+                    <button
+                      className="result-button"
+                      onClick={() => {
+                        setIsSearchResultsOpen(false);
+                        openCard(card.id, { trail: [card.id] });
+                      }}
+                    >
+                      <strong>{card.title}</strong>
+                      <span>{card.overview}</span>
+                    </button>
+                  </li>
+                ))}
+                {!searchResults.length ? <li className="muted">No matching cards.</li> : null}
+              </ul>
+            ) : null}
+          </section>
+
+          <section className="content-grid">
+            <section className="panel detail-panel full-width" ref={detailSectionRef}>
+              <div className="section-head">
+                <button
+                  className="section-icon-button"
+                  onClick={() => goHome()}
+                  aria-label="Show root cards"
+                >
+                  <BookOpen size={16} />
+                </button>
+                <button className="section-title-button" onClick={() => goHome()}>
+                  Just Breathe Knowledge Base
+                </button>
+              </div>
+
+              {!currentCard || stackCards.length === 0 ? (
+                <ul className="card-list">
+                  {roots.map((card) => {
+                    const Icon = iconForCard(card);
+                    return (
+                      <li key={card.id}>
+                        <button
+                          className={`browse-card ${colorClassForCard(card)}`}
+                          onClick={() => openCard(card.id, { trail: [card.id] })}
+                        >
+                          <div className="browse-card-head">
+                            <Icon size={18} />
+                            <span>{card.title}</span>
+                          </div>
+                          <p>{card.overview}</p>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : (
+                <div className="card-stack">
+                  {stackCards.slice(0, -1).map((card, index) => (
+                    <button
+                      key={card.id}
+                      className="stack-peek"
+                      onClick={() =>
+                        openCard(card.id, {
+                          parentId: index > 0 ? stackCards[index - 1]!.id : null,
+                          trail: stackCards.slice(0, index + 1).map((entry) => entry.id)
+                        })
+                      }
+                    >
+                      <span>{card.title}</span>
+                    </button>
+                  ))}
+
+                  <article className="active-card-sheet">
+                    <div className="detail-header">
+                      <div>
+                        <h2>{currentCard.title}</h2>
+                      </div>
+                      <button
+                        className={`favorite-toggle ${
+                          overlay.favorites.includes(currentCard.id) ? "active" : ""
+                        }`}
+                        onClick={() => toggleFavorite(currentCard.id)}
+                      >
+                        <Heart size={16} />
+                      </button>
+                    </div>
+
+                    {hasOverview ? (
+                      <article className="card-copy card-overview">
+                        <p>{currentCard.overview}</p>
+                      </article>
+                    ) : null}
+
+                    {hasDetails ? (
+                      <article className="card-copy card-details">
+                        <p>{currentCard.details}</p>
+                      </article>
+                    ) : null}
+
+                    {visibleChildren.length ? (
+                      <div className="context-block context-block-primary">
+                        <div className="child-list">
+                          {visibleChildren.map((childId) => {
+                            const child = base.cards[childId];
+                            return child ? (
+                              <button
+                                key={child.id}
+                                className="child-link"
+                                onClick={() =>
+                                  openCard(child.id, {
+                                    parentId: currentCard.id,
+                                    trail: buildNextTrail(trailIds, child.id)
+                                  })
+                                }
+                              >
+                                <span>{child.title}</span>
+                                <ChevronRight size={16} />
+                              </button>
+                            ) : null;
+                          })}
+                        </div>
+                      </div>
+                    ) : null}
+
+                    {visibleRelated.length ? (
+                      <div className="context-block context-block-secondary">
+                        <h3>Related</h3>
+                        <div className="chip-row">
+                          {visibleRelated.map((relatedId) => {
+                            const related = base.cards[relatedId];
+                            return related ? (
+                              <button
+                                key={related.id}
+                                className="context-chip subtle"
+                                onClick={() =>
+                                  openCard(related.id, {
+                                    trail: buildNextTrail(trailIds, related.id)
+                                  })
+                                }
+                              >
+                                {related.title}
+                              </button>
+                            ) : null;
+                          })}
+                        </div>
+                      </div>
+                    ) : null}
+
+                    {visibleParents.length ? (
+                      <div className="context-block context-block-secondary">
+                        <h3>Parents</h3>
+                        <div className="chip-row">
+                          {visibleParents.map((parentId) => {
+                            const parent = base.cards[parentId];
+                            return parent ? (
+                              <button
+                                key={parent.id}
+                                className="context-chip subtle"
+                                onClick={() =>
+                                  openCard(parent.id, {
+                                    trail: buildNextTrail(trailIds, parent.id)
+                                  })
+                                }
+                              >
+                                {parent.title}
+                              </button>
+                            ) : null;
+                          })}
+                        </div>
+                      </div>
+                    ) : null}
+
+                    <div className="context-block">
+                      <div className="tag-input-shell">
+                        <div className="tag-input-head">
+                          <Tag size={16} />
+                        </div>
+                        <div className="tag-editor">
+                          <div className="tag-chip-wrap">
+                            {activeTags.map((tag) => (
+                              <span key={tag} className="user-tag">
+                                {tag}
+                                <button onClick={() => removeTag(currentCard.id, tag)}>×</button>
+                              </span>
+                            ))}
+                          </div>
+                          <input
+                            list="tag-suggestions"
+                            placeholder="Add a tag"
+                            value={newTag}
+                            onChange={(event) => setNewTag(event.target.value)}
+                            onKeyDown={(event) => {
+                              if (event.key === "Enter") {
+                                event.preventDefault();
+                                submitTag(currentCard.id);
+                              }
+                            }}
+                          />
+                        </div>
+                        <datalist id="tag-suggestions">
+                          {tagSuggestions.map((tag) => (
+                            <option key={tag} value={tag} />
+                          ))}
+                        </datalist>
+                      </div>
+                    </div>
+
+                    <div className="context-block">
+                      <h3>Your notes</h3>
+                      <textarea
+                        className="note-textarea"
+                        value={draftNote}
+                        onChange={(event) => {
+                          const note = event.target.value;
+                          setDraftNote(note);
+                          queueNoteSave(currentCard.id, note);
+                        }}
+                        placeholder="Write your note for this card..."
+                      />
+                    </div>
+                  </article>
+                </div>
+              )}
+
+              <footer className="save-footer">
+                <span>Favorites: {saveStatus.favorites}</span>
+                <span>Tags: {saveStatus.tags}</span>
+                <span>Notes: {saveStatus.notes}</span>
+                {error ? <span>{error}</span> : null}
+              </footer>
+            </section>
+          </section>
+        </>
+      ) : (
+        <section className="panel chat-panel">
+          <div className="section-head chat-head">
+            <button className="section-title-button" type="button">
+              Chat with the Just Breathe Training Material
             </button>
-            <button className="section-title-button" onClick={() => goHome()}>
-              Just Breathe Knowledge Base
+            <button className="secondary-button chat-reset-button" onClick={handleNewChat}>
+              <Plus size={16} />
+              <span>New chat</span>
             </button>
           </div>
 
-          {!currentCard || stackCards.length === 0 ? (
-            <ul className="card-list">
-              {roots.map((card) => {
-                const Icon = iconForCard(card);
-                return (
-                  <li key={card.id}>
+          {chatMessages.length ? (
+            <div className="chat-thread">
+              {chatMessages.map((message) => (
+                <article
+                  key={message.id}
+                  className={`chat-message ${message.role === "user" ? "user" : "assistant"}`}
+                >
+                  <div className="chat-message-meta">
+                    <span>
+                      {message.role === "user" ? profile.username : "Just Breathe Chatbot"}
+                    </span>
                     <button
-                      className={`browse-card ${colorClassForCard(card)}`}
-                      onClick={() => openCard(card.id, { trail: [card.id] })}
+                      className="chat-copy-button"
+                      onClick={() => void copyText(message.content)}
+                      aria-label="Copy message"
                     >
-                      <div className="browse-card-head">
-                        <Icon size={18} />
-                        <span>{card.title}</span>
-                      </div>
-                      <p>{card.overview}</p>
+                      <Copy size={14} />
                     </button>
-                  </li>
-                );
-              })}
-            </ul>
-          ) : (
-            <div className="card-stack">
-              {stackCards.slice(0, -1).map((card, index) => (
-                <button
-                  key={card.id}
-                  className="stack-peek"
-                  onClick={() =>
-                    openCard(card.id, {
-                      parentId: index > 0 ? stackCards[index - 1]!.id : null,
-                      trail: stackCards.slice(0, index + 1).map((entry) => entry.id)
-                    })
-                  }
-                >
-                  <span>{card.title}</span>
-                </button>
+                  </div>
+                  <div className="chat-bubble">
+                    <p>{message.content}</p>
+                  </div>
+                </article>
               ))}
-
-              <article className="active-card-sheet">
-              <div className="detail-header">
-                <div>
-                  <h2>{currentCard.title}</h2>
-                </div>
-                <button
-                  className={`favorite-toggle ${
-                    overlay.favorites.includes(currentCard.id) ? "active" : ""
-                  }`}
-                  onClick={() => toggleFavorite(currentCard.id)}
-                >
-                  <Heart size={16} />
-                </button>
-              </div>
-
-              {hasOverview ? (
-                <article className="card-copy card-overview">
-                  <p>{currentCard.overview}</p>
+              {isChatting ? (
+                <article className="chat-message assistant">
+                  <div className="chat-message-meta">
+                    <span>Just Breathe Chatbot</span>
+                  </div>
+                  <div className="chat-bubble">
+                    <p>Thinking...</p>
+                  </div>
                 </article>
               ) : null}
-
-              {hasDetails ? (
-                <article className="card-copy card-details">
-                  <p>{currentCard.details}</p>
-                </article>
-              ) : null}
-
-              {visibleChildren.length ? (
-                <div className="context-block context-block-primary">
-                  <div className="child-list">
-                    {visibleChildren.map((childId) => {
-                      const child = base.cards[childId];
-                      return child ? (
-                        <button
-                          key={child.id}
-                          className="child-link"
-                          onClick={() =>
-                            openCard(child.id, {
-                              parentId: currentCard.id,
-                              trail: buildNextTrail(
-                                trailIds,
-                                child.id
-                              )
-                            })
-                          }
-                        >
-                          <span>{child.title}</span>
-                          <ChevronRight size={16} />
-                        </button>
-                      ) : null;
-                    })}
-                  </div>
-                </div>
-              ) : null}
-
-              {visibleRelated.length ? (
-                <div className="context-block context-block-secondary">
-                  <h3>Related</h3>
-                  <div className="chip-row">
-                    {visibleRelated.map((relatedId) => {
-                      const related = base.cards[relatedId];
-                      return related ? (
-                        <button
-                          key={related.id}
-                          className="context-chip subtle"
-                          onClick={() =>
-                            openCard(related.id, {
-                              trail: buildNextTrail(
-                                trailIds,
-                                related.id
-                              )
-                            })
-                          }
-                        >
-                          {related.title}
-                        </button>
-                      ) : null;
-                    })}
-                  </div>
-                </div>
-              ) : null}
-
-              {visibleParents.length ? (
-                <div className="context-block context-block-secondary">
-                  <h3>Parents</h3>
-                  <div className="chip-row">
-                    {visibleParents.map((parentId) => {
-                      const parent = base.cards[parentId];
-                      return parent ? (
-                        <button
-                          key={parent.id}
-                          className="context-chip subtle"
-                          onClick={() =>
-                            openCard(parent.id, {
-                              trail: buildNextTrail(
-                                trailIds,
-                                parent.id
-                              )
-                            })
-                          }
-                        >
-                          {parent.title}
-                        </button>
-                      ) : null;
-                    })}
-                  </div>
-                </div>
-              ) : null}
-
-              <div className="context-block">
-                <div className="tag-input-shell">
-                  <div className="tag-input-head">
-                    <Tag size={16} />
-                  </div>
-                  <div className="tag-editor">
-                    <div className="tag-chip-wrap">
-                      {activeTags.map((tag) => (
-                        <span key={tag} className="user-tag">
-                          {tag}
-                          <button onClick={() => removeTag(currentCard.id, tag)}>×</button>
-                        </span>
-                      ))}
-                    </div>
-                    <input
-                      list="tag-suggestions"
-                      placeholder="Add a tag"
-                      value={newTag}
-                      onChange={(event) => setNewTag(event.target.value)}
-                      onKeyDown={(event) => {
-                        if (event.key === "Enter") {
-                          event.preventDefault();
-                          submitTag(currentCard.id);
-                        }
-                      }}
-                    />
-                  </div>
-                  <datalist id="tag-suggestions">
-                    {tagSuggestions.map((tag) => (
-                      <option key={tag} value={tag} />
-                    ))}
-                  </datalist>
-                </div>
-              </div>
-
-              <div className="context-block">
-                <h3>Your notes</h3>
-                <textarea
-                  className="note-textarea"
-                  value={draftNote}
-                  onChange={(event) => {
-                    const note = event.target.value;
-                    setDraftNote(note);
-                    queueNoteSave(currentCard.id, note);
-                  }}
-                  placeholder="Write your note for this card..."
-                />
-              </div>
-              </article>
+              <div ref={chatBottomRef} />
+            </div>
+          ) : (
+            <div className="chat-empty-state">
+              <p>Ask about breathwork, meditation, deep rest, sequencing, or how to guide a practice.</p>
             </div>
           )}
 
-          <footer className="save-footer">
-            <span>Favorites: {saveStatus.favorites}</span>
-            <span>Tags: {saveStatus.tags}</span>
-            <span>Notes: {saveStatus.notes}</span>
-            {error ? <span>{error}</span> : null}
-          </footer>
+          {chatError ? <p className="form-error chat-error">{chatError}</p> : null}
+
+          <form className="chat-composer" onSubmit={handleSendChatMessage}>
+            <textarea
+              className="chat-input"
+              value={chatDraft}
+              onChange={(event) => setChatDraft(event.target.value)}
+              placeholder="Ask the Just Breathe Coach..."
+              onKeyDown={(event) => {
+                if (event.key === "Enter" && !event.shiftKey) {
+                  event.preventDefault();
+                  void sendCurrentChatMessage();
+                }
+              }}
+            />
+            <button
+              className="primary-button chat-send-button"
+              disabled={!chatDraft.trim() || isChatting}
+              type="submit"
+            >
+              {isChatting ? "Sending..." : "Send"}
+            </button>
+          </form>
         </section>
-      </section>
+      )}
     </main>
   );
 }

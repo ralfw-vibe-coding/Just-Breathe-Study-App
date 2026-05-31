@@ -47,3 +47,16 @@ export interface OverlayResponse {
 export interface SessionResponse {
   profile: UserProfile;
 }
+
+export type ChatRole = "user" | "assistant";
+
+export interface ChatMessage {
+  id: string;
+  role: ChatRole;
+  content: string;
+  createdAt: string;
+}
+
+export interface ChatResponse {
+  message: ChatMessage;
+}

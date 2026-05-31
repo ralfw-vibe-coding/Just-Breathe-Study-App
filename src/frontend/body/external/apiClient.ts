@@ -1,4 +1,6 @@
 import type {
+  ChatMessage,
+  ChatResponse,
   KnowledgeBase,
   OverlayResponse,
   SessionResponse
@@ -106,6 +108,13 @@ export class ApiClient {
     await request("/api/overlay-notes", {
       method: "PATCH",
       body: JSON.stringify({ notes })
+    });
+  }
+
+  async chat(messages: ChatMessage[]): Promise<ChatResponse> {
+    return await request<ChatResponse>("/api/chat", {
+      method: "POST",
+      body: JSON.stringify({ messages })
     });
   }
 }
