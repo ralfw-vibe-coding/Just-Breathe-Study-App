@@ -12,6 +12,7 @@ import {
   Copy,
   History,
   Heart,
+  Link2,
   MessageSquare,
   MessageSquarePlus,
   NotebookPen,
@@ -561,6 +562,7 @@ export function App() {
   const [chatError, setChatError] = useState<string | null>(null);
   const [isChatting, setIsChatting] = useState(false);
   const [copiedMessageId, setCopiedMessageId] = useState<string | null>(null);
+  const [copiedPermalink, setCopiedPermalink] = useState(false);
   const [selectionPrompt, setSelectionPrompt] = useState<TextSelectionPrompt | null>(null);
   const [backStack, setBackStack] = useState<ViewState[]>([]);
   const [forwardStack, setForwardStack] = useState<ViewState[]>([]);
@@ -1071,6 +1073,18 @@ export function App() {
     }
   }
 
+  async function copyPermalink() {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopiedPermalink(true);
+      window.setTimeout(() => {
+        setCopiedPermalink(false);
+      }, 900);
+    } catch {
+      // Ignore clipboard failures for now.
+    }
+  }
+
   function handleNewChat() {
     setChatMessages([]);
     setChatDraft("");
@@ -1574,6 +1588,16 @@ export function App() {
                                   <Sparkles size={16} />
                                 </button>
                               ) : null}
+                              <button
+                                className={`favorite-toggle ${
+                                  copiedPermalink ? "copied-link" : ""
+                                }`}
+                                type="button"
+                                onClick={() => void copyPermalink()}
+                                aria-label="Copy permalink"
+                              >
+                                <Link2 size={16} />
+                              </button>
                               <button
                                 className={`favorite-toggle ${
                                   overlay.favorites.includes(currentCard.id) ? "active" : ""
