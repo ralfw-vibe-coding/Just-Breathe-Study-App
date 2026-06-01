@@ -43,6 +43,11 @@ type ViewState = {
   trail: string[];
 };
 type WorkspaceTab = "knowledge" | "chat";
+type TextSelectionPrompt = {
+  text: string;
+  x: number;
+  y: number;
+};
 
 type MarkdownNode =
   | { type: "heading"; level: number; text: string }
@@ -556,10 +561,12 @@ export function App() {
   const [chatError, setChatError] = useState<string | null>(null);
   const [isChatting, setIsChatting] = useState(false);
   const [copiedMessageId, setCopiedMessageId] = useState<string | null>(null);
+  const [selectionPrompt, setSelectionPrompt] = useState<TextSelectionPrompt | null>(null);
   const [backStack, setBackStack] = useState<ViewState[]>([]);
   const [forwardStack, setForwardStack] = useState<ViewState[]>([]);
   const noteSaveTimer = useRef<number | null>(null);
   const detailSectionRef = useRef<HTMLElement | null>(null);
+  const cardReadableRef = useRef<HTMLElement | null>(null);
   const userMenuRef = useRef<HTMLDivElement | null>(null);
   const historyMenuRef = useRef<HTMLDivElement | null>(null);
   const chatBottomRef = useRef<HTMLDivElement | null>(null);
@@ -649,6 +656,79 @@ export function App() {
 
     chatBottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [activeWorkspace, chatMessages, isChatting]);
+
+  useEffect(() => {
+    if (activeWorkspace !== "knowledge" || !currentCard) {
+      setSelectionPrompt(null);
+      return;
+    }
+
+    function updateSelectionPrompt() {
+      const selection = window.getSelection();
+      if (!selection || selection.rangeCount === 0 || selection.isCollapsed) {
+        setSelectionPrompt(null);
+        return;
+      }
+
+      const text = selection.toString().trim();
+      if (!text) {
+        setSelectionPrompt(null);
+        return;
+      }
+
+      const anchorNode = selection.anchorNode;
+      const focusNode = selection.focusNode;
+      if (!anchorNode || !focusNode) {
+        setSelectionPrompt(null);
+        return;
+      }
+
+      const container = cardReadableRef.current;
+      if (!container || !container.contains(anchorNode) || !container.contains(focusNode)) {
+        setSelectionPrompt(null);
+        return;
+      }
+
+      const rect = selection.getRangeAt(0).getBoundingClientRect();
+      if (!rect.width && !rect.height) {
+        setSelectionPrompt(null);
+        return;
+      }
+
+      setSelectionPrompt({
+        text,
+        x: Math.min(window.innerWidth - 52, Math.max(12, rect.right - 18)),
+        y: Math.max(12, rect.top - 44)
+      });
+    }
+
+    function clearOnPointerDown(event: PointerEvent) {
+      const target = event.target;
+      if (!(target instanceof Node)) {
+        return;
+      }
+
+      if ((target as HTMLElement).closest(".selection-ai-trigger")) {
+        return;
+      }
+
+      if (!cardReadableRef.current?.contains(target)) {
+        setSelectionPrompt(null);
+      }
+    }
+
+    document.addEventListener("selectionchange", updateSelectionPrompt);
+    window.addEventListener("pointerdown", clearOnPointerDown);
+    window.addEventListener("scroll", updateSelectionPrompt, true);
+    window.addEventListener("resize", updateSelectionPrompt);
+
+    return () => {
+      document.removeEventListener("selectionchange", updateSelectionPrompt);
+      window.removeEventListener("pointerdown", clearOnPointerDown);
+      window.removeEventListener("scroll", updateSelectionPrompt, true);
+      window.removeEventListener("resize", updateSelectionPrompt);
+    };
+  }, [activeWorkspace, currentCard]);
 
   useEffect(() => {
     function handlePointerDown(event: MouseEvent) {
@@ -1055,6 +1135,19 @@ export function App() {
     await sendChatMessage(seededPrompt, { replaceHistory: true });
   }
 
+  async function handleChatFromSelection() {
+    if (!selectionPrompt) {
+      return;
+    }
+
+    const seededPrompt = `I want to know more about this. Start with a short anwser about this: ${selectionPrompt.text}`.trim();
+    setSelectionPrompt(null);
+    window.getSelection()?.removeAllRanges();
+    handleNewChat();
+    setActiveWorkspace("chat");
+    await sendChatMessage(seededPrompt, { replaceHistory: true });
+  }
+
   if (authState === "loading") {
     return <div className="screen-state">Loading JBSapp...</div>;
   }
@@ -1289,6 +1382,19 @@ export function App() {
         </div>
       ) : null}
 
+      {selectionPrompt && activeWorkspace === "knowledge" ? (
+        <button
+          className="selection-ai-trigger"
+          type="button"
+          style={{ left: `${selectionPrompt.x}px`, top: `${selectionPrompt.y}px` }}
+          onMouseDown={(event) => event.preventDefault()}
+          onClick={() => void handleChatFromSelection()}
+          aria-label="Ask AI about selected text"
+        >
+          <Sparkles size={15} />
+        </button>
+      ) : null}
+
       {activeWorkspace === "knowledge" ? (
         <>
           {favoriteCards.length ? (
@@ -1443,7 +1549,7 @@ export function App() {
                     </button>
                   ))}
 
-                  <article className="active-card-sheet">
+                  <article className="active-card-sheet" ref={cardReadableRef}>
                     {(() => {
                       const Icon = iconForCard(currentCard);
                       return (
