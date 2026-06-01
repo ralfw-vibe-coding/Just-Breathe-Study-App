@@ -164,7 +164,7 @@ function parseStoredChat(value: string | null): ChatMessage[] {
 function renderInlineMarkdown(text: string): React.ReactNode[] {
   const nodes: React.ReactNode[] = [];
   const pattern =
-    /(\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|\*\*([^*]+)\*\*|__([^_]+)__|_([^_]+)_|\*([^*]+)\*)/g;
+    /(`([^`]+)`|\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|\*\*([^*]+)\*\*|__([^_]+)__|_([^_]+)_|\*([^*]+)\*)/g;
   let lastIndex = 0;
   let match: RegExpExecArray | null;
 
@@ -173,25 +173,27 @@ function renderInlineMarkdown(text: string): React.ReactNode[] {
       nodes.push(text.slice(lastIndex, match.index));
     }
 
-    if (match[2] && match[3]) {
+    if (match[2]) {
+      nodes.push(<code key={`${match.index}-code`}>{match[2]}</code>);
+    } else if (match[3] && match[4]) {
       nodes.push(
         <a
           key={`${match.index}-link`}
-          href={match[3]}
+          href={match[4]}
           target="_blank"
           rel="noreferrer"
         >
-          {match[2]}
+          {match[3]}
         </a>
       );
-    } else if (match[4]) {
-      nodes.push(<strong key={`${match.index}-strong`}>{match[4]}</strong>);
     } else if (match[5]) {
-      nodes.push(<u key={`${match.index}-underline`}>{match[5]}</u>);
+      nodes.push(<strong key={`${match.index}-strong`}>{match[5]}</strong>);
     } else if (match[6]) {
-      nodes.push(<em key={`${match.index}-italic1`}>{match[6]}</em>);
+      nodes.push(<u key={`${match.index}-underline`}>{match[6]}</u>);
     } else if (match[7]) {
-      nodes.push(<em key={`${match.index}-italic2`}>{match[7]}</em>);
+      nodes.push(<em key={`${match.index}-italic1`}>{match[7]}</em>);
+    } else if (match[8]) {
+      nodes.push(<em key={`${match.index}-italic2`}>{match[8]}</em>);
     }
 
     lastIndex = pattern.lastIndex;
@@ -444,8 +446,7 @@ function LoginScreen({
     <main className="auth-shell">
       <section className="auth-card">
         <div className="brand-lockup">
-          <p className="eyebrow">Just Breathe Study App</p>
-          <h1>JBSapp</h1>
+          <h1>Just Breathe Study App</h1>
           <p className="claim">From novice to instructor in no time!</p>
         </div>
 
@@ -1117,8 +1118,7 @@ export function App() {
       <header className="app-header">
         <div className="header-top">
           <div>
-            <p className="eyebrow">Just Breathe Study App</p>
-            <h1>JBSapp</h1>
+            <h1>Just Breathe Study App</h1>
             <p className="claim">From novice to instructor in no time!</p>
           </div>
           <div className="user-menu-wrap" ref={userMenuRef}>
@@ -1165,15 +1165,15 @@ export function App() {
               type="button"
             >
               <BookOpen size={16} />
-              <span>Knowledge Base</span>
+              <span>KB</span>
             </button>
             <button
               className={`workspace-tab ${activeWorkspace === "chat" ? "active" : ""}`}
               onClick={() => setActiveWorkspace("chat")}
               type="button"
             >
-              <MessageSquare size={16} />
-              <span>Chat</span>
+              <Sparkles size={16} />
+              <span>AI</span>
             </button>
           </div>
           {activeWorkspace === "knowledge" ? (
@@ -1182,9 +1182,9 @@ export function App() {
                 className="ghost-button nav-button"
                 disabled={!backTarget}
                 onClick={() => goBackInApp()}
+                aria-label={backTarget ? `Back to ${titleForView(backTarget)}` : "Back"}
               >
                 <ArrowLeft size={16} />
-                <span>{titleForView(backTarget)}</span>
               </button>
               <div className="history-menu-wrap" ref={historyMenuRef}>
                 <button
@@ -1225,8 +1225,10 @@ export function App() {
                 className="ghost-button nav-button"
                 disabled={!forwardTarget}
                 onClick={() => goForwardInApp()}
+                aria-label={
+                  forwardTarget ? `Forward to ${titleForView(forwardTarget)}` : "Forward"
+                }
               >
-                <span>{titleForView(forwardTarget)}</span>
                 <ArrowRight size={16} />
               </button>
             </div>
@@ -1398,7 +1400,7 @@ export function App() {
                   <BookOpen size={16} />
                 </button>
                 <button className="section-title-button" onClick={() => goHome()}>
-                  Just Breathe Knowledge Base
+                  Knowledge Base
                 </button>
               </div>
 
@@ -1655,9 +1657,9 @@ export function App() {
       ) : (
         <section className="panel chat-panel">
           <div className="section-head chat-head">
-            <button className="section-title-button" type="button">
-              Chat with the Just Breathe Training Material
-            </button>
+              <button className="section-title-button" type="button">
+                Chat with Course Material
+              </button>
             <button
               className="secondary-button chat-reset-button icon-only"
               onClick={handleNewChat}
@@ -1707,9 +1709,7 @@ export function App() {
               <div ref={chatBottomRef} />
             </div>
           ) : (
-            <div className="chat-empty-state">
-              <p>Start a conversation below.</p>
-            </div>
+            <div className="chat-empty-state" />
           )}
 
           {chatError ? <p className="form-error chat-error">{chatError}</p> : null}
