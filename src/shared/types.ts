@@ -60,3 +60,72 @@ export interface ChatMessage {
 export interface ChatResponse {
   message: ChatMessage;
 }
+
+export interface AppConfig {
+  features: {
+    sessions: boolean;
+  };
+}
+
+export type SessionVoice = "male" | "female";
+
+export interface SessionPlanInput {
+  description: string;
+  voice: SessionVoice;
+}
+
+export interface SessionScript {
+  title: string;
+  voice: SessionVoice;
+  script: string;
+}
+
+export interface SessionPlanResponse {
+  session: SessionScript;
+}
+
+export interface SessionAudioInput {
+  text: string;
+  voice: SessionVoice;
+}
+
+export interface SessionAudioResponse {
+  audioBase64: string;
+  mimeType: string;
+}
+
+export interface SessionAudioStartInput {
+  jobId: string;
+  text: string;
+  voice: SessionVoice;
+}
+
+export type SessionAudioJobStatus = "generating" | "ready" | "failed";
+
+export interface SessionAudioJob {
+  jobId: string;
+  status: SessionAudioJobStatus;
+  progress: number;
+  logs: string[];
+  error: string | null;
+  audioBase64?: string;
+  mimeType?: string;
+}
+
+export interface SessionAudioJobResponse {
+  job: SessionAudioJob | null;
+}
+
+export interface PreparedSession {
+  title: string;
+  voice: SessionVoice;
+  preparedAt: string;
+  sourceDescription: string;
+  narrationText: string;
+  audioDataUrl?: string;
+  audioJobId?: string;
+  audioJobStatus?: SessionAudioJobStatus;
+  audioJobProgress?: number;
+  audioJobLogs?: string[];
+  audioJobError?: string | null;
+}

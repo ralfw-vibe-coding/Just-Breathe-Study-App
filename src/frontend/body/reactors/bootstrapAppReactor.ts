@@ -1,7 +1,8 @@
-import type { KnowledgeBase, OverlayResponse } from "../../../shared/types";
+import type { AppConfig, KnowledgeBase, OverlayResponse } from "../../../shared/types";
 import { ApiClient } from "../external/apiClient";
 
 export interface BootstrapState {
+  config: AppConfig;
   base: KnowledgeBase;
   overlay: OverlayResponse;
 }
@@ -10,6 +11,17 @@ export class BootstrapAppReactor {
   constructor(private readonly apiClient: ApiClient) {}
 
   async process(): Promise<BootstrapState> {
+    let config: AppConfig;
+    try {
+      config = await this.apiClient.getAppConfig();
+    } catch (error) {
+      throw new Error(
+        `Loading app configuration failed: ${
+          error instanceof Error ? error.message : "unknown error"
+        }`
+      );
+    }
+
     let base: KnowledgeBase;
     try {
       base = await this.apiClient.getBase();
@@ -32,6 +44,6 @@ export class BootstrapAppReactor {
       );
     }
 
-    return { base, overlay };
+    return { config, base, overlay };
   }
 }

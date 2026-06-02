@@ -41,5 +41,20 @@ export async function ensureSchema(): Promise<void> {
     );
   `);
 
+  await pool.query(`
+    create table if not exists session_audio_jobs (
+      user_id uuid primary key references app_users(id) on delete cascade,
+      job_id uuid not null,
+      status text not null,
+      progress integer not null default 0,
+      logs_json jsonb not null default '[]'::jsonb,
+      error text,
+      audio_base64 text,
+      mime_type text,
+      created_at timestamptz not null default now(),
+      updated_at timestamptz not null default now()
+    );
+  `);
+
   ensured = true;
 }

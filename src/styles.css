@@ -19,6 +19,7 @@ body {
 
 button,
 input,
+select,
 textarea {
   font: inherit;
 }
@@ -101,6 +102,7 @@ button {
 }
 
 input,
+select,
 textarea {
   width: 100%;
   border: 1px solid rgba(31, 42, 39, 0.15);
@@ -402,6 +404,138 @@ textarea {
 
 .favorites-panel {
   margin-bottom: 1rem;
+}
+
+.sessions-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.session-builder,
+.session-player,
+.session-preparation {
+  display: grid;
+  gap: 1rem;
+}
+
+.session-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.7rem;
+}
+
+.session-toggle-chip {
+  border: 1px solid rgba(31, 42, 39, 0.12);
+  border-radius: 999px;
+  background: rgba(31, 42, 39, 0.06);
+  color: #243934;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+
+.session-toggle-chip.active {
+  background: #243934;
+  border-color: #243934;
+  color: #fff;
+}
+
+.session-player-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.session-player-head h2,
+.session-player-head p {
+  margin: 0;
+}
+
+.session-player-head p {
+  color: #62706b;
+}
+
+.session-player-actions {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.session-icon-button {
+  width: 2.3rem;
+  height: 2.3rem;
+  border: 1px solid rgba(31, 42, 39, 0.12);
+  border-radius: 999px;
+  background: rgba(31, 42, 39, 0.07);
+  color: #243934;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.session-icon-button.primary {
+  background: #243934;
+  border-color: #243934;
+  color: #fff;
+}
+
+.session-status-panel {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(31, 42, 39, 0.1);
+  border-radius: 12px;
+  background: rgba(248, 246, 241, 0.92);
+}
+
+.session-raw-text {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid rgba(31, 42, 39, 0.1);
+  border-radius: 12px;
+  background: #fbfaf7;
+  color: #243934;
+  font-size: 0.96rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+}
+
+.session-progress-bar {
+  width: 100%;
+  height: 0.65rem;
+  border-radius: 999px;
+  background: rgba(31, 42, 39, 0.08);
+  overflow: hidden;
+}
+
+.session-progress-bar > div {
+  height: 100%;
+  border-radius: inherit;
+  background: #243934;
+}
+
+.session-log-list,
+.session-step-log {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.session-log-list li,
+.session-step-log li {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.session-step-log li.current {
+  color: #243934;
+  font-weight: 600;
 }
 
 .chat-panel {

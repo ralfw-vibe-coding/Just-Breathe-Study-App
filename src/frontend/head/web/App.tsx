@@ -16,7 +16,10 @@ import {
   MessageSquare,
   MessageSquarePlus,
   NotebookPen,
+  Pause,
+  Play,
   Search,
+  Square,
   Tag,
   Trash2,
   User,
@@ -26,10 +29,13 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type {
+  AppConfig,
   Card,
   ChatMessage,
   KnowledgeBase,
   OverlayPayload,
+  PreparedSession,
+  SessionVoice,
   UserProfile
 } from "../../../shared/types";
 import { ApiClient } from "../../body/external/apiClient";
@@ -43,12 +49,13 @@ type ViewState = {
   parentId: string | null;
   trail: string[];
 };
-type WorkspaceTab = "knowledge" | "chat";
+type WorkspaceTab = "knowledge" | "chat" | "sessions";
 type TextSelectionPrompt = {
   text: string;
   x: number;
   y: number;
 };
+type SessionBuildStatus = "idle" | "planning" | "preparing" | "ready" | "playing" | "paused";
 
 type MarkdownNode =
   | { type: "heading"; level: number; text: string }
@@ -138,6 +145,10 @@ function chatStorageKey(userId: string): string {
   return `jbsapp.chat.${userId}`;
 }
 
+function sessionStorageKey(userId: string): string {
+  return `jbsapp.session.${userId}`;
+}
+
 function parseStoredChat(value: string | null): ChatMessage[] {
   if (!value) {
     return [];
@@ -165,6 +176,82 @@ function parseStoredChat(value: string | null): ChatMessage[] {
   } catch {
     return [];
   }
+}
+
+function parseStoredSession(value: string | null): PreparedSession | null {
+  if (!value) {
+    return null;
+  }
+
+  try {
+    const parsed = JSON.parse(value) as Partial<PreparedSession> | null;
+    if (!parsed || typeof parsed !== "object") {
+      return null;
+    }
+
+    if (
+      typeof parsed.title !== "string" ||
+      (parsed.voice !== "male" && parsed.voice !== "female") ||
+      typeof parsed.preparedAt !== "string" ||
+      typeof parsed.sourceDescription !== "string"
+    ) {
+      return null;
+    }
+
+    return {
+      title: parsed.title,
+      voice: parsed.voice,
+      preparedAt: parsed.preparedAt,
+      sourceDescription: parsed.sourceDescription,
+      narrationText:
+        typeof parsed.narrationText === "string"
+          ? normalizeNarrationText(parsed.narrationText)
+          : ""
+      ,
+      audioDataUrl:
+        typeof parsed.audioDataUrl === "string" && parsed.audioDataUrl.trim()
+          ? parsed.audioDataUrl
+          : undefined,
+      audioJobId:
+        typeof parsed.audioJobId === "string" && parsed.audioJobId.trim()
+          ? parsed.audioJobId
+          : undefined,
+      audioJobStatus:
+        parsed.audioJobStatus === "generating" ||
+        parsed.audioJobStatus === "ready" ||
+        parsed.audioJobStatus === "failed"
+          ? parsed.audioJobStatus
+          : undefined,
+      audioJobProgress:
+        typeof parsed.audioJobProgress === "number" ? parsed.audioJobProgress : undefined,
+      audioJobLogs: Array.isArray(parsed.audioJobLogs)
+        ? parsed.audioJobLogs.filter((entry): entry is string => typeof entry === "string")
+        : undefined,
+      audioJobError:
+        typeof parsed.audioJobError === "string" ? parsed.audioJobError : null
+    };
+  } catch {
+    return null;
+  }
+}
+
+function normalizeNarrationText(text: string): string {
+  return text
+    .replace(/<break\s+time="(\d+)s"\s*\/>/gi, "[Pause for $1s]")
+    .replace(/[ \t]+\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+async function getAudioDurationMs(src: string): Promise<number> {
+  const audio = new Audio(src);
+  await new Promise<void>((resolve, reject) => {
+    audio.preload = "metadata";
+    audio.onloadedmetadata = () => resolve();
+    audio.onerror = () => reject(new Error("Loading audio metadata failed."));
+  });
+
+  return Math.max(500, Math.round(audio.duration * 1000));
 }
 
 function renderInlineMarkdown(text: string): React.ReactNode[] {
@@ -541,6 +628,7 @@ export function App() {
   const [authState, setAuthState] = useState<"loading" | "anon" | "ready">(
     "loading"
   );
+  const [appConfig, setAppConfig] = useState<AppConfig | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [base, setBase] = useState<KnowledgeBase | null>(null);
   const [overlay, setOverlay] = useState<OverlayPayload | null>(null);
@@ -564,6 +652,14 @@ export function App() {
   const [copiedMessageId, setCopiedMessageId] = useState<string | null>(null);
   const [copiedPermalink, setCopiedPermalink] = useState(false);
   const [selectionPrompt, setSelectionPrompt] = useState<TextSelectionPrompt | null>(null);
+  const [sessionDescription, setSessionDescription] = useState("");
+  const [sessionVoice, setSessionVoice] = useState<SessionVoice>("female");
+  const [sessionShouldGenerateAudio, setSessionShouldGenerateAudio] = useState(true);
+  const [sessionStatus, setSessionStatus] = useState<SessionBuildStatus>("idle");
+  const [sessionLogs, setSessionLogs] = useState<string[]>([]);
+  const [sessionProgress, setSessionProgress] = useState(0);
+  const [preparedSession, setPreparedSession] = useState<PreparedSession | null>(null);
+  const [sessionError, setSessionError] = useState<string | null>(null);
   const [backStack, setBackStack] = useState<ViewState[]>([]);
   const [forwardStack, setForwardStack] = useState<ViewState[]>([]);
   const noteSaveTimer = useRef<number | null>(null);
@@ -572,12 +668,14 @@ export function App() {
   const userMenuRef = useRef<HTMLDivElement | null>(null);
   const historyMenuRef = useRef<HTMLDivElement | null>(null);
   const chatBottomRef = useRef<HTMLDivElement | null>(null);
+  const sessionAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const { saveStatus, persist } = useRetryingBackgroundSave(overlay);
 
   async function loadProtectedState(currentProfile?: UserProfile) {
     const bootstrapReactor = new BootstrapAppReactor(apiClient);
     const bootstrapped = await bootstrapReactor.process();
+    setAppConfig(bootstrapped.config);
     setBase(bootstrapped.base);
     setOverlay(bootstrapped.overlay.overlay);
     setProfile(currentProfile ?? bootstrapped.overlay.profile);
@@ -641,6 +739,17 @@ export function App() {
   }, [profile]);
 
   useEffect(() => {
+    if (!profile || !appConfig?.features.sessions) {
+      setPreparedSession(null);
+      return;
+    }
+
+    setPreparedSession(
+      parseStoredSession(window.localStorage.getItem(sessionStorageKey(profile.id)))
+    );
+  }, [appConfig?.features.sessions, profile]);
+
+  useEffect(() => {
     if (!profile) {
       return;
     }
@@ -652,12 +761,132 @@ export function App() {
   }, [chatMessages, profile]);
 
   useEffect(() => {
+    if (!profile || !appConfig?.features.sessions) {
+      return;
+    }
+
+    if (!preparedSession) {
+      window.localStorage.removeItem(sessionStorageKey(profile.id));
+      return;
+    }
+
+    window.localStorage.setItem(
+      sessionStorageKey(profile.id),
+      JSON.stringify(preparedSession)
+    );
+  }, [appConfig?.features.sessions, preparedSession, profile]);
+
+  useEffect(() => {
+    if (!appConfig?.features.sessions || !profile) {
+      return;
+    }
+
+    if (!preparedSession?.audioJobId || preparedSession.audioDataUrl) {
+      return;
+    }
+
+    const currentJobId = preparedSession.audioJobId;
+    let isCancelled = false;
+
+    async function pollAudioJob() {
+      try {
+        const { job } = await apiClient.getSessionAudioJob();
+        if (isCancelled || !job || job.jobId !== currentJobId) {
+          return;
+        }
+
+        setSessionLogs(job.logs);
+        setSessionProgress(job.progress);
+
+        if (job.status === "ready" && job.audioBase64 && job.mimeType) {
+          const audioDataUrl = `data:${job.mimeType};base64,${job.audioBase64}`;
+          await getAudioDurationMs(audioDataUrl);
+          if (isCancelled) {
+            return;
+          }
+
+          setPreparedSession((current) =>
+            current && current.audioJobId === job.jobId
+              ? {
+                  ...current,
+                  audioDataUrl,
+                  audioJobStatus: "ready",
+                  audioJobProgress: job.progress,
+                  audioJobLogs: job.logs,
+                  audioJobError: null
+                }
+              : current
+          );
+          setSessionStatus("ready");
+          setSessionError(null);
+          return;
+        }
+
+        if (job.status === "failed") {
+          setPreparedSession((current) =>
+            current && current.audioJobId === job.jobId
+              ? {
+                  ...current,
+                  audioJobStatus: "failed",
+                  audioJobProgress: job.progress,
+                  audioJobLogs: job.logs,
+                  audioJobError: job.error
+                }
+              : current
+          );
+          setSessionStatus("ready");
+          setSessionError(
+            job.error ? `Audio generation failed: ${job.error}` : "Audio generation failed."
+          );
+          return;
+        }
+
+        setPreparedSession((current) =>
+          current && current.audioJobId === job.jobId
+            ? {
+                ...current,
+                audioJobStatus: job.status,
+                audioJobProgress: job.progress,
+                audioJobLogs: job.logs,
+                audioJobError: job.error
+              }
+            : current
+        );
+        setSessionStatus("preparing");
+      } catch (error) {
+        if (isCancelled) {
+          return;
+        }
+        setSessionError(
+          error instanceof Error ? error.message : "Polling the audio job failed."
+        );
+      }
+    }
+
+    void pollAudioJob();
+    const intervalId = window.setInterval(() => {
+      void pollAudioJob();
+    }, 3000);
+
+    return () => {
+      isCancelled = true;
+      window.clearInterval(intervalId);
+    };
+  }, [appConfig?.features.sessions, preparedSession?.audioDataUrl, preparedSession?.audioJobId, profile]);
+
+  useEffect(() => {
     if (activeWorkspace !== "chat") {
       return;
     }
 
     chatBottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [activeWorkspace, chatMessages, isChatting]);
+
+  useEffect(() => {
+    if (!appConfig?.features.sessions && activeWorkspace === "sessions") {
+      setActiveWorkspace("knowledge");
+    }
+  }, [activeWorkspace, appConfig?.features.sessions]);
 
   useEffect(() => {
     if (activeWorkspace !== "knowledge" || !currentCard) {
@@ -1018,6 +1247,7 @@ export function App() {
 
   async function handleLogout() {
     await apiClient.logout();
+    setAppConfig(null);
     setBase(null);
     setOverlay(null);
     setProfile(null);
@@ -1026,6 +1256,14 @@ export function App() {
     setChatDraft("");
     setChatError(null);
     setIsChatting(false);
+    setSessionDescription("");
+    setSessionVoice("female");
+    setSessionShouldGenerateAudio(true);
+    setSessionStatus("idle");
+    setSessionLogs([]);
+    setSessionProgress(0);
+    setPreparedSession(null);
+    setSessionError(null);
     setBackStack([]);
     setForwardStack([]);
     setActiveTagFilters([]);
@@ -1162,6 +1400,160 @@ export function App() {
     await sendChatMessage(seededPrompt, { replaceHistory: true });
   }
 
+  function stopSessionPlayback() {
+    if (sessionAudioRef.current) {
+      sessionAudioRef.current.pause();
+      sessionAudioRef.current.currentTime = 0;
+      sessionAudioRef.current = null;
+    }
+    setSessionStatus((current) => (current === "playing" || current === "paused" ? "ready" : current));
+  }
+
+  useEffect(() => {
+    return () => {
+      stopSessionPlayback();
+    };
+  }, []);
+
+  async function startPreparedSession() {
+    if (!preparedSession?.audioDataUrl) {
+      return;
+    }
+
+    stopSessionPlayback();
+    setSessionError(null);
+    setSessionStatus("playing");
+
+    const audio = new Audio(preparedSession.audioDataUrl);
+    sessionAudioRef.current = audio;
+    audio.onended = () => {
+      stopSessionPlayback();
+      setSessionStatus("ready");
+    };
+    audio.onerror = () => {
+      stopSessionPlayback();
+      setSessionError("Playback failed for this session.");
+      setSessionStatus("ready");
+    };
+
+    await audio.play();
+  }
+
+  function pausePreparedSession() {
+    if (!sessionAudioRef.current || sessionStatus !== "playing") {
+      return;
+    }
+
+    sessionAudioRef.current.pause();
+    setSessionStatus("paused");
+  }
+
+  async function resetPreparedSession() {
+    stopSessionPlayback();
+    try {
+      await apiClient.deleteSessionAudioJob();
+    } catch {
+      // Ignore cleanup failures when resetting the local session view.
+    }
+    setPreparedSession(null);
+    setSessionError(null);
+    setSessionLogs([]);
+    setSessionProgress(0);
+    setSessionStatus("idle");
+  }
+
+  async function handleGenerateSession(event: React.FormEvent) {
+    event.preventDefault();
+
+    if (!sessionDescription.trim()) {
+      setSessionError("Please describe the breathing session first.");
+      return;
+    }
+
+    setPreparedSession(null);
+    setSessionError(null);
+    setSessionLogs(["Generating session plan..."]);
+    setSessionProgress(8);
+    setSessionStatus("planning");
+
+    try {
+      const { session } = await apiClient.generateSessionPlan({
+        description: sessionDescription,
+        voice: sessionVoice
+      });
+
+      const fullNarration = normalizeNarrationText(session.script);
+      setSessionLogs((current) => [...current, `Script ready: ${session.title}`]);
+      setSessionStatus("preparing");
+      setSessionLogs((current) => [...current, "Narration text ready."]);
+      const baseSession: PreparedSession = {
+        title: session.title,
+        voice: session.voice,
+        preparedAt: new Date().toISOString(),
+        sourceDescription: sessionDescription,
+        narrationText: fullNarration
+      };
+      setPreparedSession(baseSession);
+
+      if (sessionShouldGenerateAudio) {
+        const jobId = crypto.randomUUID();
+        const nextSession: PreparedSession = {
+          ...baseSession,
+          audioJobId: jobId,
+          audioJobStatus: "generating",
+          audioJobProgress: 12,
+          audioJobLogs: [
+            "Script ready.",
+            "Audio job queued."
+          ],
+          audioJobError: null
+        };
+        setPreparedSession(nextSession);
+        setSessionLogs((current) => [...current, "Generating session audio..."]);
+        setSessionProgress(12);
+        try {
+          await apiClient.startSessionAudioJob({
+            jobId,
+            text: fullNarration,
+            voice: session.voice
+          });
+        } catch (audioError) {
+          const message =
+            audioError instanceof Error
+              ? audioError.message
+              : "Audio generation failed.";
+          setSessionLogs((current) => [...current, `Audio generation failed: ${message}`]);
+          setSessionError(`Audio generation failed: ${message}`);
+          setSessionProgress(100);
+          setSessionStatus("ready");
+          setPreparedSession({
+            ...nextSession,
+            audioJobStatus: "failed",
+            audioJobProgress: 100,
+            audioJobLogs: [...(nextSession.audioJobLogs ?? []), `Audio generation failed: ${message}`],
+            audioJobError: message
+          });
+          return;
+        }
+        setSessionLogs((current) => [...current, "Audio job started in the background."]);
+        setSessionStatus("preparing");
+        return;
+      }
+
+      setSessionProgress(100);
+      setPreparedSession(baseSession);
+      setSessionLogs((current) => [...current, "Session ready."]);
+      setSessionStatus("ready");
+    } catch (generationError) {
+      setSessionError(
+        generationError instanceof Error
+          ? generationError.message
+          : "Generating the session failed."
+      );
+      setSessionStatus("idle");
+    }
+  }
+
   if (authState === "loading") {
     return <div className="screen-state">Loading JBSapp...</div>;
   }
@@ -1177,7 +1569,7 @@ export function App() {
     );
   }
 
-  if (!base || !overlay || !profile) {
+  if (!base || !overlay || !profile || !appConfig) {
     return <div className="screen-state">Loading your study space...</div>;
   }
 
@@ -1201,7 +1593,7 @@ export function App() {
   const forwardTarget = forwardStack[0] ?? null;
   const historyEntries = [...backStack, currentView, ...forwardStack].reverse();
   const hasSearchContext = Boolean(search.trim() || activeTagFilters.length);
-
+  const sessionsEnabled = Boolean(appConfig?.features.sessions);
   function titleForView(view: ViewState | null): string {
     if (!view) {
       return "";
@@ -1282,6 +1674,18 @@ export function App() {
               <Sparkles size={16} />
               <span>AI</span>
             </button>
+            {sessionsEnabled ? (
+              <button
+                className={`workspace-tab ${
+                  activeWorkspace === "sessions" ? "active" : ""
+                }`}
+                onClick={() => setActiveWorkspace("sessions")}
+                type="button"
+              >
+                <Wind size={16} />
+                <span>Sessions</span>
+              </button>
+            ) : null}
           </div>
           {activeWorkspace === "knowledge" ? (
             <div className="header-actions">
@@ -1784,6 +2188,136 @@ export function App() {
             </section>
           </section>
         </>
+      ) : activeWorkspace === "sessions" ? (
+        <section className="panel sessions-panel">
+          <div className="section-head">
+            <button className="section-title-button" type="button">
+              Sessions
+            </button>
+          </div>
+
+          {sessionStatus === "planning" || sessionStatus === "preparing" ? (
+            <div className="session-preparation session-preparation-top">
+              <div className="session-progress-bar">
+                <div style={{ width: `${sessionProgress}%` }} />
+              </div>
+              <ul className="session-log-list">
+                {sessionLogs.map((entry, index) => (
+                  <li key={`${entry}-${index}`}>{entry}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
+          {!preparedSession ? (
+            <form className="session-builder" onSubmit={handleGenerateSession}>
+              <label>
+                <span>Voice</span>
+                <select
+                  value={sessionVoice}
+                  onChange={(event) => setSessionVoice(event.target.value as SessionVoice)}
+                >
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+                </select>
+              </label>
+              <label className="session-toggle-row">
+                <span>Generate audio</span>
+                <button
+                  type="button"
+                  className={`session-toggle-chip ${
+                    sessionShouldGenerateAudio ? "active" : ""
+                  }`}
+                  onClick={() => setSessionShouldGenerateAudio((value) => !value)}
+                  aria-pressed={sessionShouldGenerateAudio}
+                >
+                  {sessionShouldGenerateAudio ? "On" : "Off"}
+                </button>
+              </label>
+              <label>
+                <span>Describe your breathing session</span>
+                <textarea
+                  value={sessionDescription}
+                  onChange={(event) => setSessionDescription(event.target.value)}
+                  placeholder="Example: Start with gentle grounding. Then 6 rounds of box breathing at 4-4-4-4. Then a recovery breath. Then 3 minutes of physiological sigh with counted phases."
+                />
+              </label>
+              <button
+                className="primary-button"
+                disabled={sessionStatus === "planning" || sessionStatus === "preparing"}
+                type="submit"
+              >
+                {sessionStatus === "planning" || sessionStatus === "preparing"
+                  ? "Preparing session..."
+                  : "Generate session"}
+              </button>
+            </form>
+          ) : (
+            <div className="session-player">
+              <div className="session-player-head">
+                <div>
+                  <h2>{preparedSession.title}</h2>
+                  <p>{preparedSession.voice === "female" ? "Female voice" : "Male voice"}</p>
+                </div>
+                <div className="session-player-actions">
+                  {preparedSession.audioDataUrl ? (
+                    <>
+                      {sessionStatus === "playing" ? (
+                        <button
+                          className="session-icon-button"
+                          type="button"
+                          onClick={pausePreparedSession}
+                          aria-label="Pause session"
+                          title="Pause session"
+                        >
+                          <Pause size={16} />
+                        </button>
+                      ) : (
+                        <button
+                          className="session-icon-button primary"
+                          type="button"
+                          onClick={() => void startPreparedSession()}
+                          aria-label="Play session"
+                          title="Play session"
+                        >
+                          <Play size={16} />
+                        </button>
+                      )}
+                      <button
+                        className="session-icon-button"
+                        type="button"
+                        onClick={stopSessionPlayback}
+                        aria-label="Stop session"
+                        title="Stop session"
+                      >
+                        <Square size={16} />
+                      </button>
+                    </>
+                  ) : null}
+                  <button
+                    className="session-icon-button"
+                    type="button"
+                    onClick={() => void resetPreparedSession()}
+                    aria-label="Delete session"
+                    title="Delete session"
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                </div>
+              </div>
+
+              <div className="session-status-panel">
+                <strong>Raw narration text</strong>
+                <span>This is the exact text sent to ElevenLabs.</span>
+              </div>
+
+              <pre className="session-raw-text">{preparedSession.narrationText}</pre>
+
+            </div>
+          )}
+
+          {sessionError ? <p className="form-error">{sessionError}</p> : null}
+        </section>
       ) : (
         <section className="panel chat-panel">
           <div className="section-head chat-head">

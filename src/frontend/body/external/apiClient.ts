@@ -1,8 +1,15 @@
 import type {
+  AppConfig,
   ChatMessage,
   ChatResponse,
   KnowledgeBase,
   OverlayResponse,
+  SessionAudioInput,
+  SessionAudioJobResponse,
+  SessionAudioResponse,
+  SessionAudioStartInput,
+  SessionPlanInput,
+  SessionPlanResponse,
   SessionResponse
 } from "../../../shared/types";
 
@@ -55,6 +62,10 @@ async function request<T>(input: string, init?: RequestInit): Promise<T> {
 export class ApiClient {
   async getSession(): Promise<SessionResponse> {
     return await request<SessionResponse>("/api/session");
+  }
+
+  async getAppConfig(): Promise<AppConfig> {
+    return await request<AppConfig>("/api/app-config");
   }
 
   async login(email: string, otp: string): Promise<SessionResponse> {
@@ -115,6 +126,65 @@ export class ApiClient {
     return await request<ChatResponse>("/api/chat", {
       method: "POST",
       body: JSON.stringify({ messages })
+    });
+  }
+
+  async generateSessionPlan(input: SessionPlanInput): Promise<SessionPlanResponse> {
+    return await request<SessionPlanResponse>("/api/session-plan", {
+      method: "POST",
+      body: JSON.stringify(input)
+    });
+  }
+
+  async generateSessionAudio(
+    input: SessionAudioInput
+  ): Promise<SessionAudioResponse> {
+    return await request<SessionAudioResponse>("/api/session-audio", {
+      method: "POST",
+      body: JSON.stringify(input)
+    });
+  }
+
+  async startSessionAudioJob(input: SessionAudioStartInput): Promise<void> {
+    let response: Response;
+    try {
+      response = await fetch("/api/session-audio-background", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(input)
+      });
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Network error while contacting the server.";
+      throw new Error(`Network error: ${message}`);
+    }
+
+    if (!response.ok) {
+      let message = `Request failed (${response.status}).`;
+      try {
+        const body = (await response.json()) as { error?: string };
+        if (body.error) {
+          message = body.error;
+        }
+      } catch {
+        // Ignore body parsing errors for fallback message.
+      }
+      throw new Error(message);
+    }
+  }
+
+  async getSessionAudioJob(): Promise<SessionAudioJobResponse> {
+    return await request<SessionAudioJobResponse>("/api/session-audio-job");
+  }
+
+  async deleteSessionAudioJob(): Promise<void> {
+    await request("/api/session-audio-job", {
+      method: "DELETE"
     });
   }
 }
